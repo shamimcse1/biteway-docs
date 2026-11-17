@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Biteway Restaurant Portal documentation: install, set up and update the web portal for restaurant owners and staff, an add-on for Biteway.">
+    <title>Biteway Restaurant Portal Documentation</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,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">
+    <!-- Lets the sidebar fold its topic lists; without scripts they all stay open. -->
+    <script>document.documentElement.classList.add('js');</script>
+    <style>
+        :root {
+            --sidebar: 288px; --topbar: 56px;
+            --bg: #ffffff; --fg: #111827; --muted: #6b7280; --border: #e5e7eb; --surface: #f8fafc; --code: #f1f5f9;
+            --brand: #ff6b35; --brand-soft: #fff1ea; --link: #b23f0b; --pre-bg: #0f172a; --pre-fg: #e2e8f0; --shadow: 0 1px 2px rgb(15 23 42 / 6%);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root { --bg: #0b0f14; --fg: #e5e7eb; --muted: #9ca3af; --border: #1f2937; --surface: #0f1620; --code: #1f2937; --brand: #ff8a5b; --brand-soft: #2a160d; --link: #ffa27a; --pre-bg: #020617; --shadow: none; }
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .nav-expand svg { transition: none; } }
+        body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+        [id] { scroll-margin-top: 24px; }
+
+        /* Sidebar: pinned to the left edge, scrolling on its own. */
+        .sidebar { position: fixed; inset: 0 auto 0 0; z-index: 20; display: flex; flex-direction: column; width: var(--sidebar); border-right: 1px solid var(--border); background: var(--surface); }
+        .brand { display: flex; align-items: center; gap: 12px; padding: 20px 24px; border-bottom: 1px solid var(--border); color: var(--fg); text-decoration: none; }
+        .brand-mark { display: grid; flex: none; place-items: center; width: 40px; height: 40px; overflow: hidden; border-radius: 10px; background: var(--brand); color: #ffffff; font-weight: 700; }
+        .brand-mark img { width: 40px; height: 40px; }
+        .brand-name { display: block; font-size: 18px; font-weight: 700; line-height: 1.2; }
+        .brand-sub { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 14px; line-height: 1.4; }
+        .sidebar nav { flex: 1; overflow-y: auto; padding: 16px 12px 32px; font-size: 14px; scrollbar-width: thin; }
+        .sidebar nav ul { list-style: none; margin: 0; padding: 0; }
+        .sidebar nav > ul > li { margin-bottom: 8px; }
+        .sidebar nav a { display: block; padding: 6px 12px; border-radius: 8px; color: var(--fg); line-height: 1.4; text-decoration: none; }
+        .sidebar nav a:hover { background: var(--border); }
+        .sidebar nav li li a { margin-left: 12px; padding-left: 14px; border-left: 2px solid var(--border); border-radius: 0 8px 8px 0; color: var(--muted); }
+        .sidebar nav a.active { background: var(--brand-soft); color: var(--link); font-weight: 600; }
+        .sidebar nav li li a.active { border-left-color: var(--brand); }
+        .nav-section { font-weight: 600; }
+        .sidebar nav li:has(a.active) > .nav-row .nav-section { color: var(--link); }
+        .nav-row { display: flex; align-items: center; gap: 4px; }
+        .nav-row .nav-section { flex: 1; min-width: 0; }
+        .nav-icon { margin-right: 8px; }
+        .nav-expand { display: none; flex: none; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 8px; background: none; color: var(--muted); cursor: pointer; }
+        .nav-expand:hover { background: var(--border); color: var(--fg); }
+        .nav-expand svg { transition: transform 0.2s; }
+        .nav-group.open .nav-expand svg { transform: rotate(90deg); }
+        /* With the script, a section's topics show only while it's open: the one being read, or one opened with its arrow. */
+        .js .nav-expand { display: grid; }
+        .js .nav-group:not(.open) > ul { display: none; }
+
+        /* Content: the full width right of the sidebar. */
+        .content { min-width: 0; margin-left: var(--sidebar); }
+        .topbar, .backdrop, .nav-toggle { display: none; }
+        main { padding: 48px 64px 96px; }
+        section + section { margin-top: 96px; }
+        section > h2 { margin: 0 0 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); font-size: 32px; letter-spacing: -0.02em; line-height: 1.25; }
+        h3 { margin: 40px 0 12px; font-size: 22px; line-height: 1.35; }
+        h4 { margin: 28px 0 8px; font-size: 18px; }
+        h5 { margin: 24px 0 8px; font-size: 16px; }
+        a { color: var(--link); text-underline-offset: 2px; }
+        a:hover { text-decoration-thickness: 2px; }
+        main ul, main ol { padding-left: 24px; }
+        main li + li { margin-top: 4px; }
+        hr { margin: 32px 0; border: 0; border-top: 1px solid var(--border); }
+        code { padding: 2px 6px; border: 1px solid var(--border); border-radius: 6px; background: var(--code); font: 0.875em/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+        pre { overflow-x: auto; margin: 20px 0; padding: 16px 20px; border-radius: 12px; background: var(--pre-bg); color: var(--pre-fg); font-size: 14px; line-height: 1.6; }
+        pre code { padding: 0; border: 0; background: none; color: inherit; font-size: inherit; }
+        main table { width: 100%; margin: 20px 0; border-collapse: collapse; font-size: 14px; }
+        main img { display: block; max-width: 100%; height: auto; margin: 20px 0; border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); }
+        main figure { margin: 24px 0; }
+        main figure img { width: auto; max-height: 720px; margin: 0 0 10px; } /* phone screenshots stay a readable height */
+        figcaption { color: var(--muted); font-size: 14px; line-height: 1.5; }
+        main th, main td { padding: 10px 14px; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+        main th { background: var(--surface); font-weight: 600; }
+        main td code { overflow-wrap: normal; } /* a narrow screen scrolls the table instead of breaking paths */
+        main tbody tr:nth-child(even) { background: var(--surface); }
+        blockquote { margin: 20px 0; padding: 12px 20px; border-left: 4px solid var(--brand); border-radius: 0 8px 8px 0; background: var(--brand-soft); }
+        blockquote p { margin: 4px 0; }
+        .badge { padding: 2px 8px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+        .endpoint { margin: 12px 0; padding: 14px 18px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); box-shadow: var(--shadow); overflow-wrap: anywhere; }
+        .endpoint-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+        .endpoint p, .endpoint ul { margin: 8px 0 0; font-size: 14px; }
+        .method { padding: 4px 8px; border-radius: 6px; background: #6b7280; color: #ffffff; font: 700 12px/1 ui-monospace, monospace; }
+        .method-get { background: #2563eb; }
+        .method-post { background: #059669; }
+        .method-put, .method-patch { background: #d97706; }
+        .method-delete { background: #dc2626; }
+        footer { display: flex; flex-wrap: wrap; gap: 8px 24px; padding: 24px 64px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+        .to-top { position: fixed; right: 24px; bottom: 24px; z-index: 10; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--brand); color: #ffffff; font-size: 20px; text-decoration: none; box-shadow: 0 4px 12px rgb(0 0 0 / 15%); opacity: 0; visibility: hidden; transition: opacity 0.2s; }
+        .to-top.visible { opacity: 1; visibility: visible; }
+
+        /* Phones and tablets: the sidebar slides in from the left (a checkbox, so it also works without JavaScript). */
+        @media (max-width: 960px) {
+            [id] { scroll-margin-top: calc(var(--topbar) + 16px); }
+            .sidebar { transform: translateX(-100%); transition: transform 0.2s; }
+            .nav-toggle:checked ~ .sidebar { transform: none; box-shadow: 0 0 24px rgb(0 0 0 / 20%); }
+            .nav-toggle:checked ~ .backdrop { position: fixed; inset: 0; z-index: 15; display: block; background: rgb(0 0 0 / 40%); }
+            .content { margin-left: 0; }
+            .topbar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 12px; height: var(--topbar); padding: 0 16px; border-bottom: 1px solid var(--border); background: var(--bg); }
+            .menu-button { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; }
+            .menu-button:hover { background: var(--surface); }
+            main { padding: 24px 16px 64px; }
+            main table { display: block; overflow-x: auto; }
+            footer { padding: 24px 16px; }
+        }
+        @media print {
+            .sidebar, .topbar, .backdrop, .to-top { display: none !important; }
+            .content { margin-left: 0; }
+            main { padding: 0; }
+            pre { white-space: pre-wrap; }
+        }
+        </style>
+</head>
+<body id="top">
+<input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+<label for="nav-toggle" class="backdrop" aria-hidden="true"></label>
+<aside class="sidebar" aria-label="Documentation">
+    <a class="brand" href="#top">
+        <span class="brand-mark"><img src="data:image/png;base64,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" alt=""></span>
+        <span>
+            <span class="brand-name">Biteway Restaurant Portal</span>
+            <span class="brand-sub">Documentation <span class="badge">v1.0.0</span></span>
+        </span>
+    </a>
+    <nav aria-label="Contents">
+        <ul>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#introduction" class="nav-section"><span class="nav-icon" aria-hidden="true">📘</span>Introduction</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-introduction" aria-label="Introduction topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-introduction">
+                    <li><a href="#introduction-whats-in-the-package">What&#039;s in the package</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#installation" class="nav-section"><span class="nav-icon" aria-hidden="true">🧭</span>Installation</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-installation" aria-label="Installation topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-installation">
+                    <li><a href="#installation-before-you-start">Before you start</a></li>
+                    <li><a href="#installation-upload-and-install">Upload and install</a></li>
+                    <li><a href="#installation-build-its-styles-and-scripts">Build its styles and scripts</a></li>
+                    <li><a href="#installation-copying-the-folder-instead">Copying the folder instead</a></li>
+                    <li><a href="#installation-purchase-code">Purchase code</a></li>
+                    <li><a href="#installation-open-the-portal">Open the portal</a></li>
+                    <li><a href="#installation-how-restaurants-get-access">How restaurants get access</a></li>
+                    <li><a href="#installation-switching-off-and-removing">Switching off and removing</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#settings" class="nav-section"><span class="nav-icon" aria-hidden="true">⚙️</span>Settings</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-settings" aria-label="Settings topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-settings">
+                    <li><a href="#settings-platform-settings-that-affect-the-portal">Platform settings that affect the portal</a></li>
+                    <li><a href="#settings-restaurant-roles">Restaurant roles</a></li>
+                    <li><a href="#settings-language">Language</a></li>
+                    <li><a href="#settings-payouts">Payouts</a></li>
+                    <li><a href="#settings-own-web-address">Own web address</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#using" class="nav-section"><span class="nav-icon" aria-hidden="true">🖥️</span>Using the add-on</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-using" aria-label="Using the add-on topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-using">
+                    <li><a href="#using-around-the-portal">Around the portal</a></li>
+                    <li><a href="#using-setup">Setup</a></li>
+                    <li><a href="#using-today">Today</a></li>
+                    <li><a href="#using-manage">Manage</a></li>
+                    <li><a href="#using-money">Money</a></li>
+                    <li><a href="#using-restaurant">Restaurant</a></li>
+                    <li><a href="#using-my-account">My account</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#updating" class="nav-section"><span class="nav-icon" aria-hidden="true">🔄</span>Updating</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-updating" aria-label="Updating topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-updating">
+                    <li><a href="#updating-before-you-update">Before you update</a></li>
+                    <li><a href="#updating-update-the-add-on">Update the add-on</a></li>
+                    <li><a href="#updating-good-to-know">Good to know</a></li>
+                    <li><a href="#updating-if-something-goes-wrong">If something goes wrong</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#credits" class="nav-section"><span class="nav-icon" aria-hidden="true">📜</span>Credits and licenses</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-credits" aria-label="Credits and licenses topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-credits">
+                    <li><a href="#credits-shipped-inside-the-add-on">Shipped inside the add-on</a></li>
+                    <li><a href="#credits-fonts">Fonts</a></li>
+                    <li><a href="#credits-icons">Icons</a></li>
+                    <li><a href="#credits-sounds">Sounds</a></li>
+                    <li><a href="#credits-packages-of-the-main-item">Packages of the main item</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#troubleshooting" class="nav-section"><span class="nav-icon" aria-hidden="true">🧰</span>Troubleshooting and FAQ</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-troubleshooting" aria-label="Troubleshooting and FAQ topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-troubleshooting">
+                    <li><a href="#troubleshooting-installing">Installing</a></li>
+                    <li><a href="#troubleshooting-signing-in">Signing in</a></li>
+                    <li><a href="#troubleshooting-pages-and-roles">Pages and roles</a></li>
+                    <li><a href="#troubleshooting-orders-and-the-chime">Orders and the chime</a></li>
+                    <li><a href="#troubleshooting-menu-import">Menu import</a></li>
+                    <li><a href="#troubleshooting-questions">Questions</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#support" class="nav-section"><span class="nav-icon" aria-hidden="true">💬</span>Support</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-support" aria-label="Support topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-support">
+                    <li><a href="#support-what-to-send">What to send</a></li>
+                    <li><a href="#support-before-you-write">Before you write</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#changelog" class="nav-section"><span class="nav-icon" aria-hidden="true">📝</span>Changelog</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-changelog" aria-label="Changelog topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-changelog">
+                    <li><a href="#changelog-100-16-november-2026">1.0.0 (16 November 2026)</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</aside>
+<div class="content">
+    <div class="topbar">
+        <label for="nav-toggle" class="menu-button" aria-label="Contents">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </label>
+        <strong>Biteway Restaurant Portal</strong>
+        <span class="brand-sub">Documentation</span>
+    </div>
+    <main>
+        <section id="introduction">
+            <h2><span aria-hidden="true">📘</span> Introduction</h2>
+            <p>The Biteway Restaurant Portal is a web portal for restaurant owners and staff on your Biteway platform. It covers setup, a dashboard, an order board and kitchen display, menus with CSV import, branch hours and busy mode, team and roles, reviews, and reports.</p>
+<p>It is an <strong>add-on</strong>: it needs the Biteway main item, version 1.0.0 or newer, installed on the same server. It uses the main item's database, settings and PHP packages, so it adds no server requirements of its own.</p>
+<h3 id="introduction-whats-in-the-package">What's in the package</h3>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main/biteway-restaurant-portal/</code></td>
+<td>The add-on, with <code>addon.json</code> at its root. Its styles and scripts ship as sources in <code>resources/</code>; <code>npm run build</code> in your Biteway folder builds them.</td>
+</tr>
+<tr>
+<td><code>documentation/</code></td>
+<td>This documentation</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Costs of third-party services:</strong> the portal uses the services set up in your Biteway platform, on your own accounts, and you are responsible for any costs they charge. This includes payout provider fees when restaurants are paid automatically (Stripe Connect, PayPal Payouts, RazorpayX, Flutterwave or bKash), payment gateway fees for table orders paid online, your SMTP or email provider, and your hosting. The Biteway Restaurant Portal price covers the source code only.</p>
+</blockquote>
+        </section>
+        <section id="installation">
+            <h2><span aria-hidden="true">🧭</span> Installation</h2>
+            <p>The Restaurant Portal is installed from the Biteway admin panel, then its styles and scripts are built with one command in your Biteway folder. There are no Composer commands and no changes to <code>.env</code>.</p>
+<h3 id="installation-before-you-start">Before you start</h3>
+<p>You need:</p>
+<ul>
+<li><strong>Biteway 1.0.0 or newer</strong>, installed and working on your server. The add-on runs inside it and uses its database, settings and PHP packages, so it has no server requirements of its own.</li>
+<li>The <strong>Super Admin</strong> account. Only the Super Admin sees <strong>Add-ons</strong> in the admin panel.</li>
+<li><strong>Email</strong> set up in Biteway (see the Biteway documentation, <em>Deployment → Email</em>). The portal emails password reset links to restaurant staff, and tells your admins when a new restaurant sends its setup for review.</li>
+</ul>
+<h3 id="installation-upload-and-install">Upload and install</h3>
+<p>In your download, the add-on is the folder <code>main/biteway-restaurant-portal/</code>, with <code>addon.json</code> at its root. The admin panel finds it inside the zip you downloaded, so you can upload that zip as it is. If you prefer to copy files instead, skip to <a href="#installation-copying-the-folder-instead">Copying the folder instead</a>.</p>
+<ol>
+<li>Sign in to the admin panel as Super Admin.</li>
+<li>Open <strong>Super Admin → Add-ons</strong>.</li>
+<li>Under <strong>Upload an add-on</strong>, choose the zip you downloaded from CodeCanyon (up to 50 MB) and click <strong>Upload</strong>. The add-on appears in the list as <strong>Not installed</strong>.</li>
+<li>Click <strong>Install and switch on</strong>. Its status changes to <strong>On</strong>.</li>
+</ol>
+<figure><img src="assets/install/addons-empty.jpg" alt="Super Admin → Add-ons: choose the zip under Upload an add-on" loading="lazy" /><figcaption>Figure 1: Super Admin → Add-ons: choose the zip under Upload an add-on</figcaption></figure>
+<figure><img src="assets/install/addons-uploaded.jpg" alt="After uploading: the card shows Not installed" loading="lazy" /><figcaption>Figure 2: After uploading: the card shows Not installed</figcaption></figure>
+<figure><img src="assets/install/addons-installed.jpg" alt="After installing: the card shows On, with the purchase code field" loading="lazy" /><figcaption>Figure 3: After installing: the card shows On, with the purchase code field</figcaption></figure>
+<p>The add-on adds no database tables of its own, so installing it changes nothing in your data.</p>
+<p>If the add-on shows <strong>Needs a newer Biteway</strong>, update Biteway first: the card says which version it needs and which one your site runs.</p>
+<h3 id="installation-build-its-styles-and-scripts">Build its styles and scripts</h3>
+<p>The add-on ships its sources only. After installing it, and after each update, build its styles and scripts once. In the <code>biteway-backend</code> folder on your server, run:</p>
+<pre><code class="language-bash">npm run build
+</code></pre>
+<p>It is the same command you ran when you installed Biteway (it needs Node.js 20.19+ or 22.12+). It builds the admin panel and every installed add-on, and the new files are published on the next page load. Until you run it, the add-on's card in <strong>Add-ons</strong> says &quot;Its styles and scripts are not built yet&quot;, and the portal's pages load without their styles.</p>
+<p><strong>No terminal on your host?</strong> Build on your own computer: copy the add-on folder into the <code>addons/</code> folder of a local copy of <code>biteway-backend</code>, named <code>restaurant-portal</code>, run <code>npm ci &amp;&amp; npm run build</code> there, then upload the add-on folder, including its new <code>public/build/</code> folder, to <code>biteway-backend/addons/</code> on the server.</p>
+<h3 id="installation-copying-the-folder-instead">Copying the folder instead</h3>
+<ol>
+<li>Copy <code>main/biteway-restaurant-portal/</code> into the <code>addons/</code> folder of your Biteway backend, so that it is <code>biteway-backend/addons/biteway-restaurant-portal/</code>.</li>
+<li><strong>Rename</strong> it to <code>restaurant-portal</code>. The folder must be named after the add-on (<code>biteway-backend/addons/restaurant-portal/addon.json</code>), or Add-ons shows it as <strong>Can't be used</strong>.</li>
+<li>Open <strong>Super Admin → Add-ons</strong> and click <strong>Install and switch on</strong>.</li>
+</ol>
+<h3 id="installation-purchase-code">Purchase code</h3>
+<p>Once the add-on is installed, its card in <strong>Add-ons</strong> has a <strong>Purchase code</strong> field. Enter the code from your Envato downloads page and click <strong>Save code</strong>. It is saved encrypted. The add-on works without it, and nothing is checked yet: the field is ready for license checks.</p>
+<h3 id="installation-open-the-portal">Open the portal</h3>
+<p>The portal is at:</p>
+<pre><code>https://your-domain/portal
+</code></pre>
+<p><code>your-domain</code> is the address of your Biteway backend. Restaurant staff sign in there with their email and password, the same as in the restaurant app. <strong>Forgot password?</strong> on the sign-in page emails them a reset link, valid for 60 minutes.</p>
+<figure><img src="assets/pages/login.jpg" alt="The portal's sign-in page at /portal" loading="lazy" /><figcaption>Figure 4: The portal's sign-in page at /portal</figcaption></figure>
+<h3 id="installation-how-restaurants-get-access">How restaurants get access</h3>
+<p>The portal has no sign-up form. Every account starts in the admin panel:</p>
+<ol>
+<li>In <strong>Restaurants</strong>, click <strong>Add restaurant</strong>. Fill in the profile, the <strong>Owner account</strong> (name, email and password) and the <strong>First branch</strong>, and save. The restaurant starts as <strong>pending</strong>.</li>
+<li>Give the owner the portal address, their email and password.</li>
+<li>The owner signs in. While the restaurant is pending, the portal shows only its <strong>Setup</strong> checklist and the pages the setup needs (see <a href="#using-setup">Using the add-on</a>).</li>
+<li>When every required step is done, the owner clicks <strong>Send for review</strong>. The first time, every active admin whose role can approve restaurants gets an email.</li>
+<li>Open the restaurant under <strong>Restaurants</strong> and click <strong>Approve</strong>. The rest of the portal opens for its staff, and customers can see the restaurant.</li>
+</ol>
+<p>The owner (or a manager) then adds the rest of the team under <strong>Team</strong> in the portal. Each person gets a role at each branch they work at; see <a href="#settings-restaurant-roles">Settings</a>.</p>
+<p>Staff of a <strong>suspended</strong> or <strong>rejected</strong> restaurant, and switched-off accounts, cannot sign in. Once a restaurant is approved, a person must work at a branch to sign in.</p>
+<h3 id="installation-switching-off-and-removing">Switching off and removing</h3>
+<p>On the add-on's card in <strong>Super Admin → Add-ons</strong>:</p>
+<ul>
+<li><strong>Switch off</strong> removes the portal's pages at once: <code>/portal</code> no longer opens. Restaurants keep working in the restaurant app, and all their data stays. <strong>Switch on</strong> brings the portal back.</li>
+<li><strong>Remove</strong> appears once the add-on is off. It deletes the add-on's files; the data stays in the database, so installing it again carries on where you left off.</li>
+</ul>
+        </section>
+        <section id="settings">
+            <h2><span aria-hidden="true">⚙️</span> Settings</h2>
+            <p>The add-on has no settings page of its own. The portal follows the settings of your Biteway platform, and what each person sees in it follows their role at each branch.</p>
+<h3 id="settings-platform-settings-that-affect-the-portal">Platform settings that affect the portal</h3>
+<p>These are in the Biteway admin panel.</p>
+<table>
+<thead>
+<tr>
+<th>Where</th>
+<th>Setting</th>
+<th>What it changes in the portal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Settings → General</strong></td>
+<td>Platform name, logo, favicon, primary and secondary color</td>
+<td>The portal's name, sign-in page, browser tab and colors. Changes show at once, with no rebuild.</td>
+</tr>
+<tr>
+<td><strong>Settings → Ordering</strong> → Order types</td>
+<td>Customers can order to eat in</td>
+<td>Shows <strong>POS</strong>, <strong>Tables</strong> and <strong>Dine-in reports</strong>. Each branch also switches on <strong>Dine-in</strong> in its own <strong>Branch settings</strong>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Restaurants keep ingredient stock</td>
+<td>Shows <strong>Inventory</strong>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Restaurants run buy-one-get-one and happy hour</td>
+<td>Shows <strong>Offers</strong>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Customers can book a table</td>
+<td>Shows <strong>Reservations</strong>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Restaurants can use their own web address</td>
+<td>Shows <strong>Own web address</strong>. It also needs the Customer Website add-on installed and on.</td>
+</tr>
+<tr>
+<td><strong>Settings → Ordering</strong> → Payments</td>
+<td>Restaurants answer a new order within (minutes)</td>
+<td>How long a new order waits on the order board before it moves to another branch or is rejected.</td>
+</tr>
+<tr>
+<td></td>
+<td>Customers answer a proposed order change within (minutes)</td>
+<td>How long the customer has to answer a change proposed from an order's page.</td>
+</tr>
+<tr>
+<td><strong>Settings → Ordering</strong> → Reusable containers</td>
+<td>Dishes can carry a container deposit</td>
+<td>Adds the <strong>Container deposit</strong> field to dishes and the <code>deposit</code> column to the menu import.</td>
+</tr>
+<tr>
+<td><strong>Settings → Ordering</strong> → Payouts</td>
+<td>Smallest payout</td>
+<td>The lowest amount a restaurant can ask for under <strong>Payouts</strong>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Most a restaurant may owe the platform</td>
+<td>The limit warned about under <strong>Payouts</strong>. A restaurant can have its own limit on its page under <strong>Restaurants</strong>.</td>
+</tr>
+<tr>
+<td></td>
+<td>Offline price limit</td>
+<td>Which prices charged offline are kept; differences are listed under <strong>Reports</strong>.</td>
+</tr>
+<tr>
+<td><strong>Super Admin → Payout providers</strong></td>
+<td>Stripe Connect</td>
+<td>Adds <strong>Get paid with Stripe instead</strong> under <strong>Payouts</strong>. Bank, mobile wallet and PayPal details are always offered.</td>
+</tr>
+<tr>
+<td><strong>Super Admin → Payments</strong></td>
+<td>Online payment methods</td>
+<td>Needed for &quot;Pay online when ordering&quot; on table QR codes under <strong>Tables</strong>.</td>
+</tr>
+<tr>
+<td><strong>Languages</strong></td>
+<td>Offered in the apps</td>
+<td>The languages in the portal's language picker.</td>
+</tr>
+</tbody>
+</table>
+<p>Whether a branch delivers with platform riders or its own staff is set by the platform; <strong>Branch settings</strong> shows which.</p>
+<h3 id="settings-restaurant-roles">Restaurant roles</h3>
+<p>Each person in a restaurant's team has <strong>one role at each branch</strong> they work at. A cashier at one branch can be a manager at another. The portal shows a page only to people whose role allows it; restaurant-wide pages (such as <strong>Team</strong>, <strong>Reports</strong> and <strong>Payouts</strong>) show when the role allows it at any of their branches.</p>
+<p>Biteway comes with these built-in roles. They cannot be changed; a restaurant adds its own roles under <strong>Team → Add a role</strong> when a job needs a different mix.</p>
+<table>
+<thead>
+<tr>
+<th>Role</th>
+<th>What it can do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Owner</strong></td>
+<td>Everything.</td>
+</tr>
+<tr>
+<td><strong>Manager</strong></td>
+<td>Everything except the restaurant's balance and payouts: orders, reviews, menu and offers, branch status, POS and tills, tables, reservations, inventory, team, reports and settings.</td>
+</tr>
+<tr>
+<td><strong>Cashier</strong></td>
+<td>See, accept, reject and hand over orders, propose order changes, switch dishes off and on, sell and take payment at the POS, open and close tills with X and Z reports, and manage reservations.</td>
+</tr>
+<tr>
+<td><strong>Chef</strong></td>
+<td>See orders and cook them, switch dishes off and on, see inventory and count stock.</td>
+</tr>
+<tr>
+<td><strong>Waiter</strong></td>
+<td>See orders, sell at the POS and manage reservations.</td>
+</tr>
+<tr>
+<td><strong>Packer</strong></td>
+<td>See orders and hand them over.</td>
+</tr>
+<tr>
+<td><strong>Finance</strong></td>
+<td>See orders, the balance and payouts, ask for payouts, and see and download reports.</td>
+</tr>
+<tr>
+<td><strong>Accountant</strong></td>
+<td>See orders, the balance and payouts, and see and download reports. Cannot ask for payouts.</td>
+</tr>
+</tbody>
+</table>
+<p>The same roles apply in the restaurant app. In the portal, a permission is used only on a page the role can open, as the next table shows.</p>
+<h4 id="settings-permissions-and-pages">Permissions and pages</h4>
+<p>A custom role is a set of these permissions. The table shows what each one opens in the portal.</p>
+<table>
+<thead>
+<tr>
+<th>Permission</th>
+<th>In the portal</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Orders: view</td>
+<td><strong>Dashboard</strong>, <strong>Orders</strong>, <strong>Kitchen display</strong>, <strong>Reviews</strong></td>
+</tr>
+<tr>
+<td>Orders: accept, reject, prepare, handover, change request, transfer</td>
+<td>The buttons on an order: accept, reject, start cooking and ready, hand over (and self-delivery steps), propose a change, move to another branch</td>
+</tr>
+<tr>
+<td>Reviews: reply</td>
+<td>Replying to reviews</td>
+</tr>
+<tr>
+<td>Menu: edit</td>
+<td><strong>Menu</strong> (with the CSV import) and <strong>Offers</strong></td>
+</tr>
+<tr>
+<td>Stock: toggle</td>
+<td>The on-sale switch on each dish (the <strong>Menu</strong> page itself needs Menu: edit)</td>
+</tr>
+<tr>
+<td>Branch: status</td>
+<td><strong>Pause all orders</strong> and busy mode (on <strong>Branch settings</strong>, which also needs Settings: edit)</td>
+</tr>
+<tr>
+<td>POS: sell, payment, void, discount approve, comp item</td>
+<td><strong>POS</strong> and the actions on a check</td>
+</tr>
+<tr>
+<td>Register: open close, X report, Z report</td>
+<td>Tills under <strong>POS → Tills</strong></td>
+</tr>
+<tr>
+<td>Tables: manage</td>
+<td><strong>Tables</strong>: areas, tables, QR codes and tills</td>
+</tr>
+<tr>
+<td>Reservations: view, manage</td>
+<td><strong>Reservations</strong></td>
+</tr>
+<tr>
+<td>Inventory: view, manage, count</td>
+<td><strong>Inventory</strong> and its tabs</td>
+</tr>
+<tr>
+<td>Staff: manage</td>
+<td><strong>Team</strong></td>
+</tr>
+<tr>
+<td>Finance: view</td>
+<td><strong>Payouts</strong> and the statement download</td>
+</tr>
+<tr>
+<td>Payouts: request</td>
+<td>Asking for a payout and saving where the money goes</td>
+</tr>
+<tr>
+<td>Reports: view</td>
+<td><strong>Reports</strong>, <strong>Dine-in reports</strong> and today's numbers on the dashboard</td>
+</tr>
+<tr>
+<td>Reports: export</td>
+<td>The <strong>Download</strong> buttons on reports</td>
+</tr>
+<tr>
+<td>Settings: edit</td>
+<td><strong>Branch settings</strong>, <strong>Restaurant profile</strong>, <strong>Documents</strong>, <strong>Own web address</strong>, and sending the setup for review</td>
+</tr>
+</tbody>
+</table>
+<p>Nobody can change their own account under <strong>Team</strong>; each person changes their own password under <strong>My account</strong>. Only an owner gives out the Owner role or changes an owner's account, and a restaurant always keeps at least one active owner.</p>
+<h3 id="settings-language">Language</h3>
+<p>The portal is translated into English, Bangla and Arabic, with Arabic shown right to left. When more than one language is switched on under <strong>Languages</strong> in the admin panel, a language button appears at the top of every portal page. Each person's choice is saved with their account. Without a choice, the portal uses the platform's default language.</p>
+<h3 id="settings-payouts">Payouts</h3>
+<p>Restaurants ask for payouts in the portal; you approve and send them under <strong>Payouts</strong> in the admin panel. To send them automatically, set up a provider under <strong>Super Admin → Payout providers</strong> (see the Biteway documentation). Without one, mark payouts as paid after you transfer the money yourself.</p>
+<h3 id="settings-own-web-address">Own web address</h3>
+<p>With the Customer Website add-on, restaurants can take orders at their own address, such as <code>order.their-restaurant.com</code>. Switch on <strong>Restaurants can use their own web address</strong> under <strong>Settings → Ordering</strong>. The restaurant adds the address under <strong>Own web address</strong> in the portal and creates the two DNS records it shows. HTTPS for that address must be set up on your hosting.</p>
+        </section>
+        <section id="using">
+            <h2><span aria-hidden="true">🖥️</span> Using the add-on</h2>
+            <p>Restaurant staff open the portal at <code>https://your-domain/portal</code> in any modern browser, on a computer or a tablet. Everything they do there works exactly as in the restaurant app: an order accepted in the portal is the same as one accepted in the app.</p>
+<h3 id="using-around-the-portal">Around the portal</h3>
+<ul>
+<li><strong>The menu on the left</strong> shows only the pages the person's role allows (see <a href="#settings-restaurant-roles">Settings</a>), grouped under <strong>Today</strong>, <strong>Manage</strong>, <strong>Money</strong> and <strong>Restaurant</strong>. Pages of features the platform has switched off are left out.</li>
+<li><strong>The branch picker</strong> at the top appears for people who work at more than one branch. Pages about one branch (orders, menu, settings) show the branch picked there.</li>
+<li><strong>The language button</strong> appears when the platform offers more than one language. <strong>The moon icon</strong> switches to dark mode in this browser.</li>
+<li><strong>Your name</strong> at the top right opens <strong>My account</strong> and <strong>Sign out</strong>.</li>
+</ul>
+<h3 id="using-setup">Setup</h3>
+<p>While a restaurant waits for approval, its staff see a yellow bar at the top and only the setup pages. Any other page leads back to <strong>Setup</strong> with &quot;This opens once the platform approves your restaurant.&quot;</p>
+<p>The <strong>Setup</strong> checklist has five steps, each with a <strong>Start</strong> (or <strong>Review</strong>) button:</p>
+<table>
+<thead>
+<tr>
+<th>Step</th>
+<th>Done when</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Restaurant profile</td>
+<td>The phone, description and logo are filled in.</td>
+</tr>
+<tr>
+<td>Branch and opening hours</td>
+<td>Every branch has opening hours.</td>
+</tr>
+<tr>
+<td>Documents</td>
+<td>A trade license and a food license are handed in (and not rejected).</td>
+</tr>
+<tr>
+<td>Menu</td>
+<td>The restaurant has at least one dish.</td>
+</tr>
+<tr>
+<td>Team</td>
+<td>Optional: more people than the owner.</td>
+</tr>
+</tbody>
+</table>
+<p>When every required step is done, an owner or manager clicks <strong>Send for review</strong>. Changes made later can be sent again with <strong>Send again</strong>. Once the platform approves the restaurant, the checklist disappears and the portal opens on the dashboard.</p>
+<h3 id="using-today">Today</h3>
+<figure><img src="assets/pages/dashboard.jpg" alt="The dashboard: today at a glance, orders by hour and the orders waiting to be accepted" loading="lazy" /><figcaption>Figure 5: The dashboard: today at a glance, orders by hour and the orders waiting to be accepted</figcaption></figure>
+<p><strong>Dashboard</strong> (needs Orders: view). Whether the branch is taking orders now, the live orders as <strong>New</strong>, <strong>Being cooked</strong> and <strong>Ready to hand over</strong>, and the new orders waiting to be accepted. With Reports: view it also shows today's numbers: orders done, food sales, average cook time, orders ready on time and orders by hour. It refreshes every 15 seconds and chimes when a new order arrives.</p>
+<figure><img src="assets/pages/orders.jpg" alt="The order board: New, Cooking and Ready" loading="lazy" /><figcaption>Figure 6: The order board: New, Cooking and Ready</figcaption></figure>
+<p><strong>Orders</strong> (Orders: view). The live order board in three columns, <strong>New</strong>, <strong>Cooking</strong> and <strong>Ready</strong>, refreshed every 10 seconds with a chime on each new order. The <strong>Finished</strong> tab lists finished orders, newest first. Opening an order shows its dishes, notes, customer, payment, timeline, refunds and its tax invoice, with the next step the role allows:</p>
+<ul>
+<li><strong>Accept</strong> with the minutes to cook, or <strong>Reject</strong> with a reason for the customer.</li>
+<li><strong>Start cooking</strong>, then <strong>Ready</strong>.</li>
+<li><strong>Hand over</strong> to the customer or rider, or, for a branch that delivers with its own staff, <strong>Out for delivery</strong> and <strong>Delivered</strong> with the code the customer shows (or <strong>Not delivered</strong> with a reason).</li>
+<li><strong>Propose a change</strong> when a dish is not available: the customer approves or declines, and a lower total is refunded.</li>
+<li><strong>Move to another branch</strong> of the same restaurant while the order is new.</li>
+<li><strong>Containers came back</strong>, to return a container deposit to the customer.</li>
+</ul>
+<figure><img src="assets/pages/kitchen.jpg" alt="The kitchen display" loading="lazy" /><figcaption>Figure 7: The kitchen display</figcaption></figure>
+<p><strong>Kitchen display</strong> (Orders: view). Large tickets of new, cooking and ready orders, with how long each has left or how late it is, refreshed every 10 seconds. Click anywhere on the page once so the browser allows the chime.</p>
+<p><strong>POS</strong> (POS: sell; shown when the platform offers dine-in). The branch's floor plan: open a check at a table or at the counter, add dishes with their sizes and options as a round, and send it to the kitchen. On a check: mark rounds served, ask for the bill, take payment in cash or by card machine (all at once or in shares, with a tip), discount, make an item free, merge, split, move to another table, void, and print the bill or receipt. The branch must have <strong>Dine-in</strong> on in <strong>Branch settings</strong>. Cash goes into the till this browser uses: under <strong>Tills</strong>, choose it, open it with a starting float, put cash in or take it out, see the X report, and close it with the cash counted to get the Z report. The POS needs an internet connection.</p>
+<p><strong>Reservations</strong> (Reservations: view; shown when the platform offers table bookings). The bookings for a day, with <strong>Confirm</strong>, <strong>Decline</strong>, <strong>Seat</strong>, <strong>No-show</strong> and <strong>Cancel</strong>, and <strong>New booking</strong> for a guest who calls. <strong>Booking settings</strong> switch bookings on for the branch and set the times, party size, notice, deposit and whether bookings are confirmed at once or by staff.</p>
+<h3 id="using-manage">Manage</h3>
+<figure><img src="assets/pages/menu.jpg" alt="A branch's menu, with the CSV import and the on-sale switches" loading="lazy" /><figcaption>Figure 8: A branch's menu, with the CSV import and the on-sale switches</figcaption></figure>
+<p><strong>Menu</strong> (Menu: edit). The branch's categories and dishes; each branch has its own menu. Add and edit categories and items (photo, price or sizes, options, dietary and allergen tags, spice level, stock count, translations), and <strong>Option groups</strong> such as toppings or the halves of a half-and-half pizza. The on-sale switch on each dish takes it off sale and puts it back.</p>
+<p><strong>Import CSV</strong> adds or updates many dishes at once:</p>
+<ol>
+<li>Click <strong>Import CSV</strong>, then <strong>Download template</strong>.</li>
+<li>Fill it in: one dish per line. A dish with the same category and name as an existing one is updated; others are added, and missing categories are created. The page lists every column and what to write in it.</li>
+<li>Save it as CSV in UTF-8 (comma or semicolon separated, up to 1000 dishes and 2 MB) and click <strong>Check the file</strong>.</li>
+<li>The preview lists every new and updated dish, or the lines to fix. Nothing is saved until you confirm with the <strong>Import</strong> button below it, within 30 minutes. Photos and translations are added on each dish afterwards.</li>
+</ol>
+<p><strong>Offers</strong> (Menu: edit; shown when the platform offers them). Buy one get one free and happy hour discounts on the days and times you choose. They apply by themselves at checkout, and the restaurant pays for them.</p>
+<p><strong>Tables</strong> (Tables: manage; shown when the platform offers dine-in). Areas such as Hall or Terrace, tables with their seats, a QR code for each table (<strong>Print QR codes</strong>, or <strong>New QR code</strong> to replace a lost one), whether guests ordering from the QR code pay online or at the restaurant, and the branch's tills.</p>
+<p><strong>Inventory</strong> (Inventory: view; shown when the platform offers it). Tabs for <strong>Ingredients</strong> (with wastage), <strong>Recipes</strong> (what one portion of each dish uses), <strong>Stock count</strong>, <strong>Movements</strong>, <strong>Suppliers</strong>, <strong>Purchase orders</strong> (sent to the supplier by email when it has an address, received into stock, and downloadable as PDF), <strong>Transfers</strong> between branches, and <strong>Food cost</strong>. Managing needs Inventory: manage; counting and receiving need Inventory: count.</p>
+<figure><img src="assets/pages/branch-settings.jpg" alt="Branch settings: services, preparation time, opening hours and closures" loading="lazy" /><figcaption>Figure 9: Branch settings: services, preparation time, opening hours and closures</figcaption></figure>
+<p><strong>Branch settings</strong> (Settings: edit). The branch phone; which services it offers (<strong>Delivery</strong>, <strong>Pickup</strong>, <strong>Dine-in</strong>); the usual preparation time; kitchen capacity in orders an hour; the weekly <strong>Opening hours</strong>; and <strong>Planned closures</strong> such as public holidays. Once the restaurant is approved, people with Branch: status also see <strong>Pause all orders</strong> (and <strong>Take orders again</strong>) and busy mode for 15 to 90 minutes.</p>
+<figure><img src="assets/pages/team.jpg" alt="Team: people, their branches and roles, and the built-in roles" loading="lazy" /><figcaption>Figure 10: Team: people, their branches and roles, and the built-in roles</figcaption></figure>
+<p><strong>Team</strong> (Staff: manage). Everyone in the restaurant, with their branches, roles and last sign-in. <strong>Add a person</strong> creates an account with a role at each branch; people sign in to the portal and the restaurant app with its email and password. Edit a person to change their details or roles, set a new password, switch them off (they can no longer sign in) or remove them. <strong>Add a role</strong> creates a role of your own from the permissions.</p>
+<p><strong>Reviews</strong> (Orders: view). What customers said about the branch's orders. With Reviews: reply, write a public reply; the customer is told the first time.</p>
+<h3 id="using-money">Money</h3>
+<figure><img src="assets/pages/reports.jpg" alt="Reports: orders, food sales and best sellers by day" loading="lazy" /><figcaption>Figure 11: Reports: orders, food sales and best sellers by day</figcaption></figure>
+<p><strong>Reports</strong> (Reports: view). Orders, food sales and cook time by day for up to 92 days, for one branch or all of them, with the best sellers and the prices charged offline that differ from the menu. <strong>Download</strong> saves it as CSV, Excel (XLSX) or PDF (needs Reports: export).</p>
+<p><strong>Dine-in reports</strong> (Reports: view; shown when the platform offers dine-in). Tabs for <strong>Sales</strong> (by day and hour, cash, card, tips and discounts), <strong>Checks</strong>, <strong>Tills and Z reports</strong> and <strong>Staff activity</strong>.</p>
+<figure><img src="assets/pages/payouts.jpg" alt="Payouts: the balance, what is on its way and where the money goes" loading="lazy" /><figcaption>Figure 12: Payouts: the balance, what is on its way and where the money goes</figcaption></figure>
+<p><strong>Payouts</strong> (Finance: view). The restaurant's balance with the platform, what is on its way and what is withdrawable, its plan and commission, and the history of payouts with the reason when one was not paid. <strong>Statement</strong> downloads every movement for the days chosen. With Payouts: request:</p>
+<ul>
+<li><strong>Where the money goes:</strong> bank, mobile wallet or PayPal details, saved encrypted and shown masked, or Stripe's own setup page when the platform offers it.</li>
+<li><strong>Ask for a payout:</strong> one at a time, from the platform's smallest payout up to what is withdrawable. A payout can be cancelled until the platform approves it.</li>
+</ul>
+<h3 id="using-restaurant">Restaurant</h3>
+<p>These pages need Settings: edit at any branch.</p>
+<p><strong>Restaurant profile.</strong> What customers see: phone, email, tax ID, cuisines, description, logo and cover picture, and whether unanswered orders move to another branch before they are rejected. The name is set by the platform.</p>
+<p><strong>Documents.</strong> The licenses the platform reviews, uploaded as PDF or pictures, with an expiry date when they have one.</p>
+<p><strong>Own web address</strong> (shown when the platform offers it). Add your own address, add the DNS records shown, and click <strong>Check DNS now</strong> until it shows <strong>Verified</strong>.</p>
+<h3 id="using-my-account">My account</h3>
+<p>Under your name at the top right: the branches you work at with your role at each, and <strong>Change password</strong>. After changing it, sign in again in the restaurant app.</p>
+        </section>
+        <section id="updating">
+            <h2><span aria-hidden="true">🔄</span> Updating</h2>
+            <p>A new version of the add-on is installed the same way as the first one, from <strong>Super Admin → Add-ons</strong>. Your restaurants, menus, orders and settings are kept: they live in Biteway's database, and the add-on only reads and changes them through Biteway.</p>
+<h3 id="updating-before-you-update">Before you update</h3>
+<ol>
+<li><strong>Back up the database.</strong> The Add-ons page reminds you: take a database backup before installing an update. Biteway's built-in updater backs up only when Biteway itself is updated, not when an add-on is.</li>
+<li><strong>Check the version it needs.</strong> Each version says which Biteway version it needs (<code>requires</code> in its <code>addon.json</code>, shown as <strong>Needs Biteway</strong> on the add-on's card). If your site runs an older Biteway, update Biteway first (see the Biteway documentation, <em>Deployment → Updating</em>).</li>
+<li><strong>Read the changelog</strong> of the new version for anything to do after updating.</li>
+</ol>
+<h3 id="updating-update-the-add-on">Update the add-on</h3>
+<ol>
+<li>Download the new version from CodeCanyon.</li>
+<li>Open <strong>Super Admin → Add-ons</strong> and upload the downloaded zip under <strong>Upload an add-on</strong>. It replaces the add-on's files.</li>
+<li>The card now shows <strong>Update ready</strong>. Click <strong>Install update</strong>. This runs the new version's database updates, if it has any, and switches the add-on back on.</li>
+<li>In the <code>biteway-backend</code> folder, run <code>npm run build</code> to build the new version's styles and scripts (<a href="#installation-build-its-styles-and-scripts">Installation</a>).</li>
+</ol>
+<p>Between steps 2 and 3 the portal is off, so restaurant staff cannot open it. Do both steps together, ideally at a quiet time. The restaurant app keeps working throughout.</p>
+<p>You can also replace the files by hand: delete <code>biteway-backend/addons/restaurant-portal/</code>, copy the new <code>main/biteway-restaurant-portal/</code> into <code>biteway-backend/addons/</code> and rename it to <code>restaurant-portal</code>, then click <strong>Install update</strong> and run <code>npm run build</code>.</p>
+<h3 id="updating-good-to-know">Good to know</h3>
+<ul>
+<li><strong>Older versions are refused.</strong> Uploading a version older than the installed one fails with &quot;Version … is older than the installed …&quot;.</li>
+<li><strong>Updating Biteway does not touch the add-on.</strong> Biteway's updater never changes installed add-ons, so the portal stays installed and on after a Biteway update.</li>
+<li><strong>The purchase code stays saved</strong> across updates.</li>
+<li><strong>After updating</strong>, ask staff to reload the portal. The new styles and scripts are loaded automatically, as their address changes with each version.</li>
+</ul>
+<h3 id="updating-if-something-goes-wrong">If something goes wrong</h3>
+<ul>
+<li>The card shows <strong>Needs a newer Biteway</strong>: update Biteway, then click <strong>Install update</strong>.</li>
+<li>The card shows <strong>Can't be used</strong> with a message: the add-on's files are incomplete, or its folder is not named <code>restaurant-portal</code>. Upload the zip again.</li>
+<li>The update stopped with &quot;The add-on's database update failed&quot;: the message shows the database error. Restore your backup if needed, fix the cause (often the database user's rights), and click <strong>Install update</strong> again.</li>
+</ul>
+        </section>
+        <section id="credits">
+            <h2><span aria-hidden="true">📜</span> Credits and licenses</h2>
+            <p>The add-on's own code, design and texts are covered by the Envato Market license you bought. Everything below is third-party: it keeps its own license, and every license allows commercial use and redistribution. <code>LICENSES.txt</code> in the add-on folder lists the same packages.</p>
+<h3 id="credits-shipped-inside-the-add-on">Shipped inside the add-on</h3>
+<p>The add-on has no Composer or npm packages of its own. Its styles and scripts are built by <code>npm run build</code> in the main item, from these packages of the Biteway main item:</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Version</th>
+<th>Used for</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://alpinejs.dev">Alpine.js</a> (<code>alpinejs</code>)</td>
+<td>3.17.5</td>
+<td>Menus, dialogs, the POS round builder and other interactive parts</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><a href="https://www.chartjs.org">Chart.js</a> (<code>chart.js</code>), with its color helper <code>@kurkle/color</code> 0.3.4</td>
+<td>4.6.1</td>
+<td>Charts on the dashboard and reports</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><a href="https://tailwindcss.com">Tailwind CSS</a> (<code>tailwindcss</code>)</td>
+<td>4.3.3</td>
+<td>The generated stylesheet</td>
+<td>MIT</td>
+</tr>
+</tbody>
+</table>
+<p>The build itself was made with <a href="https://vite.dev">Vite</a> 7.3.7 and <code>@tailwindcss/vite</code> 4.3.3 (both MIT); they are not shipped.</p>
+<h3 id="credits-fonts">Fonts</h3>
+<table>
+<thead>
+<tr>
+<th>Font</th>
+<th>Files</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/tokotype/PlusJakartaSans">Plus Jakarta Sans</a>, from the <code>@fontsource/plus-jakarta-sans</code> 5.3.0 package</td>
+<td>Latin, weights 400 to 800, as <code>.woff2</code> and <code>.woff</code> in <code>public/build/assets/</code></td>
+<td>SIL Open Font License 1.1</td>
+</tr>
+</tbody>
+</table>
+<p>The font is served from your own site, not from an online font service.</p>
+<h3 id="credits-icons">Icons</h3>
+<table>
+<thead>
+<tr>
+<th>Icons</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://heroicons.com">Heroicons</a>, through the main item's <code>blade-ui-kit/blade-heroicons</code> package</td>
+<td>MIT</td>
+</tr>
+</tbody>
+</table>
+<h3 id="credits-sounds">Sounds</h3>
+<p>The new-order chime is a short two-note tone generated by the browser. No sound file is shipped.</p>
+<h3 id="credits-packages-of-the-main-item">Packages of the main item</h3>
+<p>On the server, the add-on runs on Biteway's own PHP packages, which are credited in the Biteway documentation (<em>Credits and licenses</em>). Among them, the portal uses Laravel for its pages, Heroicons for its icons, and Biteway's services for the table QR codes and for the PDF and Excel downloads.</p>
+        </section>
+        <section id="troubleshooting">
+            <h2><span aria-hidden="true">🧰</span> Troubleshooting and FAQ</h2>
+            <p>Look first at the add-on's card in <strong>Super Admin → Add-ons</strong>: its status and any message explain most problems. For a server error, the newest file in <code>storage/logs/</code> of your Biteway backend names the real cause.</p>
+<h3 id="troubleshooting-installing">Installing</h3>
+<p><strong>Uploading fails with &quot;The zip has no addon.json at its top level.&quot;</strong>
+The zip is not the add-on. Upload the zip you downloaded from CodeCanyon as it is, or a zip of the <code>main/biteway-restaurant-portal/</code> folder (<a href="#installation">Installation</a>).</p>
+<p><strong>Uploading fails, or the page says the file is too large.</strong>
+The zip may be up to 50 MB, but your PHP limits (<code>upload_max_filesize</code> and <code>post_max_size</code>) may be lower. Raise them, or copy the folder to <code>biteway-backend/addons/restaurant-portal/</code> instead. The web server must be able to write to <code>biteway-backend/addons/</code> and <code>biteway-backend/public/addons/</code>.</p>
+<p><strong>The card says &quot;Can't be used&quot;.</strong>
+The folder is not named <code>restaurant-portal</code>, or <code>addon.json</code> is missing or damaged. Upload the zip again.</p>
+<p><strong>The card says &quot;Needs a newer Biteway&quot;.</strong>
+Your Biteway is older than the add-on needs. Update Biteway, then click <strong>Install and switch on</strong> (or <strong>Install update</strong>).</p>
+<p><strong><code>/portal</code> does not open (&quot;Not Found&quot;).</strong>
+The add-on is not running. In <strong>Add-ons</strong> its status must be <strong>On</strong>. <strong>Not installed</strong>, <strong>Off</strong> or <strong>Update ready</strong> each have a button to fix it.</p>
+<p><strong>The portal opens without styles.</strong>
+Its styles and scripts are not built yet: run <code>npm run build</code> in the <code>biteway-backend</code> folder (<a href="#installation-build-its-styles-and-scripts">Installation</a>); the add-on's card in <strong>Add-ons</strong> says so until you do. If they are built and the pages still have no styles, make sure the web server can write to <code>public/addons/</code>, then click <strong>Switch off</strong> and <strong>Switch on</strong> to copy them again.</p>
+<h3 id="troubleshooting-signing-in">Signing in</h3>
+<p><strong>&quot;These details don't match our records.&quot;</strong>
+The email or password is wrong. Staff use the same email and password as in the restaurant app. <strong>Forgot password?</strong> emails a reset link.</p>
+<p><strong>&quot;Your account is not active. Please ask your restaurant's owner.&quot;</strong>
+The account was switched off under <strong>Team</strong>. An owner or manager switches it on again.</p>
+<p><strong>&quot;You are not linked to a branch yet. Please ask your restaurant's owner.&quot;</strong>
+The person has no role at any branch. Under <strong>Team</strong>, edit them and pick a role at a branch.</p>
+<p><strong>&quot;Your restaurant cannot use the portal. Please contact support.&quot;</strong>
+The restaurant is suspended or rejected in the admin panel. Reinstate it under <strong>Restaurants</strong> if that was not intended.</p>
+<p><strong>The reset email never arrives.</strong>
+Check Biteway's email settings (see the Biteway documentation, <em>Deployment → Email</em>). With <code>MAIL_MAILER=log</code>, emails are written to <code>storage/logs/</code> instead of being sent. The link works for 60 minutes.</p>
+<p><strong>The sign-in page just reloads.</strong>
+The same cause as for the admin panel: the site is opened over plain <code>http://</code>, and the sign-in cookie is only sent over HTTPS. Add HTTPS.</p>
+<h3 id="troubleshooting-pages-and-roles">Pages and roles</h3>
+<p><strong>A new restaurant only sees Setup.</strong>
+That is expected until you approve it. The owner sends the setup for review; then open the restaurant under <strong>Restaurants</strong> in the admin panel and click <strong>Approve</strong>.</p>
+<p><strong>&quot;Send for review&quot; cannot be clicked.</strong>
+A required step is not done yet: profile (phone, description and logo), opening hours at every branch, both licenses, and at least one dish. A rejected document counts as missing: upload a new one. Only people with Settings: edit see the button.</p>
+<p><strong>A staff member can't see a page, or sees &quot;Your role cannot do this.&quot;</strong>
+Pages follow the person's role at the <strong>branch picked at the top</strong>. They may have another role at another branch: pick it in the branch picker, or give them a role with that permission under <strong>Team</strong> (<a href="#settings-restaurant-roles">Settings</a>).</p>
+<p><strong>POS, Tables, Dine-in reports, Inventory, Offers, Reservations or Own web address are missing for everyone.</strong>
+The platform has that feature switched off under <strong>Settings → Ordering</strong> in the admin panel. Own web address also needs the Customer Website add-on.</p>
+<p><strong>The POS says the branch does not take dine-in orders.</strong>
+Switch on <strong>Dine-in</strong> under <strong>Branch settings</strong> for that branch.</p>
+<p><strong>Pause and busy mode are missing on Branch settings.</strong>
+They show once the restaurant is approved, and only to roles with Branch: status.</p>
+<h3 id="troubleshooting-orders-and-the-chime">Orders and the chime</h3>
+<p><strong>The new-order chime does not play.</strong>
+Browsers block sound until the page is clicked once: click anywhere on the dashboard, order board or kitchen display after opening it. Check that the computer's sound is on. The chime plays only on those three pages, and only while the tab is visible.</p>
+<p><strong>The order board stops refreshing.</strong>
+It refreshes only while the tab is visible and pauses while someone types in a field on it. If the session has ended, reload the page and sign in again.</p>
+<h3 id="troubleshooting-menu-import">Menu import</h3>
+<p>The preview names each line to fix; nothing is saved until the file has no errors.</p>
+<table>
+<thead>
+<tr>
+<th>Message</th>
+<th>Fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Save the file as CSV in UTF-8 and try again.</td>
+<td>In your spreadsheet, choose <strong>CSV UTF-8</strong> when saving.</td>
+</tr>
+<tr>
+<td>The first line must name the columns… / Unknown columns…</td>
+<td>Start from <strong>Download template</strong> and keep its first line.</td>
+</tr>
+<tr>
+<td>Add a price or a sizes column.</td>
+<td>Every dish needs a <code>price</code>, or <code>sizes</code> written as <code>Medium=12.00|Large=15.00</code>.</td>
+</tr>
+<tr>
+<td>Import at most 1000 dishes at a time.</td>
+<td>Split the file.</td>
+</tr>
+<tr>
+<td>Line …: there is no option group named … in this branch</td>
+<td>Create the option group under <strong>Menu → Option groups</strong> first, with exactly that name.</td>
+</tr>
+<tr>
+<td>Line …: … is not a known … value</td>
+<td>Use only the values the import page lists for that column.</td>
+</tr>
+<tr>
+<td>The file expired. Upload it again.</td>
+<td>More than 30 minutes passed between the preview and the import.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="troubleshooting-questions">Questions</h3>
+<p><strong>Can restaurants sign up on their own?</strong>
+No. You create each restaurant and its owner under <strong>Restaurants → Add restaurant</strong>; the owner then adds the team in the portal.</p>
+<p><strong>Does the portal replace the restaurant app?</strong>
+It covers the same daily work in a browser, plus setup, team, reports and payouts. The portal's POS needs an internet connection; the restaurant app's tables keep working offline and print to receipt printers.</p>
+<p><strong>Is anything lost when I switch the add-on off?</strong>
+No. It adds no tables of its own, and all restaurant data stays in Biteway. Switching it on again brings everything back.</p>
+<p><strong>Can I change the <code>/portal</code> address?</strong>
+No, the portal is always at <code>/portal</code> on your Biteway backend's domain.</p>
+<p><strong>Will search engines list the portal?</strong>
+The add-on adds <code>Disallow: /portal</code> to your site's <code>robots.txt</code>, so search engines are asked to leave it out.</p>
+        </section>
+        <section id="support">
+            <h2><span aria-hidden="true">💬</span> Support</h2>
+            <p>Support is given through CodeCanyon: open the <strong>Support</strong> tab on the Biteway Restaurant Portal item page and send your question there. Item support covers questions about how the add-on works, help with problems and bugs in the add-on, and help with the third-party parts included with it. It does not cover installing it on your server for you, customizing it, or building new features.</p>
+<p>Questions about Biteway itself (the admin panel, the apps, payments) go to the Biteway item page.</p>
+<h3 id="support-what-to-send">What to send</h3>
+<p>So we can help quickly, include:</p>
+<ul>
+<li>The add-on's version and status, as shown on its card in <strong>Super Admin → Add-ons</strong>, and the Biteway version (at the bottom of the admin menu and on the <strong>Health</strong> page).</li>
+<li>What you did, what you expected, and what happened instead, with screenshots.</li>
+<li>For a problem with one page: the portal page, and the role of the person at the branch picked at the top.</li>
+<li>For a server problem: the error from the newest file in <code>storage/logs/</code>, and what <strong>Health</strong> shows.</li>
+<li>For a display problem: the browser and its version.</li>
+</ul>
+<p>Never send passwords, purchase codes, <code>.env</code> files or your restaurants' and customers' personal data.</p>
+<h3 id="support-before-you-write">Before you write</h3>
+<p>Many questions are answered in <a href="#troubleshooting">Troubleshooting and FAQ</a>. The add-on's card in <strong>Super Admin → Add-ons</strong> and the newest log file in <code>storage/logs/</code> often show the cause straight away.</p>
+        </section>
+        <section id="changelog">
+            <h2><span aria-hidden="true">📝</span> Changelog</h2>
+            <h3 id="changelog-100-16-november-2026">1.0.0 (16 November 2026)</h3>
+<p>First release. Requires Biteway 1.0.0 or newer.</p>
+<ul>
+<li>Installs from <strong>Super Admin → Add-ons</strong> with no build step; the styles and scripts are included.</li>
+<li>Staff sign in at <code>/portal</code> with the same email and password as the restaurant app, and reset a forgotten password by email.</li>
+<li>Portal layout with a side menu that follows each person's role, a branch picker, an account menu, dark mode, and English, Bangla and Arabic (right to left).</li>
+<li>Setup for a new restaurant: a checklist (profile, branch hours, documents, menu, team), the restaurant profile with logo and cover, documents for review, and sending the setup for review.</li>
+<li>Branch settings: contact, services, preparation time, kitchen capacity, weekly hours, planned closures, pausing orders and busy mode.</li>
+<li>Dashboard with the live orders and today's numbers.</li>
+<li>Order board and kitchen display that refresh by themselves and chime on a new order, with every order step: accept, reject, cook, ready, hand over, self-delivery, proposed changes, moving to another branch and container returns.</li>
+<li>Menus with categories, dishes, sizes, option groups and translations, the on-sale switch, and CSV import with a preview.</li>
+<li>Team: people with a role at each branch, the built-in roles and your own roles.</li>
+<li>Reviews with public replies, and reports by day with CSV, Excel and PDF downloads.</li>
+<li>Payouts: the restaurant's balance, what is on its way and what is withdrawable; asking for a payout (one at a time, from the platform's smallest payout up to what is withdrawable) and canceling it before approval; where the money goes (bank, mobile wallet or PayPal, saved encrypted and shown masked, or Stripe's own setup page); and the history, with the reason when a payout was not paid.</li>
+<li>Dine-in: a browser POS with tills and X and Z reports, tables with QR codes, and dine-in reports.</li>
+<li>Table reservations, buy-one-get-one and happy hour offers, and ingredient inventory with recipes, stock counts, suppliers, purchase orders, transfers and food cost, each when the platform switches it on.</li>
+<li>Own web address for a restaurant, with the Customer Website add-on.</li>
+</ul>
+        </section>
+    </main>
+    <footer>
+        <span>Biteway Restaurant Portal documentation · v1.0.0</span>
+    </footer>
+</div>
+<a class="to-top" href="#top" aria-label="Back to top">↑</a>
+<script>
+    // Marks the heading being read in the sidebar and opens its section, shows "back to top" after a screen, and closes the phone menu after a tap.
+    (() => {
+        const ACTIVE_OFFSET = 120; // a heading this close to the top of the window is the one being read
+        const SETTLE_DELAY = 120; // ms without scrolling before the sidebar opens the section being read
+        const toggle = document.getElementById('nav-toggle');
+        const nav = document.querySelector('.sidebar nav');
+        const toTop = document.querySelector('.to-top');
+        const links = [...nav.querySelectorAll('a')];
+        const targets = links.map((link) => document.getElementById(decodeURIComponent(link.hash.slice(1))));
+        let active = null;
+        let openGroup = null;
+        let settle = 0;
+        let queued = false;
+
+        const setOpen = (group, open) => {
+            group.classList.toggle('open', open);
+            group.querySelector('.nav-expand').setAttribute('aria-expanded', String(open));
+        };
+
+        // Opens the section being read (closing the one opened before it) and keeps its link in view.
+        const reveal = () => {
+            const group = active.closest('.nav-group');
+            if (group !== openGroup) {
+                if (openGroup) setOpen(openGroup, false);
+                if (group) setOpen(group, true);
+                openGroup = group;
+            }
+            const link = active.getBoundingClientRect();
+            const box = nav.getBoundingClientRect();
+            if (link.top < box.top || link.bottom > box.bottom) nav.scrollTop += link.top - box.top - box.height / 2;
+        };
+
+        const update = () => {
+            queued = false;
+            toTop.classList.toggle('visible', window.scrollY > window.innerHeight);
+            let index = 0;
+            targets.forEach((target, i) => {
+                if (target && target.getBoundingClientRect().top <= ACTIVE_OFFSET) index = i;
+            });
+            // At the bottom, a short last section is the one being read even though its heading can't reach the top.
+            if (Math.ceil(window.scrollY + window.innerHeight) >= document.documentElement.scrollHeight) index = links.length - 1;
+            if (links[index] === active) return;
+            active?.classList.remove('active');
+            active = links[index];
+            active.classList.add('active');
+            clearTimeout(settle); // once scrolling settles, so a long jump doesn't open every section it passes
+            settle = setTimeout(reveal, SETTLE_DELAY);
+        };
+
+        window.addEventListener('scroll', () => {
+            if (!queued) {
+                queued = true;
+                requestAnimationFrame(update);
+            }
+        }, { passive: true });
+        nav.addEventListener('click', (event) => {
+            const expand = event.target.closest('.nav-expand');
+            if (expand) setOpen(expand.closest('.nav-group'), expand.getAttribute('aria-expanded') !== 'true');
+            else if (event.target.closest('a')) toggle.checked = false;
+        });
+        nav.querySelectorAll('.nav-group').forEach((group) => setOpen(group, false));
+        update();
+        window.addEventListener('load', update); // again once the browser has restored the scroll position
+    })();
+</script>
+</body>
+</html>

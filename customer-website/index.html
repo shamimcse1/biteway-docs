@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Biteway Customer Website documentation: install, set up and update the SEO ordering website, an add-on for Biteway.">
+    <title>Biteway Customer Website Documentation</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,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">
+    <!-- Lets the sidebar fold its topic lists; without scripts they all stay open. -->
+    <script>document.documentElement.classList.add('js');</script>
+    <style>
+        :root {
+            --sidebar: 288px; --topbar: 56px;
+            --bg: #ffffff; --fg: #111827; --muted: #6b7280; --border: #e5e7eb; --surface: #f8fafc; --code: #f1f5f9;
+            --brand: #ff6b35; --brand-soft: #fff1ea; --link: #b23f0b; --pre-bg: #0f172a; --pre-fg: #e2e8f0; --shadow: 0 1px 2px rgb(15 23 42 / 6%);
+        }
+        @media (prefers-color-scheme: dark) {
+            :root { --bg: #0b0f14; --fg: #e5e7eb; --muted: #9ca3af; --border: #1f2937; --surface: #0f1620; --code: #1f2937; --brand: #ff8a5b; --brand-soft: #2a160d; --link: #ffa27a; --pre-bg: #020617; --shadow: none; }
+        }
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .nav-expand svg { transition: none; } }
+        body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+        [id] { scroll-margin-top: 24px; }
+
+        /* Sidebar: pinned to the left edge, scrolling on its own. */
+        .sidebar { position: fixed; inset: 0 auto 0 0; z-index: 20; display: flex; flex-direction: column; width: var(--sidebar); border-right: 1px solid var(--border); background: var(--surface); }
+        .brand { display: flex; align-items: center; gap: 12px; padding: 20px 24px; border-bottom: 1px solid var(--border); color: var(--fg); text-decoration: none; }
+        .brand-mark { display: grid; flex: none; place-items: center; width: 40px; height: 40px; overflow: hidden; border-radius: 10px; background: var(--brand); color: #ffffff; font-weight: 700; }
+        .brand-mark img { width: 40px; height: 40px; }
+        .brand-name { display: block; font-size: 18px; font-weight: 700; line-height: 1.2; }
+        .brand-sub { display: flex; align-items: center; gap: 8px; color: var(--muted); font-size: 14px; line-height: 1.4; }
+        .sidebar nav { flex: 1; overflow-y: auto; padding: 16px 12px 32px; font-size: 14px; scrollbar-width: thin; }
+        .sidebar nav ul { list-style: none; margin: 0; padding: 0; }
+        .sidebar nav > ul > li { margin-bottom: 8px; }
+        .sidebar nav a { display: block; padding: 6px 12px; border-radius: 8px; color: var(--fg); line-height: 1.4; text-decoration: none; }
+        .sidebar nav a:hover { background: var(--border); }
+        .sidebar nav li li a { margin-left: 12px; padding-left: 14px; border-left: 2px solid var(--border); border-radius: 0 8px 8px 0; color: var(--muted); }
+        .sidebar nav a.active { background: var(--brand-soft); color: var(--link); font-weight: 600; }
+        .sidebar nav li li a.active { border-left-color: var(--brand); }
+        .nav-section { font-weight: 600; }
+        .sidebar nav li:has(a.active) > .nav-row .nav-section { color: var(--link); }
+        .nav-row { display: flex; align-items: center; gap: 4px; }
+        .nav-row .nav-section { flex: 1; min-width: 0; }
+        .nav-icon { margin-right: 8px; }
+        .nav-expand { display: none; flex: none; place-items: center; width: 28px; height: 28px; padding: 0; border: 0; border-radius: 8px; background: none; color: var(--muted); cursor: pointer; }
+        .nav-expand:hover { background: var(--border); color: var(--fg); }
+        .nav-expand svg { transition: transform 0.2s; }
+        .nav-group.open .nav-expand svg { transform: rotate(90deg); }
+        /* With the script, a section's topics show only while it's open: the one being read, or one opened with its arrow. */
+        .js .nav-expand { display: grid; }
+        .js .nav-group:not(.open) > ul { display: none; }
+
+        /* Content: the full width right of the sidebar. */
+        .content { min-width: 0; margin-left: var(--sidebar); }
+        .topbar, .backdrop, .nav-toggle { display: none; }
+        main { padding: 48px 64px 96px; }
+        section + section { margin-top: 96px; }
+        section > h2 { margin: 0 0 24px; padding-bottom: 16px; border-bottom: 1px solid var(--border); font-size: 32px; letter-spacing: -0.02em; line-height: 1.25; }
+        h3 { margin: 40px 0 12px; font-size: 22px; line-height: 1.35; }
+        h4 { margin: 28px 0 8px; font-size: 18px; }
+        h5 { margin: 24px 0 8px; font-size: 16px; }
+        a { color: var(--link); text-underline-offset: 2px; }
+        a:hover { text-decoration-thickness: 2px; }
+        main ul, main ol { padding-left: 24px; }
+        main li + li { margin-top: 4px; }
+        hr { margin: 32px 0; border: 0; border-top: 1px solid var(--border); }
+        code { padding: 2px 6px; border: 1px solid var(--border); border-radius: 6px; background: var(--code); font: 0.875em/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; overflow-wrap: anywhere; }
+        pre { overflow-x: auto; margin: 20px 0; padding: 16px 20px; border-radius: 12px; background: var(--pre-bg); color: var(--pre-fg); font-size: 14px; line-height: 1.6; }
+        pre code { padding: 0; border: 0; background: none; color: inherit; font-size: inherit; }
+        main table { width: 100%; margin: 20px 0; border-collapse: collapse; font-size: 14px; }
+        main img { display: block; max-width: 100%; height: auto; margin: 20px 0; border: 1px solid var(--border); border-radius: 12px; box-shadow: var(--shadow); }
+        main figure { margin: 24px 0; }
+        main figure img { width: auto; max-height: 720px; margin: 0 0 10px; } /* phone screenshots stay a readable height */
+        figcaption { color: var(--muted); font-size: 14px; line-height: 1.5; }
+        main th, main td { padding: 10px 14px; border: 1px solid var(--border); text-align: left; vertical-align: top; }
+        main th { background: var(--surface); font-weight: 600; }
+        main td code { overflow-wrap: normal; } /* a narrow screen scrolls the table instead of breaking paths */
+        main tbody tr:nth-child(even) { background: var(--surface); }
+        blockquote { margin: 20px 0; padding: 12px 20px; border-left: 4px solid var(--brand); border-radius: 0 8px 8px 0; background: var(--brand-soft); }
+        blockquote p { margin: 4px 0; }
+        .badge { padding: 2px 8px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 12px; line-height: 1.5; }
+        .endpoint { margin: 12px 0; padding: 14px 18px; border: 1px solid var(--border); border-radius: 12px; background: var(--bg); box-shadow: var(--shadow); overflow-wrap: anywhere; }
+        .endpoint-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+        .endpoint p, .endpoint ul { margin: 8px 0 0; font-size: 14px; }
+        .method { padding: 4px 8px; border-radius: 6px; background: #6b7280; color: #ffffff; font: 700 12px/1 ui-monospace, monospace; }
+        .method-get { background: #2563eb; }
+        .method-post { background: #059669; }
+        .method-put, .method-patch { background: #d97706; }
+        .method-delete { background: #dc2626; }
+        footer { display: flex; flex-wrap: wrap; gap: 8px 24px; padding: 24px 64px; border-top: 1px solid var(--border); color: var(--muted); font-size: 14px; }
+        .to-top { position: fixed; right: 24px; bottom: 24px; z-index: 10; display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--brand); color: #ffffff; font-size: 20px; text-decoration: none; box-shadow: 0 4px 12px rgb(0 0 0 / 15%); opacity: 0; visibility: hidden; transition: opacity 0.2s; }
+        .to-top.visible { opacity: 1; visibility: visible; }
+
+        /* Phones and tablets: the sidebar slides in from the left (a checkbox, so it also works without JavaScript). */
+        @media (max-width: 960px) {
+            [id] { scroll-margin-top: calc(var(--topbar) + 16px); }
+            .sidebar { transform: translateX(-100%); transition: transform 0.2s; }
+            .nav-toggle:checked ~ .sidebar { transform: none; box-shadow: 0 0 24px rgb(0 0 0 / 20%); }
+            .nav-toggle:checked ~ .backdrop { position: fixed; inset: 0; z-index: 15; display: block; background: rgb(0 0 0 / 40%); }
+            .content { margin-left: 0; }
+            .topbar { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 12px; height: var(--topbar); padding: 0 16px; border-bottom: 1px solid var(--border); background: var(--bg); }
+            .menu-button { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 8px; cursor: pointer; }
+            .menu-button:hover { background: var(--surface); }
+            main { padding: 24px 16px 64px; }
+            main table { display: block; overflow-x: auto; }
+            footer { padding: 24px 16px; }
+        }
+        @media print {
+            .sidebar, .topbar, .backdrop, .to-top { display: none !important; }
+            .content { margin-left: 0; }
+            main { padding: 0; }
+            pre { white-space: pre-wrap; }
+        }
+        </style>
+</head>
+<body id="top">
+<input type="checkbox" id="nav-toggle" class="nav-toggle" aria-hidden="true">
+<label for="nav-toggle" class="backdrop" aria-hidden="true"></label>
+<aside class="sidebar" aria-label="Documentation">
+    <a class="brand" href="#top">
+        <span class="brand-mark"><img src="data:image/png;base64,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" alt=""></span>
+        <span>
+            <span class="brand-name">Biteway Customer Website</span>
+            <span class="brand-sub">Documentation <span class="badge">v1.0.0</span></span>
+        </span>
+    </a>
+    <nav aria-label="Contents">
+        <ul>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#introduction" class="nav-section"><span class="nav-icon" aria-hidden="true">📘</span>Introduction</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-introduction" aria-label="Introduction topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-introduction">
+                    <li><a href="#introduction-whats-in-the-package">What&#039;s in the package</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#installation" class="nav-section"><span class="nav-icon" aria-hidden="true">🧭</span>Installation</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-installation" aria-label="Installation topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-installation">
+                    <li><a href="#installation-before-you-start">Before you start</a></li>
+                    <li><a href="#installation-way-1-upload-the-add-on-in-the-admin-panel">Way 1: upload the add-on in the admin panel</a></li>
+                    <li><a href="#installation-way-2-copy-the-folder-to-the-server">Way 2: copy the folder to the server</a></li>
+                    <li><a href="#installation-build-its-styles-and-scripts">Build its styles and scripts</a></li>
+                    <li><a href="#installation-what-install-and-switch-on-does">What &quot;Install and switch on&quot; does</a></li>
+                    <li><a href="#installation-enter-your-purchase-code">Enter your purchase code</a></li>
+                    <li><a href="#installation-where-the-website-is">Where the website is</a></li>
+                    <li><a href="#installation-switching-it-off">Switching it off</a></li>
+                    <li><a href="#installation-removing-it">Removing it</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#settings" class="nav-section"><span class="nav-icon" aria-hidden="true">⚙️</span>Settings</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-settings" aria-label="Settings topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-settings">
+                    <li><a href="#settings-name-logo-contact-and-legal-links">Name, logo, contact and legal links</a></li>
+                    <li><a href="#settings-languages">Languages</a></li>
+                    <li><a href="#settings-areas-restaurants-and-menus">Areas, restaurants and menus</a></li>
+                    <li><a href="#settings-sign-in">Sign-in</a></li>
+                    <li><a href="#settings-payments">Payments</a></li>
+                    <li><a href="#settings-maps-and-location">Maps and location</a></li>
+                    <li><a href="#settings-app-links">App links</a></li>
+                    <li><a href="#settings-partner-sign-up">Partner sign-up</a></li>
+                    <li><a href="#settings-restaurants-own-web-addresses">Restaurants&#039; own web addresses</a></li>
+                    <li><a href="#settings-seo">SEO</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#using" class="nav-section"><span class="nav-icon" aria-hidden="true">🖥️</span>Using the add-on</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-using" aria-label="Using the add-on topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-using">
+                    <li><a href="#using-pages-for-everyone">Pages for everyone</a></li>
+                    <li><a href="#using-signing-in">Signing in</a></li>
+                    <li><a href="#using-cart-and-checkout">Cart and checkout</a></li>
+                    <li><a href="#using-orders">Orders</a></li>
+                    <li><a href="#using-the-customers-account">The customer&#039;s account</a></li>
+                    <li><a href="#using-languages">Languages</a></li>
+                    <li><a href="#using-cookies">Cookies</a></li>
+                    <li><a href="#using-what-you-do-in-the-admin-panel">What you do in the admin panel</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#updating" class="nav-section"><span class="nav-icon" aria-hidden="true">🔄</span>Updating</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-updating" aria-label="Updating topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-updating">
+                    <li><a href="#updating-before-you-update">Before you update</a></li>
+                    <li><a href="#updating-update-in-the-admin-panel">Update in the admin panel</a></li>
+                    <li><a href="#updating-update-by-copying-the-folder">Update by copying the folder</a></li>
+                    <li><a href="#updating-version-rules">Version rules</a></li>
+                    <li><a href="#updating-if-something-goes-wrong">If something goes wrong</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#credits" class="nav-section"><span class="nav-icon" aria-hidden="true">📜</span>Credits and licenses</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-credits" aria-label="Credits and licenses topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-credits">
+                    <li><a href="#credits-included-in-the-built-files">Included in the built files</a></li>
+                    <li><a href="#credits-fonts">Fonts</a></li>
+                    <li><a href="#credits-icons">Icons</a></li>
+                    <li><a href="#credits-maps">Maps</a></li>
+                    <li><a href="#credits-loaded-from-their-providers">Loaded from their providers</a></li>
+                    <li><a href="#credits-php-packages">PHP packages</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#troubleshooting" class="nav-section"><span class="nav-icon" aria-hidden="true">🧰</span>Troubleshooting and FAQ</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-troubleshooting" aria-label="Troubleshooting and FAQ topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-troubleshooting">
+                    <li><a href="#troubleshooting-installing">Installing</a></li>
+                    <li><a href="#troubleshooting-the-website">The website</a></li>
+                    <li><a href="#troubleshooting-questions">Questions</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#support" class="nav-section"><span class="nav-icon" aria-hidden="true">💬</span>Support</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-support" aria-label="Support topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-support">
+                    <li><a href="#support-what-to-send">What to send</a></li>
+                    <li><a href="#support-before-you-write">Before you write</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
+                    <a href="#changelog" class="nav-section"><span class="nav-icon" aria-hidden="true">📝</span>Changelog</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-changelog" aria-label="Changelog topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-changelog">
+                    <li><a href="#changelog-100-16-november-2026">1.0.0 (16 November 2026)</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+</aside>
+<div class="content">
+    <div class="topbar">
+        <label for="nav-toggle" class="menu-button" aria-label="Contents">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </label>
+        <strong>Biteway Customer Website</strong>
+        <span class="brand-sub">Documentation</span>
+    </div>
+    <main>
+        <section id="introduction">
+            <h2><span aria-hidden="true">📘</span> Introduction</h2>
+            <p>The Biteway Customer Website is an SEO-friendly ordering website for your Biteway platform. Customers can discover restaurants and dishes, use the cart and checkout, track orders on a live map, manage their account, and sign restaurants up as partners.</p>
+<p>It is an <strong>add-on</strong>: it needs the Biteway main item, version 1.0.0 or newer, installed on the same server. It uses the main item's database, settings and PHP packages, so it adds no server requirements of its own.</p>
+<h3 id="introduction-whats-in-the-package">What's in the package</h3>
+<table>
+<thead>
+<tr>
+<th>Folder</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>main/biteway-customer-web/</code></td>
+<td>The add-on, with <code>addon.json</code> at its root. Its styles and scripts ship as sources in <code>resources/</code>; <code>npm run build</code> in your Biteway folder builds them.</td>
+</tr>
+<tr>
+<td><code>documentation/</code></td>
+<td>This documentation</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Costs of third-party services:</strong> the website uses the services set up in your Biteway platform, on your own accounts, and you are responsible for any costs they charge. This includes payment gateway fees for online payments, text message charges for sign-in codes (Twilio, BulkSMSBD, or Firebase Phone Authentication beyond Google's free tier), Google Maps Platform usage if you choose Google Maps, your SMTP or email provider, and your hosting and domains, including restaurants' own web addresses and their HTTPS certificates. The Biteway Customer Website price covers the source code only.</p>
+</blockquote>
+        </section>
+        <section id="installation">
+            <h2><span aria-hidden="true">🧭</span> Installation</h2>
+            <p>The Customer Website installs into your Biteway admin panel. You then build its styles and scripts with one command in your Biteway folder.</p>
+<h3 id="installation-before-you-start">Before you start</h3>
+<p>You need:</p>
+<ul>
+<li>A working <strong>Biteway main item, version 1.0.0 or newer</strong>, on the same server. The add-on runs inside it and uses its database, settings and PHP packages.</li>
+<li>A <strong>Super Admin</strong> account. Only a Super Admin sees <strong>Add-ons</strong> in the admin panel.</li>
+<li>Write access for the web server to the <code>addons/</code> folder and the <code>public/</code> folder of <code>biteway-backend</code>. Installing copies the add-on into <code>addons/customer-web</code> and its styles and scripts into <code>public/addons/customer-web</code>.</li>
+</ul>
+<p>Nothing else is needed: no Composer install, no new database and no new PHP extension. Its styles and scripts are built by the same <code>npm run build</code> you use for Biteway (see <a href="#installation-build-its-styles-and-scripts">Build its styles and scripts</a>).</p>
+<h3 id="installation-way-1-upload-the-add-on-in-the-admin-panel">Way 1: upload the add-on in the admin panel</h3>
+<ol>
+<li>Sign in to the admin panel as Super Admin and open <strong>Add-ons</strong>.</li>
+<li>Under <strong>Upload an add-on</strong>, choose the zip you downloaded from CodeCanyon in <strong>Add-on zip</strong> and press <strong>Upload</strong>. Upload it as it is: the admin panel finds the add-on inside it. The zip can be up to 50 MB (your server's PHP upload limit must allow it too).</li>
+<li>The page says &quot;Biteway Customer Website 1.0.0 uploaded. Install it to switch it on.&quot; and the add-on's card shows <strong>Not installed</strong>.</li>
+<li>Press <strong>Install and switch on</strong>. The card now shows <strong>On</strong>.</li>
+</ol>
+<figure><img src="assets/install/addons-empty.jpg" alt="Admin → Add-ons before any add-on is uploaded: choose the zip under Upload an add-on" loading="lazy" /><figcaption>Figure 1: Admin → Add-ons before any add-on is uploaded: choose the zip under Upload an add-on</figcaption></figure>
+<figure><img src="assets/install/addons-uploaded.jpg" alt="After uploading: the card shows Not installed and the Install and switch on button" loading="lazy" /><figcaption>Figure 2: After uploading: the card shows Not installed and the Install and switch on button</figcaption></figure>
+<figure><img src="assets/install/addons-installed.jpg" alt="After installing: the card shows On, with the purchase code field" loading="lazy" /><figcaption>Figure 3: After installing: the card shows On, with the purchase code field</figcaption></figure>
+<h3 id="installation-way-2-copy-the-folder-to-the-server">Way 2: copy the folder to the server</h3>
+<ol>
+<li>Copy the <code>main/biteway-customer-web/</code> folder into the <code>addons/</code> folder of <code>biteway-backend</code>.</li>
+<li>Rename it to <strong><code>customer-web</code></strong>, so the path is <code>biteway-backend/addons/customer-web/addon.json</code>. The folder must be named after the add-on; any other name shows &quot;The folder must be named after the add-on slug (customer-web).&quot;</li>
+<li>Open <strong>Add-ons</strong> in the admin panel. The add-on appears as <strong>Not installed</strong>.</li>
+<li>Press <strong>Install and switch on</strong>.</li>
+</ol>
+<p>The add-ons folder is <code>biteway-backend/addons/</code> unless your <code>.env</code> sets <code>BITEWAY_ADDONS_PATH</code> to another folder.</p>
+<h3 id="installation-build-its-styles-and-scripts">Build its styles and scripts</h3>
+<p>The add-on ships its sources only. After installing it, and after each update, build its styles and scripts once. In the <code>biteway-backend</code> folder on your server, run:</p>
+<pre><code class="language-bash">npm run build
+</code></pre>
+<p>It is the same command you ran when you installed Biteway (it needs Node.js 20.19+ or 22.12+). It builds the admin panel and every installed add-on, and the new files are published on the next page load. Until you run it, the add-on's card in <strong>Add-ons</strong> says &quot;Its styles and scripts are not built yet&quot;, and the website's pages load without their styles.</p>
+<p><strong>No terminal on your host?</strong> Build on your own computer: copy the add-on folder into the <code>addons/</code> folder of a local copy of <code>biteway-backend</code>, named <code>customer-web</code>, run <code>npm ci &amp;&amp; npm run build</code> there, then upload the add-on folder, including its new <code>public/build/</code> folder, to <code>biteway-backend/addons/</code> on the server.</p>
+<h3 id="installation-what-install-and-switch-on-does">What &quot;Install and switch on&quot; does</h3>
+<ul>
+<li>Checks that your Biteway version is new enough. If not, the card shows <strong>Needs a newer Biteway</strong> and nothing is installed.</li>
+<li>Runs the add-on's database updates (version 1.0.0 adds no tables of its own).</li>
+<li>Copies its styles and scripts, once built, to <code>public/addons/customer-web</code>.</li>
+<li>Clears the route and view caches, and switches the add-on on.</li>
+</ul>
+<h3 id="installation-enter-your-purchase-code">Enter your purchase code</h3>
+<p>Once the add-on is installed, its card in <strong>Add-ons</strong> has a <strong>Purchase code</strong> field. Enter the purchase code from your Envato downloads page and press <strong>Save code</strong>. It is saved encrypted, and the field then shows only its last four characters. The website works while the code is empty.</p>
+<h3 id="installation-where-the-website-is">Where the website is</h3>
+<p>The website answers at your site's root: <code>https://your-domain/</code>. The admin panel stays at <code>https://your-domain/admin</code>, and the apps keep using <code>https://your-domain/api/...</code> as before.</p>
+<p>Before you go live, open <strong>Dashboard</strong> in the admin panel: the <strong>Go-live checklist</strong> gains the item &quot;The website links to your terms and privacy policy&quot; until you fill in both links (<a href="#settings-name-logo-contact-and-legal-links">Settings</a>).</p>
+<h3 id="installation-switching-it-off">Switching it off</h3>
+<p>In <strong>Add-ons</strong>, press <strong>Switch off</strong> on the add-on's card.</p>
+<ul>
+<li>The website's pages are gone at once, and <code>https://your-domain/</code> goes back to the admin panel.</li>
+<li>Nothing is deleted. Customers, orders, wallets and everything else belong to the main item and keep working in the apps.</li>
+<li>Press <strong>Switch on</strong> to bring the website back as it was.</li>
+</ul>
+<h3 id="installation-removing-it">Removing it</h3>
+<ol>
+<li>Switch the add-on off first. <strong>Remove</strong> is not offered while it is on.</li>
+<li>Press <strong>Remove</strong> and confirm.</li>
+</ol>
+<p>This deletes the add-on's files (<code>addons/customer-web</code> and <code>public/addons/customer-web</code>) and its entry in Add-ons, including the saved purchase code. Data in the database is kept, so installing the add-on again later resumes where you left off; enter the purchase code again then.</p>
+        </section>
+        <section id="settings">
+            <h2><span aria-hidden="true">⚙️</span> Settings</h2>
+            <p>The website has no settings page of its own. It reads the main item's settings, so one change applies to the apps and the website together. Everything below is in the Biteway admin panel. <strong>Integrations</strong>, <strong>Payments</strong> and <strong>Firebase</strong> are open to the Super Admin only.</p>
+<h3 id="settings-name-logo-contact-and-legal-links">Name, logo, contact and legal links</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Where</th>
+<th>On the website</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Platform name</td>
+<td><strong>Settings → General → App names</strong></td>
+<td>Page titles, header, footer and search-engine tags</td>
+</tr>
+<tr>
+<td>Customer, Rider and Restaurant app names</td>
+<td><strong>Settings → General → App names</strong></td>
+<td>The app names on the about and &quot;Become a partner&quot; pages</td>
+</tr>
+<tr>
+<td>Logo, Favicon</td>
+<td><strong>Settings → General → Logo &amp; colors</strong></td>
+<td>Header and browser tab. Without a logo, the header shows the name's first letter.</td>
+</tr>
+<tr>
+<td>Primary color, Secondary color</td>
+<td><strong>Settings → General → Logo &amp; colors</strong></td>
+<td>Buttons, links and highlights</td>
+</tr>
+<tr>
+<td>Support email, Support phone</td>
+<td><strong>Settings → General → Support contact</strong></td>
+<td>Footer, help center and about page</td>
+</tr>
+<tr>
+<td>Terms of service link, Privacy policy link</td>
+<td><strong>Settings → General → Legal</strong></td>
+<td>Footer, sign-in page and cookie notice</td>
+</tr>
+</tbody>
+</table>
+<p>Fill in both legal links before you go live. Until you do, the <strong>Go-live checklist</strong> on the <strong>Dashboard</strong> shows &quot;The website links to your terms and privacy policy&quot;.</p>
+<h3 id="settings-languages">Languages</h3>
+<ul>
+<li>The website offers the languages switched on under <strong>Languages</strong>. Visitors pick one in the header's language menu; it is remembered in a cookie.</li>
+<li>The default language is the one marked <strong>Default</strong> under <strong>Languages</strong> (<strong>Make default</strong> changes it). Without a choice, visitors get their browser's language when it is switched on, otherwise the default.</li>
+<li>Arabic, Hebrew, Persian and Urdu are shown right to left.</li>
+<li>The website's own texts come in English, Bangla and Arabic. Restaurant names, menus and other content show the translations you enter in the admin panel.</li>
+</ul>
+<h3 id="settings-areas-restaurants-and-menus">Areas, restaurants and menus</h3>
+<p>The website shows what the main item holds; there is nothing to copy over.</p>
+<ul>
+<li>The <strong>delivery areas</strong> on the home page and the about page are the active zones under <strong>Zones</strong>.</li>
+<li>Restaurants, branches, opening hours and photos come from <strong>Restaurants</strong>; dishes, sizes, options and tags from <strong>Menus</strong>.</li>
+<li><strong>Pickup</strong>, <strong>Dine-in</strong>, ordering for later, table bookings, the free-delivery pass and invites appear only when they are switched on under <strong>Settings → Ordering</strong> and <strong>Settings → Rewards</strong>, as in the customer app.</li>
+</ul>
+<h3 id="settings-sign-in">Sign-in</h3>
+<p>Customers sign in with their mobile number and a one-time code. They don't need a password.</p>
+<table>
+<thead>
+<tr>
+<th>What</th>
+<th>Where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Who sends the codes</td>
+<td><strong>Settings → Sign-in → Phone codes → Text message provider</strong>: Twilio SMS, BulkSMSBD or Firebase Phone Authentication. Their keys go under <strong>Integrations → Twilio</strong> or <strong>Integrations → BulkSMSBD</strong>.</td>
+</tr>
+<tr>
+<td>Code length</td>
+<td><strong>Settings → Sign-in → Phone codes → Code length</strong></td>
+</tr>
+<tr>
+<td>Firebase Phone Authentication on the website</td>
+<td><strong>Integrations → Live updates</strong>: <strong>Firebase project ID</strong> and <strong>Firebase Web API key</strong> (and <strong>Firebase Auth domain</strong> if yours is not the default). The website needs both to send Firebase codes. In the Firebase console, add your website's domain to Authentication's authorized domains.</td>
+</tr>
+<tr>
+<td>&quot;Continue with Google&quot;</td>
+<td>Switch on <strong>Settings → Sign-in → Other sign-in methods → Sign in with Google</strong>, and fill in <strong>Integrations → Google and Apple sign-in → Google web client ID</strong>. In Google Cloud, add your website's address to that client's authorized JavaScript origins.</td>
+</tr>
+<tr>
+<td>CAPTCHA</td>
+<td><strong>Settings → Sign-in → Security check → CAPTCHA on browser sign-in</strong>: Off, Cloudflare Turnstile, hCaptcha or Google reCAPTCHA (v2). Save the <strong>Site key</strong> and <strong>Secret key</strong> under <strong>Integrations → CAPTCHA</strong>. When it is on, the website's sign-in and the partner forms ask for it.</td>
+</tr>
+</tbody>
+</table>
+<p>Sign in with Apple and email sign-in are for the apps; the website doesn't offer them.</p>
+<h3 id="settings-payments">Payments</h3>
+<p>Checkout offers the payment methods switched on and filled in under <strong>Payments</strong>: <strong>Cash on delivery</strong> and the online gateways (Card through Stripe, PayPal, SSLCOMMERZ and bKash). Online payments open the provider's own payment page, then bring the customer back to the website.</p>
+<ul>
+<li>Copy each gateway's webhook URL, shown on the <strong>Payments</strong> page, into the provider's dashboard.</li>
+<li>Wallet top-ups can only be paid online, so they need at least one online gateway.</li>
+<li>Wallet top-ups follow <strong>Settings → Ordering → Wallet</strong> (&quot;Customers can add money to their wallet&quot;, smallest and largest top-up).</li>
+</ul>
+<h3 id="settings-maps-and-location">Maps and location</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Where</th>
+<th>On the website</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Maps in the apps and website</td>
+<td><strong>Integrations → Maps</strong></td>
+<td>&quot;Map tiles below (no key needed)&quot; or &quot;Google Maps&quot; for the live delivery map</td>
+</tr>
+<tr>
+<td>Map tile address, Tile attribution</td>
+<td><strong>Integrations → Maps</strong></td>
+<td>The tiles, and the credit shown on the map</td>
+</tr>
+<tr>
+<td>Google Maps browser key</td>
+<td><strong>Integrations → Maps</strong></td>
+<td>Needed for Google Maps on the website. Without it the website uses the tiles. Restrict the key to your website's address in Google Cloud.</td>
+</tr>
+<tr>
+<td>Show &quot;last updated&quot; on the customer's map after (seconds)</td>
+<td><strong>Settings → Riders → Online and GPS</strong></td>
+<td>When the map says how old the rider's position is</td>
+</tr>
+</tbody>
+</table>
+<p>&quot;Use my location&quot; (home page, addresses, checkout) uses the browser's location and needs HTTPS.</p>
+<h3 id="settings-app-links">App links</h3>
+<p>The store links under <strong>Settings → App versions</strong> (<strong>Google Play link</strong>, <strong>App Store link</strong> for each app) appear as buttons on the home, about and partner pages. Links left empty are not shown.</p>
+<h3 id="settings-partner-sign-up">Partner sign-up</h3>
+<p><strong>Settings → Partner sign-up → Forms</strong> controls the &quot;Become a partner&quot; pages: <strong>Restaurants and riders can apply on the website</strong>, <strong>Restaurant applications</strong> and <strong>Rider applications</strong>. A closed form says &quot;Applications are closed right now&quot;. Applications arrive under <strong>Applications</strong> in the admin panel.</p>
+<h3 id="settings-restaurants-own-web-addresses">Restaurants' own web addresses</h3>
+<p>A restaurant can have its own address, for example <code>order.restaurant.com</code>. On it, the home page is that restaurant's page; cart, checkout, sign-in and orders work there too, and pages about the whole platform (the restaurant list, search, about and partner pages) open on your main address.</p>
+<ol>
+<li>Switch on <strong>Settings → Ordering → Order types → Restaurants can use their own web address</strong>.</li>
+<li>Open the restaurant under <strong>Restaurants</strong>. In <strong>Own web address</strong>, enter the <strong>Address</strong> and press <strong>Save</strong>. It can't be your platform's own address or one of its subdomains.</li>
+<li>At the domain's DNS provider, add the two records the card shows: a <strong>TXT</strong> record that proves the address, and a <strong>CNAME</strong> record pointing to your platform's host (an <strong>A</strong> record when the platform runs on an IP address).</li>
+<li>On your hosting, make the web server answer that address with the same Biteway site, and set up HTTPS for it.</li>
+<li>Press <strong>Check DNS now</strong>. The status changes from <strong>Waiting for DNS</strong> to <strong>Verified</strong>.</li>
+</ol>
+<p>The scheduler checks verified addresses every day. If the TXT record is removed, the status becomes <strong>Record missing</strong> and the address stops working, so keep the record in place.</p>
+<h3 id="settings-seo">SEO</h3>
+<p>There is nothing to set up. Every page has its title, description, canonical address, language versions (hreflang), social-sharing tags and, where it fits, structured data for restaurants and dishes. <code>https://your-domain/sitemap.xml</code> lists the home page, the restaurant list, every restaurant and dish page, and the about and partner pages. <code>https://your-domain/robots.txt</code> keeps the cart, checkout, account and sign-in pages out of search engines and points to the sitemap. Submit the sitemap in Google Search Console if you use it.</p>
+        </section>
+        <section id="using">
+            <h2><span aria-hidden="true">🖥️</span> Using the add-on</h2>
+            <p>The website shows the same restaurants, menus, prices and rules as the customer app. An order placed on the website is an ordinary Biteway order: restaurants get it in the restaurant app, riders in the rider app, and you see it under <strong>Orders</strong> in the admin panel. A customer can sign in to the website and the app with the same phone number and sees the same orders, addresses and wallet in both.</p>
+<h3 id="using-pages-for-everyone">Pages for everyone</h3>
+<table>
+<thead>
+<tr>
+<th>Page</th>
+<th>Address</th>
+<th>What visitors can do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Home</td>
+<td><code>/</code></td>
+<td>Choose their delivery area from the list or with <strong>Use my location</strong>, browse by cuisine, see the restaurants in that area, read &quot;How it works&quot; and find the app links</td>
+</tr>
+<tr>
+<td>Restaurants</td>
+<td><code>/restaurants</code></td>
+<td>Filter by area, cuisine, diet, service (delivery, pickup, dine-in) and <strong>Open now</strong>, and page through the results</td>
+</tr>
+<tr>
+<td>Search</td>
+<td><code>/search</code></td>
+<td>Search restaurants and dishes. When nothing matches, it suggests popular cuisines.</td>
+</tr>
+<tr>
+<td>Restaurant page</td>
+<td><code>/restaurants/&lt;name&gt;</code></td>
+<td>Opening hours, branches, the menu by section, diet and allergen tags, reviews, <strong>Book a table</strong> when the branch takes bookings, and the heart that saves it to favorites</td>
+</tr>
+<tr>
+<td>Dish page</td>
+<td><code>/restaurants/&lt;name&gt;/dishes/&lt;id&gt;</code></td>
+<td>Choose a size, options and half-and-half, see the price change as they choose, add a note and a quantity, and <strong>Add to cart</strong>. On the menu, a dish also opens in a dialog.</td>
+</tr>
+<tr>
+<td>Cart</td>
+<td><code>/cart</code></td>
+<td>Change quantities, remove dishes, empty the cart and go to checkout</td>
+</tr>
+<tr>
+<td>Become a partner</td>
+<td><code>/partner</code> and <code>/partner/rider</code></td>
+<td>Restaurants and riders apply to join</td>
+</tr>
+<tr>
+<td>About us</td>
+<td><code>/about</code></td>
+<td>What the platform offers, the cities and areas it serves, contact details and app links</td>
+</tr>
+<tr>
+<td>Help center</td>
+<td><code>/help</code></td>
+<td>How to reach support. Signed-in customers also pick an order and write to support here.</td>
+</tr>
+</tbody>
+</table>
+<figure><img src="assets/pages/home.jpg" alt="The home page: delivery area, cuisines and the restaurants in the area" loading="lazy" /><figcaption>Figure 4: The home page: delivery area, cuisines and the restaurants in the area</figcaption></figure>
+<figure><img src="assets/pages/mobile-home.jpg" alt="The home page on a phone" loading="lazy" /><figcaption>Figure 5: The home page on a phone</figcaption></figure>
+<figure><img src="assets/pages/restaurant.jpg" alt="A restaurant page: hours, branches and the menu by section" loading="lazy" /><figcaption>Figure 6: A restaurant page: hours, branches and the menu by section</figcaption></figure>
+<p>When all of a restaurant's branches are paused, its page says &quot;Not taking orders now&quot;; visitors can still look at the menu. Sold-out dishes carry a &quot;Sold out&quot; badge.</p>
+<h3 id="using-signing-in">Signing in</h3>
+<p>Customers sign in at <code>/login</code>, or in the quick sign-in dialog at checkout:</p>
+<ol>
+<li>Enter their mobile number and press <strong>Text me a code</strong>.</li>
+<li>Enter the code from the text message and press <strong>Confirm and continue</strong>. A new number gets a new account.</li>
+</ol>
+<figure><img src="assets/pages/login.jpg" alt="Signing in at /login with a mobile number" loading="lazy" /><figcaption>Figure 7: Signing in at /login with a mobile number</figcaption></figure>
+<p><strong>Continue with Google</strong> appears when Google sign-in is set up (<a href="#settings-sign-in">Settings</a>). Visitors can fill a cart before signing in (up to 30 dishes); the cart is kept when they sign in.</p>
+<h3 id="using-cart-and-checkout">Cart and checkout</h3>
+<ul>
+<li>A cart holds one restaurant's dishes. Adding a dish from another restaurant asks &quot;Start a new cart?&quot;. When <strong>Customers can order from several restaurants at once</strong> is on, customers keep one cart per restaurant and can check them out together with one payment, or one at a time.</li>
+<li>Checkout has three steps: <strong>Your details</strong>, <strong>Delivery and options</strong>, and <strong>Payment</strong>.</li>
+<li>Depending on your settings and the restaurant, the customer chooses delivery, pickup or dine-in; the delivery address (saved, or a new one with its location, checked against your delivery areas); the delivery speed; as soon as possible or a time later; a tip for the rider; a note for the kitchen; no cutlery; and sending the order as a gift.</li>
+<li>The customer pays with cash or an online method, and can use their wallet balance first.</li>
+<li>Online payments open the provider's page. Afterwards the customer comes back to a page that says whether the payment went through, failed, or is still waiting, with <strong>Pay now</strong> to try again while it waits.</li>
+<li>The <strong>Order placed</strong> page links to the order.</li>
+</ul>
+<h3 id="using-orders">Orders</h3>
+<p>Under <strong>Your account → Orders</strong>, customers see the orders on their way and their past orders. On an order's page they can:</p>
+<ul>
+<li>Follow its status as it changes, without reloading the page.</li>
+<li>See the rider on a live map while the rider has the delivery, and the delivery code to give the rider at the door (or the pickup code at the counter).</li>
+<li>Call the rider when calls are allowed (<strong>Settings → Ordering → Contact</strong>, or masked calls under <strong>Integrations → Calls between customer and rider</strong>), or send a message to the rider or the restaurant; report a message or block the rider.</li>
+<li>Answer a change the restaurant suggests, paying any extra.</li>
+<li>Cancel the order while it can still be cancelled, or pay an order that is waiting for payment.</li>
+<li>Open the receipt, download it as a PDF, and rate the order once it is delivered.</li>
+<li>Get help with the order from support.</li>
+</ul>
+<p><strong>Track an order</strong> in the footer opens the signed-in customer's orders.</p>
+<figure><img src="assets/pages/tracking.jpg" alt="An order's page: the live map with the rider, the delivery code and the status" loading="lazy" /><figcaption>Figure 8: An order's page: the live map with the rider, the delivery code and the status</figcaption></figure>
+<h3 id="using-the-customers-account">The customer's account</h3>
+<figure><img src="assets/pages/account.jpg" alt="Your account → Profile and settings" loading="lazy" /><figcaption>Figure 9: Your account → Profile and settings</figcaption></figure>
+<table>
+<thead>
+<tr>
+<th>Menu item</th>
+<th>What the customer can do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Profile and settings</td>
+<td>Change their name and email, change their phone number with a code, choose their language, download a copy of their data, sign out everywhere, and delete their account</td>
+</tr>
+<tr>
+<td>Addresses</td>
+<td>Add, edit, delete and choose a default address. Each address shows whether it is in your delivery area.</td>
+</tr>
+<tr>
+<td>Wallet</td>
+<td>See the balance and history, and add money</td>
+</tr>
+<tr>
+<td>Invite friends</td>
+<td>Share their code and link, and use a friend's code (when invites are on)</td>
+</tr>
+<tr>
+<td>Delivery pass</td>
+<td>Buy and renew the free-delivery pass from the wallet (when the pass is on)</td>
+</tr>
+<tr>
+<td>Table bookings</td>
+<td>See and cancel their bookings (when bookings are on)</td>
+</tr>
+<tr>
+<td>Favorites</td>
+<td>Their saved restaurants and dishes</td>
+</tr>
+<tr>
+<td>Dietary preferences</td>
+<td>Choose diets and allergens to avoid. Menus then mark the dishes that don't suit them, or hide them.</td>
+</tr>
+<tr>
+<td>Notifications</td>
+<td>Read their notifications</td>
+</tr>
+<tr>
+<td>Help</td>
+<td>Their messages to support</td>
+</tr>
+</tbody>
+</table>
+<h3 id="using-languages">Languages</h3>
+<p>Visitors choose a language in the header or footer. Each language has its own address (<code>?lang=bn</code>, for example), so search engines can list every version. Arabic is shown right to left. The language a signed-in customer saves in their profile is also used for their texts and emails.</p>
+<h3 id="using-cookies">Cookies</h3>
+<p>On the first visit, a notice asks visitors to choose <strong>Necessary only</strong> or <strong>Accept all</strong>. Until they accept, the website sets only the cookies it needs to work: the session, the chosen language and this choice.</p>
+<h3 id="using-what-you-do-in-the-admin-panel">What you do in the admin panel</h3>
+<p>Day to day, you run the website from the main admin panel, as you do for the apps:</p>
+<ul>
+<li>Orders from the website appear under <strong>Orders</strong>, and support messages under <strong>Support</strong>.</li>
+<li>&quot;Become a partner&quot; requests appear under <strong>Applications</strong>. Approving a restaurant's request does not create the restaurant; add it under <strong>Restaurants</strong> as usual.</li>
+<li>Changes to restaurants, menus, areas and prices show on the website straight away.</li>
+</ul>
+        </section>
+        <section id="updating">
+            <h2><span aria-hidden="true">🔄</span> Updating</h2>
+            <p>A new version of the add-on is installed the same way as the first one: you upload it in <strong>Add-ons</strong>, then install it, which runs its database updates. Your settings, customers and orders are not touched.</p>
+<h3 id="updating-before-you-update">Before you update</h3>
+<ol>
+<li>Read the <a href="#changelog">Changelog</a> of the new version, and check which Biteway version it needs (see below).</li>
+<li>Take a <strong>database backup</strong>. The Add-ons page reminds you: &quot;Take a database backup before installing an update.&quot;</li>
+<li>Keep a copy of the <code>biteway-backend/addons/customer-web/</code> folder, so you can put the old files back if you need to.</li>
+</ol>
+<h3 id="updating-update-in-the-admin-panel">Update in the admin panel</h3>
+<ol>
+<li>Download the new version from CodeCanyon.</li>
+<li>Open <strong>Add-ons</strong> as Super Admin, choose the downloaded zip under <strong>Upload an add-on</strong>, and press <strong>Upload</strong>. The new files replace the old ones.</li>
+<li>The add-on's card shows <strong>Update ready</strong>. Press <strong>Install update</strong> straight away: until you do, the website is not served.</li>
+<li>The card shows <strong>On</strong> with the new <strong>Installed version</strong>.</li>
+<li>In the <code>biteway-backend</code> folder, run <code>npm run build</code> to build the new version's styles and scripts (<a href="#installation-build-its-styles-and-scripts">Installation</a>).</li>
+</ol>
+<h3 id="updating-update-by-copying-the-folder">Update by copying the folder</h3>
+<ol>
+<li>Replace the contents of <code>biteway-backend/addons/customer-web/</code> with the new <code>main/biteway-customer-web/</code> folder. Keep the folder name <code>customer-web</code>.</li>
+<li>Open <strong>Add-ons</strong> and press <strong>Install update</strong>.</li>
+<li>Run <code>npm run build</code> in the <code>biteway-backend</code> folder.</li>
+</ol>
+<h3 id="updating-version-rules">Version rules</h3>
+<ul>
+<li>An add-on can only be updated to a newer version. Uploading an older one is refused with &quot;Version … is older than the installed …&quot;.</li>
+<li>Each version names the oldest Biteway it works with. Version 1.0.0 needs <strong>Biteway 1.0.0 or newer</strong>; the card shows it as <strong>Needs Biteway</strong>.</li>
+<li>If your Biteway is too old, the card shows <strong>Needs a newer Biteway</strong> and the add-on stays off. Update Biteway first under <strong>Updates</strong> in the admin panel, then install the add-on update.</li>
+<li>Updating Biteway itself never changes installed add-ons. After a Biteway update, open <strong>Add-ons</strong> to check that the website still shows <strong>On</strong>.</li>
+</ul>
+<h3 id="updating-if-something-goes-wrong">If something goes wrong</h3>
+<ul>
+<li>If installing stops with &quot;The add-on's database update failed&quot;, the message includes the database error. The website stays off until the update is installed. Fix the cause and press <strong>Install update</strong> again, or restore your database backup and the old <code>addons/customer-web</code> folder: the card then shows <strong>On</strong> with the old version.</li>
+<li>If the pages look unstyled after an update, run <code>npm run build</code> in the <code>biteway-backend</code> folder. If they still do, press <strong>Switch off</strong> and then <strong>Switch on</strong>: switching on copies the styles and scripts again.</li>
+</ul>
+        </section>
+        <section id="credits">
+            <h2><span aria-hidden="true">📜</span> Credits and licenses</h2>
+            <p>The add-on's own code and design are covered by the Envato Market license you bought. Everything below is third-party: it keeps its own license, and every license allows commercial use and redistribution. The license notices are in <code>LICENSES.txt</code> inside the add-on.</p>
+<h3 id="credits-included-in-the-built-files">Included in the built files</h3>
+<p>The add-on's built styles and scripts (made by <code>npm run build</code>) contain code from these packages. Pages load the map and Firebase parts only when they need them.</p>
+<table>
+<thead>
+<tr>
+<th>Package</th>
+<th>Version</th>
+<th>Used for</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://alpinejs.dev">Alpine.js</a></td>
+<td>3.17.5</td>
+<td>The interactive parts of the pages</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><a href="https://tailwindcss.com">Tailwind CSS</a></td>
+<td>4.3.3</td>
+<td>The stylesheet</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><a href="https://leafletjs.com">Leaflet</a></td>
+<td>1.9.4</td>
+<td>The live delivery map with map tiles</td>
+<td>BSD-2-Clause</td>
+</tr>
+<tr>
+<td><a href="https://github.com/firebase/firebase-js-sdk">Firebase JavaScript SDK</a> (<code>@firebase/app</code>, <code>@firebase/auth</code>)</td>
+<td>0.16.6, 1.13.10</td>
+<td>Phone sign-in when Firebase Phone Authentication is used</td>
+<td>Apache-2.0</td>
+</tr>
+<tr>
+<td><a href="https://github.com/jakearchibald/idb">idb</a> (included with the Firebase SDK)</td>
+<td>7.1.1</td>
+<td>Firebase's storage in the browser</td>
+<td>ISC</td>
+</tr>
+</tbody>
+</table>
+<h3 id="credits-fonts">Fonts</h3>
+<table>
+<thead>
+<tr>
+<th>Font</th>
+<th>Used in</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://github.com/tokotype/PlusJakartaSans">Plus Jakarta Sans</a> (from <code>@fontsource/plus-jakarta-sans</code> 5.3.0)</td>
+<td>All text on the website. The font files are in <code>public/build/</code>.</td>
+<td>SIL Open Font License 1.1</td>
+</tr>
+</tbody>
+</table>
+<h3 id="credits-icons">Icons</h3>
+<table>
+<thead>
+<tr>
+<th>Icons</th>
+<th>Used in</th>
+<th>License</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://heroicons.com">Heroicons</a> (through the main item's <code>blade-ui-kit/blade-heroicons</code>)</td>
+<td>Icons across the website</td>
+<td>MIT</td>
+</tr>
+<tr>
+<td><a href="https://fonts.google.com/icons">Material Symbols</a> (19 icons, from <code>@material-symbols/svg-400</code> 0.23.0, as inline SVG)</td>
+<td>The cuisine icons on the home page</td>
+<td>Apache-2.0</td>
+</tr>
+</tbody>
+</table>
+<h3 id="credits-maps">Maps</h3>
+<p>The live delivery map shows tiles from the tile server set under <strong>Integrations → Maps</strong>: <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'s by default, with the attribution &quot;© OpenStreetMap contributors&quot; on the map. OpenStreetMap's own server is for light use only; a busy platform should use a tile provider. <a href="https://developers.google.com/maps">Google Maps</a> is optional and has its own terms.</p>
+<h3 id="credits-loaded-from-their-providers">Loaded from their providers</h3>
+<p>These are not part of the add-on. The browser loads them from the provider, and only when you switch them on:</p>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>When</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Google Maps JavaScript API</td>
+<td>Maps set to Google Maps, with a browser key</td>
+</tr>
+<tr>
+<td>Google Identity Services</td>
+<td>&quot;Continue with Google&quot; is switched on</td>
+</tr>
+<tr>
+<td>Cloudflare Turnstile, hCaptcha or Google reCAPTCHA</td>
+<td>A CAPTCHA is chosen for browser sign-in</td>
+</tr>
+<tr>
+<td>Google reCAPTCHA (loaded by Firebase)</td>
+<td>Sign-in codes are sent with Firebase Phone Authentication</td>
+</tr>
+</tbody>
+</table>
+<p>Each service has its own terms; mention the ones you use in your privacy policy.</p>
+<h3 id="credits-php-packages">PHP packages</h3>
+<p>The add-on ships no PHP packages of its own. It runs on the main item's packages (Laravel and the others), which are listed with their licenses in the Biteway main item's documentation under &quot;Credits and licenses&quot;.</p>
+        </section>
+        <section id="troubleshooting">
+            <h2><span aria-hidden="true">🧰</span> Troubleshooting and FAQ</h2>
+            <p>Look first at the add-on's card under <strong>Add-ons</strong> in the admin panel: its status, and any error shown on it. For server errors, the newest file in <code>storage/logs/</code> of <code>biteway-backend</code> names the real cause.</p>
+<h3 id="troubleshooting-installing">Installing</h3>
+<p><strong>&quot;The zip has no addon.json at its top level.&quot;</strong>
+The zip is not the add-on: upload the zip you downloaded from CodeCanyon as it is, or a zip of the <code>main/biteway-customer-web/</code> folder.</p>
+<p><strong>&quot;The zip contains an unsafe path.&quot;</strong>
+Some zip tools write Windows-style paths. Zip the folder again with your system's own zip (Finder's <strong>Compress</strong>, or <strong>Send to → Compressed (zipped) folder</strong> on Windows).</p>
+<p><strong>The upload fails, or the page says the file is too big.</strong>
+Your server's PHP upload limit (<code>upload_max_filesize</code> and <code>post_max_size</code>) is lower than the zip. Raise it, or copy the folder to the server instead (<a href="#installation-way-2-copy-the-folder-to-the-server">Installation</a>).</p>
+<p><strong>The card says &quot;Can't be used&quot; with &quot;The folder must be named after the add-on slug (customer-web).&quot;</strong>
+The copied folder kept its original name. Rename <code>addons/biteway-customer-web</code> to <code>addons/customer-web</code>.</p>
+<p><strong>The card says &quot;Needs a newer Biteway&quot;.</strong>
+This version of the add-on needs a newer main item. Update Biteway under <strong>Updates</strong>, then press <strong>Install and switch on</strong>.</p>
+<p><strong>Uploading or installing fails with a &quot;Permission denied&quot; error in the log.</strong>
+The web server can't write to <code>biteway-backend/addons/</code> or <code>biteway-backend/public/addons/</code>. Make both writable by the web server, the same way as <code>storage/</code> in the main item's installation.</p>
+<h3 id="troubleshooting-the-website">The website</h3>
+<p><strong><code>https://your-domain/</code> still opens the admin panel, or the website's pages show &quot;Not Found&quot;.</strong></p>
+<ul>
+<li>In <strong>Add-ons</strong>, the card must show <strong>On</strong>. If it shows <strong>Not installed</strong>, <strong>Update ready</strong> or <strong>Off</strong>, press <strong>Install and switch on</strong>, <strong>Install update</strong> or <strong>Switch on</strong>.</li>
+<li>If you cache routes on the server, run <code>php artisan optimize</code> again after switching the add-on on or off.</li>
+</ul>
+<p><strong>The pages have no styles, or the buttons and menus don't respond.</strong>
+The styles and scripts are not built yet: run <code>npm run build</code> in the <code>biteway-backend</code> folder (<a href="#installation-build-its-styles-and-scripts">Installation</a>); the add-on's card in <strong>Add-ons</strong> says so until you do. If they are built, make <code>public/addons/</code> writable, then press <strong>Switch off</strong> and <strong>Switch on</strong> in <strong>Add-ons</strong> to copy them again. Also check that <code>APP_URL</code> in <code>.env</code> is the address you open the site with.</p>
+<p><strong>Customers don't get their sign-in code.</strong>
+The website sends codes through the main item. Check <strong>Settings → Sign-in → Phone codes → Text message provider</strong> and its keys under <strong>Integrations</strong>; the provider's own dashboard shows whether the message was sent and why it failed. With <strong>Firebase Phone Authentication</strong>, the <strong>Firebase project ID</strong> and <strong>Firebase Web API key</strong> under <strong>Integrations → Live updates</strong> must be filled in, and your website's domain must be in Firebase Authentication's authorized domains.</p>
+<p><strong>&quot;Too many attempts. Please wait … seconds and try again.&quot;</strong>
+The main item limits how often a code can be asked for and tried. Wait for the time shown.</p>
+<p><strong>The CAPTCHA doesn't show, or every sign-in fails the security check.</strong>
+Check that <strong>Site key</strong> and <strong>Secret key</strong> under <strong>Integrations → CAPTCHA</strong> belong to the provider chosen under <strong>Settings → Sign-in → Security check</strong>, and that your website's domain is allowed in the provider's dashboard.</p>
+<p><strong>&quot;Continue with Google&quot; is missing.</strong>
+It shows only when <strong>Settings → Sign-in → Sign in with Google</strong> is on and <strong>Integrations → Google and Apple sign-in → Google web client ID</strong> is filled in. If the button shows but fails, add your website's address to that client's authorized JavaScript origins in Google Cloud.</p>
+<p><strong>The live map doesn't show on an order.</strong></p>
+<ul>
+<li>The map appears only while a rider has the delivery, and hides once it is handed over. Pickup and dine-in orders have no map.</li>
+<li>With Google Maps chosen under <strong>Integrations → Maps</strong>, the website needs the <strong>Google Maps browser key</strong>, and the key must allow your website's address. Without a key, the website uses the map tiles.</li>
+<li>A blank map with tiles means the <strong>Map tile address</strong> is wrong or the tile server refuses your site.</li>
+</ul>
+<p><strong>A restaurant's own address doesn't verify.</strong></p>
+<ul>
+<li>The card shows the exact records. The TXT record must have exactly that name and value; DNS changes can take a few hours.</li>
+<li>&quot;Enter a web address you own, like order.yourrestaurant.com.&quot; means the address is your platform's own address, one of its subdomains, or not a valid address.</li>
+<li>&quot;Another restaurant already uses this address.&quot; means another restaurant verified it first.</li>
+<li><strong>Verified</strong> but the address doesn't open: the CNAME (or A) record is missing, or your hosting doesn't answer that address with the Biteway site or has no HTTPS certificate for it.</li>
+<li><strong>Record missing</strong>: the daily check no longer finds the TXT record. Add it back and press <strong>Check DNS now</strong>.</li>
+</ul>
+<p><strong>Checkout says &quot;No payment method is available right now.&quot;</strong>
+No payment method is switched on and filled in under <strong>Payments</strong>. Switch on at least one, with its keys.</p>
+<p><strong>A payment stays &quot;Waiting for the payment&quot;.</strong>
+The gateway could not reach your webhook. Copy the webhook URL shown on the <strong>Payments</strong> page into the gateway's dashboard exactly, and make sure the site has HTTPS. The customer can press <strong>Pay now</strong> on the waiting page to try again.</p>
+<p><strong>Checkout says &quot;This restaurant is not taking orders right now.&quot;</strong>
+The branch can't take an order now. Check its opening hours, status and services under <strong>Restaurants</strong>.</p>
+<p><strong>&quot;Use my location&quot; doesn't work.</strong>
+Browsers only share the location on HTTPS addresses, and only when the visitor allows it. The visitor can choose their area from the list instead.</p>
+<h3 id="troubleshooting-questions">Questions</h3>
+<p><strong>Do I need the Customer Website for Biteway to work?</strong>
+No. Without it, customers order in the customer app, and <code>https://your-domain/</code> opens the admin panel.</p>
+<p><strong>Does switching the add-on off or removing it delete anything?</strong>
+No. Customers, orders and wallets belong to the main item and stay. Removing deletes only the add-on's files and its entry in <strong>Add-ons</strong>.</p>
+<p><strong>Where is the website served?</strong>
+At the root of your Biteway address (<code>APP_URL</code>), next to the admin panel at <code>/admin</code>. Restaurants can also each have their own address for their storefront (<a href="#settings-restaurants-own-web-addresses">Settings</a>).</p>
+<p><strong>Can I change the website's texts?</strong>
+The add-on's texts are in <code>lang/en</code>, <code>lang/bn</code> and <code>lang/ar</code> inside <code>addons/customer-web</code>. Keep a copy of your changes: an update replaces these files.</p>
+<p><strong>Can I add Google Analytics or another tracking script?</strong>
+The add-on has no setting for it. Optional scripts must only run after a visitor presses <strong>Accept all</strong> in the cookie notice; adding one means editing the add-on's layout.</p>
+        </section>
+        <section id="support">
+            <h2><span aria-hidden="true">💬</span> Support</h2>
+            <p>Support is given through CodeCanyon: open the <strong>Support</strong> tab on the Biteway Customer Website item page and send your question there. Item support covers questions about how the add-on works, help with problems and bugs in it, and help with the third-party parts included with it. It does not cover installing it on your server for you, customizing it, or building new features.</p>
+<p>Questions about the main item itself (the admin panel, the apps, payments or text messages in general) belong on the Biteway item page.</p>
+<h3 id="support-what-to-send">What to send</h3>
+<p>So we can help quickly, include:</p>
+<ul>
+<li>The add-on's version and the Biteway version: <strong>Add-ons</strong> in the admin panel shows the add-on's <strong>Installed version</strong>, and the admin panel shows the Biteway version at the bottom of the menu and on the <strong>Health</strong> page.</li>
+<li>The add-on's status on its card in <strong>Add-ons</strong>, and any error shown there.</li>
+<li>What you did, what you expected, and what happened instead, with screenshots and the address of the page.</li>
+<li>For a server problem: the error from the newest file in <code>storage/logs/</code> of <code>biteway-backend</code>.</li>
+<li>For a problem in the browser: the browser and its version, and any error in the browser's console.</li>
+</ul>
+<p>Never send passwords, API keys, purchase codes, <code>.env</code> files or your customers' personal data.</p>
+<h3 id="support-before-you-write">Before you write</h3>
+<p>Many questions are answered in <a href="#troubleshooting">Troubleshooting and FAQ</a>. Most website settings live in the main item, so <a href="#settings">Settings</a> shows where to look for each one.</p>
+        </section>
+        <section id="changelog">
+            <h2><span aria-hidden="true">📝</span> Changelog</h2>
+            <h3 id="changelog-100-16-november-2026">1.0.0 (16 November 2026)</h3>
+<p>First release. Needs Biteway 1.0.0 or newer.</p>
+<ul>
+<li>Home page: choose a delivery area from the list or with the browser's location, browse by cuisine, see the restaurants in the area, &quot;How it works&quot; and app links.</li>
+<li>Restaurant list with the app's filters (area, cuisine, diet, service, open now), and search with a page for when nothing matches.</li>
+<li>Restaurant pages with opening hours, branches, the menu by section, diet and allergen tags, and each customer's dietary fit. A restaurant whose branches are all paused says it isn't taking orders now, and sold-out dishes show a &quot;Sold out&quot; badge.</li>
+<li>Dish pages with sizes, options, half-and-half and a live price, also opened in a dialog from the menu. Favorite hearts on restaurants.</li>
+<li>Phone sign-in with a one-time code, on its own page or in a quick dialog, with the optional CAPTCHA, Firebase Phone Authentication and &quot;Continue with Google&quot;.</li>
+<li>Cart: visitors' carts are kept until they sign in, a &quot;Start a new cart?&quot; question for another restaurant, and one cart per restaurant with a single checkout when ordering from several restaurants is on.</li>
+<li>Checkout in three steps: delivery, pickup or dine-in, the address with its location and delivery-area check, speed, ordering for later, tip, kitchen note, no cutlery, gift, payment and wallet. Online payments come back to one page that shows the result and lets the customer pay again.</li>
+<li>Orders: the order list, the order page with its live status and timeline, answering a restaurant's suggested change, canceling, paying, the receipt with a PDF, and rating.</li>
+<li>Live delivery map while a rider has the order, with map tiles or Google Maps, &quot;last updated&quot; when the position is old, and the delivery code to give the rider at the door.</li>
+<li>Calling the rider through the platform's number when calls are masked, so the rider's number is never shown, and order chat with the rider or the restaurant, with reporting and blocking.</li>
+<li>Help center with messages to support.</li>
+<li>Account: profile, phone number change with a code, language, addresses with a delivery-area check, wallet with top-ups, favorites, dietary preferences, notifications, table bookings, invites, the free-delivery pass, data download, signing out everywhere and deleting the account.</li>
+<li>&quot;Become a partner&quot; pages for restaurants and riders, and an about page with the cities and areas served.</li>
+<li>Restaurants' own web addresses: on a verified address, the restaurant's page is the home page.</li>
+<li>Search engines: page titles and descriptions, language versions, social-sharing tags, structured data for restaurants and dishes, a sitemap, and robots.txt rules that keep the cart, checkout, account and sign-in pages out of search engines.</li>
+<li>Site layout with a language menu (Arabic right to left), a cookie notice and a 404 page in the site's look. English, Bangla and Arabic.</li>
+</ul>
+        </section>
+    </main>
+    <footer>
+        <span>Biteway Customer Website documentation · v1.0.0</span>
+    </footer>
+</div>
+<a class="to-top" href="#top" aria-label="Back to top">↑</a>
+<script>
+    // Marks the heading being read in the sidebar and opens its section, shows "back to top" after a screen, and closes the phone menu after a tap.
+    (() => {
+        const ACTIVE_OFFSET = 120; // a heading this close to the top of the window is the one being read
+        const SETTLE_DELAY = 120; // ms without scrolling before the sidebar opens the section being read
+        const toggle = document.getElementById('nav-toggle');
+        const nav = document.querySelector('.sidebar nav');
+        const toTop = document.querySelector('.to-top');
+        const links = [...nav.querySelectorAll('a')];
+        const targets = links.map((link) => document.getElementById(decodeURIComponent(link.hash.slice(1))));
+        let active = null;
+        let openGroup = null;
+        let settle = 0;
+        let queued = false;
+
+        const setOpen = (group, open) => {
+            group.classList.toggle('open', open);
+            group.querySelector('.nav-expand').setAttribute('aria-expanded', String(open));
+        };
+
+        // Opens the section being read (closing the one opened before it) and keeps its link in view.
+        const reveal = () => {
+            const group = active.closest('.nav-group');
+            if (group !== openGroup) {
+                if (openGroup) setOpen(openGroup, false);
+                if (group) setOpen(group, true);
+                openGroup = group;
+            }
+            const link = active.getBoundingClientRect();
+            const box = nav.getBoundingClientRect();
+            if (link.top < box.top || link.bottom > box.bottom) nav.scrollTop += link.top - box.top - box.height / 2;
+        };
+
+        const update = () => {
+            queued = false;
+            toTop.classList.toggle('visible', window.scrollY > window.innerHeight);
+            let index = 0;
+            targets.forEach((target, i) => {
+                if (target && target.getBoundingClientRect().top <= ACTIVE_OFFSET) index = i;
+            });
+            // At the bottom, a short last section is the one being read even though its heading can't reach the top.
+            if (Math.ceil(window.scrollY + window.innerHeight) >= document.documentElement.scrollHeight) index = links.length - 1;
+            if (links[index] === active) return;
+            active?.classList.remove('active');
+            active = links[index];
+            active.classList.add('active');
+            clearTimeout(settle); // once scrolling settles, so a long jump doesn't open every section it passes
+            settle = setTimeout(reveal, SETTLE_DELAY);
+        };
+
+        window.addEventListener('scroll', () => {
+            if (!queued) {
+                queued = true;
+                requestAnimationFrame(update);
+            }
+        }, { passive: true });
+        nav.addEventListener('click', (event) => {
+            const expand = event.target.closest('.nav-expand');
+            if (expand) setOpen(expand.closest('.nav-group'), expand.getAttribute('aria-expanded') !== 'true');
+            else if (event.target.closest('a')) toggle.checked = false;
+        });
+        nav.querySelectorAll('.nav-group').forEach((group) => setOpen(group, false));
+        update();
+        window.addEventListener('load', update); // again once the browser has restored the scroll position
+    })();
+</script>
+</body>
+</html>
