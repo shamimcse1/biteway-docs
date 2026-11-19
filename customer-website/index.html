@@ -166,6 +166,7 @@
                 </div>
                 <ul id="nav-settings">
                     <li><a href="#settings-name-logo-contact-and-legal-links">Name, logo, contact and legal links</a></li>
+                    <li><a href="#settings-pages-home-page-and-search-engines">Pages, home page and search engines</a></li>
                     <li><a href="#settings-languages">Languages</a></li>
                     <li><a href="#settings-areas-restaurants-and-menus">Areas, restaurants and menus</a></li>
                     <li><a href="#settings-sign-in">Sign-in</a></li>
@@ -174,6 +175,7 @@
                     <li><a href="#settings-app-links">App links</a></li>
                     <li><a href="#settings-partner-sign-up">Partner sign-up</a></li>
                     <li><a href="#settings-restaurants-own-web-addresses">Restaurants&#039; own web addresses</a></li>
+                    <li><a href="#settings-extras">Extras</a></li>
                     <li><a href="#settings-seo">SEO</a></li>
                 </ul>
             </li>
@@ -190,6 +192,7 @@
                     <li><a href="#using-cart-and-checkout">Cart and checkout</a></li>
                     <li><a href="#using-orders">Orders</a></li>
                     <li><a href="#using-the-customers-account">The customer&#039;s account</a></li>
+                    <li><a href="#using-extras-on-the-website">Extras on the website</a></li>
                     <li><a href="#using-languages">Languages</a></li>
                     <li><a href="#using-cookies">Cookies</a></li>
                     <li><a href="#using-what-you-do-in-the-admin-panel">What you do in the admin panel</a></li>
@@ -259,7 +262,7 @@
                     </button>
                 </div>
                 <ul id="nav-changelog">
-                    <li><a href="#changelog-100-16-november-2026">1.0.0 (16 November 2026)</a></li>
+                    <li><a href="#changelog-100-first-release-17-november-2026">1.0.0: first release (17 November 2026)</a></li>
                 </ul>
             </li>
         </ul>
@@ -407,13 +410,40 @@
 </tr>
 </tbody>
 </table>
-<p>Fill in both legal links before you go live. Until you do, the <strong>Go-live checklist</strong> on the <strong>Dashboard</strong> shows &quot;The website links to your terms and privacy policy&quot;.</p>
+<p>Fill in both legal links before you go live, or publish terms and privacy pages under <strong>Content → Pages</strong> (below). Until you do, the <strong>Go-live checklist</strong> on the <strong>Dashboard</strong> shows &quot;The website links to your terms and privacy policy&quot;.</p>
+<h3 id="settings-pages-home-page-and-search-engines">Pages, home page and search engines</h3>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Where</th>
+<th>On the website</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Terms, privacy and your own pages</td>
+<td><strong>Content → Pages</strong></td>
+<td>Published pages get their own address (<code>/pages/…</code>), appear in the footer column you pick and in <code>sitemap.xml</code>. A published terms or privacy page replaces the link in <strong>Settings → General → Legal</strong> everywhere.</td>
+</tr>
+<tr>
+<td>The home page</td>
+<td><strong>Content → Homepage</strong></td>
+<td>The order of the sections, which show, their texts per language, a picture at the top, how many restaurants, featured promotions and a text block of your own</td>
+</tr>
+<tr>
+<td>Search engines</td>
+<td><strong>Content → Search engines</strong></td>
+<td>Titles and descriptions of the main pages per language, the share picture, Google and Bing verification codes, and hiding the site while you set it up</td>
+</tr>
+</tbody>
+</table>
 <h3 id="settings-languages">Languages</h3>
 <ul>
 <li>The website offers the languages switched on under <strong>Languages</strong>. Visitors pick one in the header's language menu; it is remembered in a cookie.</li>
 <li>The default language is the one marked <strong>Default</strong> under <strong>Languages</strong> (<strong>Make default</strong> changes it). Without a choice, visitors get their browser's language when it is switched on, otherwise the default.</li>
 <li>Arabic, Hebrew, Persian and Urdu are shown right to left.</li>
-<li>The website's own texts come in English, Bangla and Arabic. Restaurant names, menus and other content show the translations you enter in the admin panel.</li>
+<li>The website's own texts come in English, Bangla and Arabic. Any of them can be reworded under <strong>Languages → Texts</strong>, tab <strong>Biteway Customer Website</strong>. Restaurant names, menus and other content show the translations you enter in the admin panel.</li>
 </ul>
 <h3 id="settings-areas-restaurants-and-menus">Areas, restaurants and menus</h3>
 <p>The website shows what the main item holds; there is nothing to copy over.</p>
@@ -447,6 +477,10 @@
 <tr>
 <td>&quot;Continue with Google&quot;</td>
 <td>Switch on <strong>Settings → Sign-in → Other sign-in methods → Sign in with Google</strong>, and fill in <strong>Integrations → Google and Apple sign-in → Google web client ID</strong>. In Google Cloud, add your website's address to that client's authorized JavaScript origins.</td>
+</tr>
+<tr>
+<td>Carts before signing in</td>
+<td><strong>Settings → Sign-in → Guests</strong></td>
 </tr>
 <tr>
 <td>CAPTCHA</td>
@@ -509,8 +543,48 @@
 <li>Press <strong>Check DNS now</strong>. The status changes from <strong>Waiting for DNS</strong> to <strong>Verified</strong>.</li>
 </ol>
 <p>The scheduler checks verified addresses every day. If the TXT record is removed, the status becomes <strong>Record missing</strong> and the address stops working, so keep the record in place.</p>
+<h3 id="settings-extras">Extras</h3>
+<p>These switches under <strong>Settings → Extras</strong> change the website as well as the apps. Each is described under &quot;Extras&quot; in the main item's documentation, and <a href="#using-extras-on-the-website">Using the add-on</a> shows what customers see.</p>
+<table>
+<thead>
+<tr>
+<th>Switch</th>
+<th>On the website</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Show delivery times as a range from the kitchen's load (off on new installs)</td>
+<td>Delivery times as a range (25–40 min) and an arrival window on the order page</td>
+</tr>
+<tr>
+<td>Open each restaurant on its best branch for the customer</td>
+<td>The restaurant page opens on the suggested branch; a busy branch at checkout offers a sister branch</td>
+</tr>
+<tr>
+<td>Give Saver deliveries a later window and batch them</td>
+<td>The Saver choice at checkout shows its window</td>
+</tr>
+<tr>
+<td>Let customers add toppings to one half of a split pizza</td>
+<td>Split-Pizza Studio in the dish builder</td>
+</tr>
+<tr>
+<td>Show the order's journey from kitchen to door as it happens</td>
+<td>The <strong>Kitchen journey</strong> track on the order page</td>
+</tr>
+<tr>
+<td>Let customers order together from one shared cart</td>
+<td>Group Meal Cart and its invite links (<code>/g/…</code>)</td>
+</tr>
+<tr>
+<td>Help customers find food by mood, time, budget and spice</td>
+<td>The &quot;What are you craving?&quot; page</td>
+</tr>
+</tbody>
+</table>
 <h3 id="settings-seo">SEO</h3>
-<p>There is nothing to set up. Every page has its title, description, canonical address, language versions (hreflang), social-sharing tags and, where it fits, structured data for restaurants and dishes. <code>https://your-domain/sitemap.xml</code> lists the home page, the restaurant list, every restaurant and dish page, and the about and partner pages. <code>https://your-domain/robots.txt</code> keeps the cart, checkout, account and sign-in pages out of search engines and points to the sitemap. Submit the sitemap in Google Search Console if you use it.</p>
+<p>Nothing is required. <strong>Content → Search engines</strong> lets you word the main pages' titles and descriptions, set the share picture and verification codes, and hide the site while you set it up (see above). Every page has its title, description, canonical address, language versions (hreflang), social-sharing tags and, where it fits, structured data for restaurants and dishes. <code>https://your-domain/sitemap.xml</code> lists the home page, the restaurant list, every restaurant and dish page, the about and partner pages, and your published pages. <code>https://your-domain/robots.txt</code> keeps the cart, checkout, account and sign-in pages out of search engines and points to the sitemap. Submit the sitemap in Google Search Console if you use it.</p>
         </section>
         <section id="using">
             <h2><span aria-hidden="true">🖥️</span> Using the add-on</h2>
@@ -566,6 +640,11 @@
 <td>What the platform offers, the cities and areas it serves, contact details and app links</td>
 </tr>
 <tr>
+<td>Your pages</td>
+<td><code>/pages/&lt;name&gt;</code></td>
+<td>The pages you publish under <strong>Content → Pages</strong>, such as your terms and privacy policy, linked from the footer</td>
+</tr>
+<tr>
 <td>Help center</td>
 <td><code>/help</code></td>
 <td>How to reach support. Signed-in customers also pick an order and write to support here.</td>
@@ -603,7 +682,9 @@
 <li>Cancel the order while it can still be cancelled, or pay an order that is waiting for payment.</li>
 <li>Open the receipt, download it as a PDF, and rate the order once it is delivered.</li>
 <li>Get help with the order from support.</li>
+<li><strong>Report a problem</strong> with a delivered order (what went wrong, which dishes, a note and up to three photos) for 24 hours after delivery.</li>
 </ul>
+<p>With a Pusher-compatible server set up on the main item (see &quot;Live updates on a VPS&quot; in its documentation), the order page, the live map and the chat update the moment something changes; otherwise they check every few seconds.</p>
 <p><strong>Track an order</strong> in the footer opens the signed-in customer's orders.</p>
 <figure><img src="assets/pages/tracking.jpg" alt="An order's page: the live map with the rider, the delivery code and the status" loading="lazy" /><figcaption>Figure 8: An order's page: the live map with the rider, the delivery code and the status</figcaption></figure>
 <h3 id="using-the-customers-account">The customer's account</h3>
@@ -658,6 +739,23 @@
 </tr>
 </tbody>
 </table>
+<h3 id="using-extras-on-the-website">Extras on the website</h3>
+<p>These features show on the website when they are switched on under <strong>Settings → Extras</strong> in the admin panel (<a href="#settings-extras">Settings</a>):</p>
+<ul>
+<li><strong>Delivery times:</strong> restaurant cards and restaurant pages show how long the food takes. With <strong>Settings → Extras → Show delivery times as a range from the kitchen's load</strong> on in the admin panel, they show a range such as <strong>25–40 min</strong> from how busy the kitchen is, checkout shows the range for the order (for pickup, the time until it is ready), and the order page shows a window such as <strong>Arriving 12:30 PM – 12:45 PM</strong> on the restaurant's clock, which moves with the order's live updates. Switched off, the website shows the preparation time as before.</li>
+<li><strong>Branches and Saver:</strong> with <strong>Settings → Extras → Open each restaurant on its best branch for the customer</strong> on in the admin panel, a restaurant page opens on the branch that suits the customer and says why, for example <strong>Nearest open branch</strong>; the branch list still lets them switch. If the branch is too busy when they place the order and a sister branch can make it, checkout offers it, for example <strong>Stonebake Riverside can make this order — about 30–40 min, 1.8 km away</strong>, with <strong>Move my order</strong> (the cart moves to that branch and the new total is shown) and <strong>Keep waiting</strong>. With <strong>Give Saver deliveries a later window and batch them</strong> on, picking Saver at checkout prices the order again and the choice shows its window, such as <strong>Between 45 and 65 min, lower fee</strong> (the order summary reads <strong>Saver delivery: between 45 and 65 min</strong>), and the order page says <strong>Saver delivery</strong> next to the arrival window. See &quot;Branch routing&quot; and &quot;Smart Saver&quot; in the main item's documentation.</li>
+<li><strong>What are you craving?</strong> with <strong>Settings → Extras → Help customers find food by mood, time, budget and spice</strong> on in the admin panel, a link under the home page's area picker opens a page (<code>/search?craving=1</code>) with mood, budget and spice choices and the dishes open now in the chosen area, by restaurant, each with why it fits (for example <strong>Something light · Not spicy</strong>). When nothing fits at that hour, the page says <strong>Nothing fits right now</strong>. The page isn't indexed by search engines. See &quot;Cravings&quot; in the main item's documentation.</li>
+</ul>
+<figure><img src="assets/pages/cravings.jpg" alt="The &quot;What are you craving?&quot; page: mood, budget and spice choices, and the dishes open now in the area, by restaurant" loading="lazy" /><figcaption>Figure 10: The &quot;What are you craving?&quot; page: mood, budget and spice choices, and the dishes open now in the area, by restaurant</figcaption></figure>
+<ul>
+<li><strong>Split-Pizza Studio:</strong> with <strong>Settings → Extras → Let customers add toppings to one half of a split pizza</strong> on, a half-and-half pizza's dish builder draws <strong>Your pizza</strong>: the customer picks the <strong>Left half</strong> and <strong>Right half</strong> flavors, and each topping takes <strong>Left</strong>, <strong>Whole</strong> or <strong>Right</strong>. The drawing follows every choice, a topping on one half shows its half price (the share is set in the admin), and the price is worked out once both halves are chosen. The cart, checkout and order pages read the pizza per half, for example <strong>Left: Pepperoni + Black olives · Right: Margherita + Mushrooms · Whole: Extra mozzarella</strong>. See &quot;Split-Pizza Studio&quot; in the main item's documentation.</li>
+</ul>
+<figure><img src="assets/pages/split-pizza.jpg" alt="Split-Pizza Studio: Your pizza shows each half's flavor and toppings, with the Left half and Right half choices under it" loading="lazy" /><figcaption>Figure 11: Split-Pizza Studio: Your pizza shows each half's flavor and toppings, with the Left half and Right half choices under it</figcaption></figure>
+<ul>
+<li><strong>Kitchen journey:</strong> with <strong>Show the order's journey from kitchen to door as it happens</strong> on, the order page and the tracking page show a <strong>Kitchen journey</strong> track: <strong>Order placed</strong>, <strong>Accepted</strong>, <strong>Cooking</strong>, <strong>Ready</strong>, <strong>Picked up by your rider</strong> (<strong>Collected</strong> for pickup), <strong>On the way</strong> and <strong>Delivered</strong>. Past stages show their time, the current one is highlighted, and the next ones show their expected time, such as <strong>about 7:40 PM</strong>. The track moves with the order's live updates. See &quot;Live Kitchen Journey&quot; in the main item's documentation.</li>
+<li><strong>Group Meal Cart:</strong> with <strong>Let customers order together from one shared cart</strong> on, a signed-in customer starts one with <strong>Start a group order</strong> on a restaurant page and shares its link (<strong>Copy link</strong>). Friends who open the link (<code>/g/…</code>) sign in if they need to, then <strong>Join</strong>. Everyone adds their own dishes with <strong>Add to group order</strong>, and the group page lists each member's dishes and subtotal with a badge (<strong>Adding dishes</strong>, <strong>Done</strong> after <strong>I'm done</strong>). Members can <strong>Leave group order</strong> and the host can <strong>Cancel group order</strong>. When everyone is done, the host locks the order and chooses who pays: <strong>I pay for everyone</strong> (card or cash) or <strong>Everyone pays their own</strong>, where each member pays their share online within the set minutes, with a countdown (<strong>Members pay by 7:45 PM</strong>). After the lock the badges read <strong>Host pays</strong>, <strong>Yet to pay</strong>, <strong>Paid</strong> or <strong>Dishes locked</strong>, members use <strong>Pay my share</strong>, and the host can <strong>Unlock for changes</strong> until someone has paid. Then the host places the one order. If the host places it before every share is paid, a dialog asks first and the host pays the rest. The group page updates live for everyone. See &quot;Group Meal Cart&quot; in the main item's documentation.</li>
+</ul>
+<figure><img src="assets/pages/group-cart.jpg" alt="A group order's page: each member's dishes and subtotal, the link to invite friends, and Add dishes and I'm done" loading="lazy" /><figcaption>Figure 12: A group order's page: each member's dishes and subtotal, the link to invite friends, and Add dishes and I'm done</figcaption></figure>
 <h3 id="using-languages">Languages</h3>
 <p>Visitors choose a language in the header or footer. Each language has its own address (<code>?lang=bn</code>, for example), so search engines can list every version. Arabic is shown right to left. The language a signed-in customer saves in their profile is also used for their texts and emails.</p>
 <h3 id="using-cookies">Cookies</h3>
@@ -888,7 +986,7 @@ No. Customers, orders and wallets belong to the main item and stay. Removing del
 <p><strong>Where is the website served?</strong>
 At the root of your Biteway address (<code>APP_URL</code>), next to the admin panel at <code>/admin</code>. Restaurants can also each have their own address for their storefront (<a href="#settings-restaurants-own-web-addresses">Settings</a>).</p>
 <p><strong>Can I change the website's texts?</strong>
-The add-on's texts are in <code>lang/en</code>, <code>lang/bn</code> and <code>lang/ar</code> inside <code>addons/customer-web</code>. Keep a copy of your changes: an update replaces these files.</p>
+Yes, in the admin panel: <strong>Languages → Texts</strong>, tab <strong>Biteway Customer Website</strong>, rewords any text in any language, and an update keeps your changes. The add-on's own files (<code>lang/en</code>, <code>lang/bn</code> and <code>lang/ar</code> inside <code>addons/customer-web</code>) are replaced by each update, so don't edit them.</p>
 <p><strong>Can I add Google Analytics or another tracking script?</strong>
 The add-on has no setting for it. Optional scripts must only run after a visitor presses <strong>Accept all</strong> in the cookie notice; adding one means editing the add-on's layout.</p>
         </section>
@@ -911,7 +1009,7 @@ The add-on has no setting for it. Optional scripts must only run after a visitor
         </section>
         <section id="changelog">
             <h2><span aria-hidden="true">📝</span> Changelog</h2>
-            <h3 id="changelog-100-16-november-2026">1.0.0 (16 November 2026)</h3>
+            <h3 id="changelog-100-first-release-17-november-2026">1.0.0: first release (17 November 2026)</h3>
 <p>First release. Needs Biteway 1.0.0 or newer.</p>
 <ul>
 <li>Home page: choose a delivery area from the list or with the browser's location, browse by cuisine, see the restaurants in the area, &quot;How it works&quot; and app links.</li>
@@ -921,7 +1019,7 @@ The add-on has no setting for it. Optional scripts must only run after a visitor
 <li>Phone sign-in with a one-time code, on its own page or in a quick dialog, with the optional CAPTCHA, Firebase Phone Authentication and &quot;Continue with Google&quot;.</li>
 <li>Cart: visitors' carts are kept until they sign in, a &quot;Start a new cart?&quot; question for another restaurant, and one cart per restaurant with a single checkout when ordering from several restaurants is on.</li>
 <li>Checkout in three steps: delivery, pickup or dine-in, the address with its location and delivery-area check, speed, ordering for later, tip, kitchen note, no cutlery, gift, payment and wallet. Online payments come back to one page that shows the result and lets the customer pay again.</li>
-<li>Orders: the order list, the order page with its live status and timeline, answering a restaurant's suggested change, canceling, paying, the receipt with a PDF, and rating.</li>
+<li>Orders: the order list, the order page with its live status and timeline, answering a restaurant's suggested change, cancelling, paying, the receipt with a PDF, and rating.</li>
 <li>Live delivery map while a rider has the order, with map tiles or Google Maps, &quot;last updated&quot; when the position is old, and the delivery code to give the rider at the door.</li>
 <li>Calling the rider through the platform's number when calls are masked, so the rider's number is never shown, and order chat with the rider or the restaurant, with reporting and blocking.</li>
 <li>Help center with messages to support.</li>
@@ -930,6 +1028,14 @@ The add-on has no setting for it. Optional scripts must only run after a visitor
 <li>Restaurants' own web addresses: on a verified address, the restaurant's page is the home page.</li>
 <li>Search engines: page titles and descriptions, language versions, social-sharing tags, structured data for restaurants and dishes, a sitemap, and robots.txt rules that keep the cart, checkout, account and sign-in pages out of search engines.</li>
 <li>Site layout with a language menu (Arabic right to left), a cookie notice and a 404 page in the site's look. English, Bangla and Arabic.</li>
+<li>The order page, the live map and the chat listen on the main item's Pusher-compatible server (Pusher, Soketi or Reverb) when one is set up, and check every few seconds while it is not reachable.</li>
+<li>Delivery times as a range (for example 25–40 min) on restaurant cards, restaurant pages and at checkout, and an arrival window such as &quot;Arriving 12:30 PM – 12:45 PM&quot; on the order page, when <strong>Settings → Extras → Show delivery times as a range from the kitchen's load</strong> is on. English, Bangla and Arabic.</li>
+<li>Branch routing: with <strong>Settings → Extras → Open each restaurant on its best branch for the customer</strong> on, the restaurant page opens on the suggested branch and says why (&quot;Nearest open branch&quot;, &quot;This branch has your dishes&quot;, &quot;Less busy branch&quot;, &quot;Only branch open now&quot;), with the branch switcher as before; a busy branch at checkout offers a sister branch that can make the order, with <strong>Move my order</strong> and <strong>Keep waiting</strong>.</li>
+<li>Smart Saver: with <strong>Give Saver deliveries a later window and batch them</strong> on, the Saver choice at checkout shows its window (for example &quot;Between 45 and 65 min, lower fee&quot;) and a Saver order's page says <strong>Saver delivery</strong> next to its arrival window. English, Bangla and Arabic.</li>
+<li>Split-Pizza Studio: with <strong>Settings → Extras → Let customers add toppings to one half of a split pizza</strong> on, each topping of a half-and-half pizza takes <strong>Left</strong>, <strong>Whole</strong> or <strong>Right</strong> in the order builder, with a two-half pizza showing each half's flavor and toppings and the half price on each topping; the cart, checkout and order pages read, for example, &quot;Left: Pepperoni + Olives · Right: Margherita · Whole: Extra cheese&quot;. English, Bangla and Arabic.</li>
+<li>Live Kitchen Journey: with <strong>Show the order's journey from kitchen to door as it happens</strong> on, the order page shows the order's stages in one track, with the time of past stages, the current stage highlighted (still for visitors who ask for less motion) and &quot;about 12:25 PM&quot; for the next ones when a time is expected, refreshed with live updates. English, Bangla and Arabic.</li>
+<li>Group Meal Cart: with <strong>Settings → Extras → Let customers order together from one shared cart</strong> on, the invite link <code>/g/…</code> opens the group cart on the website (or the customer app on a phone that has it), where signed-in customers join, add their own dishes and pay their share. See &quot;Group Meal Cart&quot; in the main item's documentation. English, Bangla and Arabic.</li>
+<li>Smart Cravings Discovery: with <strong>Settings → Extras → Help customers find food by mood, time, budget and spice</strong> on, the home page links to a &quot;What are you craving?&quot; page with mood, budget and spice choices and the dishes open now in the chosen area by restaurant, each with why it fits. English, Bangla and Arabic.</li>
 </ul>
         </section>
     </main>

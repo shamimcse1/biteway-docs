@@ -64,6 +64,76 @@
             ]
         },
         {
+            "name": "Pages",
+            "item": [
+                {
+                    "name": "pages.index",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/pages",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "pages"
+                            ]
+                        },
+                        "description": "Published pages: slug, title and footer group, in order.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    }
+                },
+                {
+                    "name": "pages.show",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/pages/:slug",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "pages",
+                                ":slug"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "slug",
+                                    "value": ""
+                                }
+                            ]
+                        },
+                        "description": "One published page as blocks; 404 for a draft or an unknown slug.",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    }
+                }
+            ]
+        },
+        {
             "name": "Webhooks",
             "item": [
                 {
@@ -201,7 +271,7 @@
                                 "send"
                             ]
                         },
-                        "description": "Texts a sign-in or phone-change code and returns its lifetime.\n\n- `country_code` **required** · string, regex:/^\\+\\d{1,4}$/\n- `phone` **required** · string, regex:/^\\d{5,14}$/\n- `user_type` **required** · in:\"customer\",\"rider\"\n- `captcha_token` · string, max:4096\n- `purpose` · in:\"login\",\"change_phone\"",
+                        "description": "Texts a sign-in or phone-change code and returns its lifetime.\n\n- `country_code` **required** · string, regex:/^\\+\\d{1,4}$/\n- `phone` **required** · string, regex:/^\\d{5,14}$/, full number for country_code (+1: 10 digits)\n- `user_type` **required** · in:\"customer\",\"rider\"\n- `captcha_token` · string, max:4096\n- `purpose` · in:\"login\",\"change_phone\"",
                         "auth": {
                             "type": "noauth"
                         },
@@ -241,7 +311,7 @@
                                 "verify"
                             ]
                         },
-                        "description": "Checks the texted code or Firebase Phone Auth ID token, then signs in or creates the account.\n\n- `country_code` **required** · string, regex:/^\\+\\d{1,4}$/\n- `phone` **required** · string, regex:/^\\d{5,14}$/\n- `user_type` **required** · in:\"customer\",\"rider\"\n- `fcm_token` · string, max:255\n- `device_type` · in:\"android\",\"ios\"\n- `device_name` · string, max:100\n- `app_version` · string, max:20\n- `code` · required_without:firebase_id_token, string, regex:/^\\d{4,8}$/\n- `firebase_id_token` · required_without:code, string, max:4096",
+                        "description": "Checks the texted code or Firebase Phone Auth ID token, then signs in or creates the account.\n\n- `country_code` **required** · string, regex:/^\\+\\d{1,4}$/\n- `phone` **required** · string, regex:/^\\d{5,14}$/, full number for country_code (+1: 10 digits)\n- `user_type` **required** · in:\"customer\",\"rider\"\n- `fcm_token` · string, max:255\n- `device_type` · in:\"android\",\"ios\"\n- `device_name` · string, max:100\n- `app_version` · string, max:20\n- `code` · required_without:firebase_id_token, string, regex:/^\\d{4,8}$/\n- `firebase_id_token` · required_without:code, string, max:4096",
                         "auth": {
                             "type": "noauth"
                         },
@@ -559,10 +629,10 @@
                                 "account"
                             ]
                         },
-                        "description": "Deletes the account as the app stores require: personal data is wiped, records kept. 409 active_orders while an\norder is in progress; 409 wallet_balance while the wallet holds money, unless `confirm_wallet_forfeit` is true.\n\n- `confirm_wallet_forfeit` · boolean",
+                        "description": "Deletes the account as the app stores require: personal data is wiped, records kept. 409 active_orders while an\norder is in progress; 409 wallet_balance while the wallet holds money, unless `confirm_wallet_forfeit` is true;\nfor riders, 409 earnings_below_minimum for earnings too small to pay out, unless `confirm_earnings_forfeit` is true.\n\n- `confirm_wallet_forfeit` · boolean\n- `confirm_earnings_forfeit` · boolean",
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"confirm_wallet_forfeit\": true\n}",
+                            "raw": "{\n    \"confirm_wallet_forfeit\": true,\n    \"confirm_earnings_forfeit\": true\n}",
                             "options": {
                                 "raw": {
                                     "language": "json"
@@ -935,6 +1005,41 @@
                                     ]
                                 },
                                 "description": "GET /restaurant/branches/{uuid}/reviews: the branch's reviews, newest first (cursor, 20 per page)."
+                            }
+                        },
+                        {
+                            "name": "restaurant.branches.problems",
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/restaurant/branches/:uuid/problems",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "restaurant",
+                                        "branches",
+                                        ":uuid",
+                                        "problems"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "GET /restaurant/branches/{uuid}/problems: the branch's reports, newest first (cursor, 20 per page)."
                             }
                         },
                         {
@@ -2501,6 +2606,55 @@
                     ]
                 },
                 {
+                    "name": "Problems",
+                    "item": [
+                        {
+                            "name": "restaurant.problems.reply",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/restaurant/problems/:uuid/reply",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "restaurant",
+                                        "problems",
+                                        ":uuid",
+                                        "reply"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "POST /restaurant/problems/{uuid}/reply {reply}: the restaurant's side, once, before the decision (reviews.reply).\n\n- `reply` **required** · string, min:2, max:1000",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"reply\": \"\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    ]
+                },
+                {
                     "name": "Options",
                     "item": [
                         {
@@ -3219,7 +3373,7 @@
                                         "connection"
                                     ]
                                 },
-                                "description": "Firebase details (database URL and a custom token) or the polling interval."
+                                "description": "Firebase details (database URL and a custom token), the Pusher socket details, or the polling interval."
                             }
                         },
                         {
@@ -3260,6 +3414,43 @@
                                     ]
                                 },
                                 "description": "A channel's state if it changed since `since`; 404 for channels the account does not take part in.\n\n- `channel` **required** · string, custom\n- `since` · integer, min:0"
+                            }
+                        },
+                        {
+                            "name": "restaurant.realtime.auth",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/restaurant/realtime/auth",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "restaurant",
+                                        "realtime",
+                                        "auth"
+                                    ]
+                                },
+                                "description": "Signs the socket's request to join a private channel (Pusher's channel authorization; data.auth is the\n\"key:signature\" the socket sends) for the channel's participants only; 404 for anyone else.\n\n- `socket_id` **required** · string, max:64, custom\n- `channel_name` **required** · string, max:100, custom",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"socket_id\": \"\",\n    \"channel_name\": \"\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
                             }
                         }
                     ]
@@ -3354,7 +3545,7 @@
                                 "phone"
                             ]
                         },
-                        "description": "Changes the phone after the code texted to the new number (purpose change_phone) or Firebase ID token is checked.\n\n- `country_code` **required** · string, regex:/^\\+\\d{1,4}$/\n- `phone` **required** · string, regex:/^\\d{5,14}$/\n- `code` · required_without:firebase_id_token, string, regex:/^\\d{4,8}$/\n- `firebase_id_token` · required_without:code, string, max:4096",
+                        "description": "Changes the phone after the code texted to the new number (purpose change_phone) or Firebase ID token is checked.\n\n- `country_code` **required** · string, regex:/^\\+\\d{1,4}$/\n- `phone` **required** · string, regex:/^\\d{5,14}$/, full number for country_code (+1: 10 digits)\n- `code` · required_without:firebase_id_token, string, regex:/^\\d{4,8}$/\n- `firebase_id_token` · required_without:code, string, max:4096",
                         "body": {
                             "mode": "raw",
                             "raw": "{\n    \"country_code\": \"+1\",\n    \"phone\": \"5125550123\",\n    \"code\": \"123456\",\n    \"firebase_id_token\": \"\"\n}",
@@ -3526,6 +3717,112 @@
                             ]
                         },
                         "description": "The newest export: its status and, once ready, a short-lived download link."
+                    }
+                },
+                {
+                    "name": "profile.privacy-requests.index",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/profile/privacy-requests",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "profile",
+                                "privacy-requests"
+                            ]
+                        },
+                        "description": "Privacy requests waiting for this account's confirmation (logged by the platform from an email or phone call)."
+                    }
+                },
+                {
+                    "name": "profile.privacy-requests.confirm",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/profile/privacy-requests/:uuid/confirm",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "profile",
+                                "privacy-requests",
+                                ":uuid",
+                                "confirm"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "uuid",
+                                    "value": ""
+                                }
+                            ]
+                        },
+                        "description": "Confirms one of them: an export starts (download it from GET profile/data-export), a deletion deletes the account\nas DELETE auth/account does (409 with the same codes when an order, money or cash is still open).\n\n- `confirm_wallet_forfeit` · boolean\n- `confirm_earnings_forfeit` · boolean",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"confirm_wallet_forfeit\": true,\n    \"confirm_earnings_forfeit\": true\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "profile.privacy-requests.decline",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/profile/privacy-requests/:uuid/decline",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "profile",
+                                "privacy-requests",
+                                ":uuid",
+                                "decline"
+                            ],
+                            "variable": [
+                                {
+                                    "key": "uuid",
+                                    "value": ""
+                                }
+                            ]
+                        },
+                        "description": "Declines one of them: nothing is done and the platform sees that the account holder did not ask."
                     }
                 }
             ]
@@ -4397,6 +4694,43 @@
                                 },
                                 "description": "GET /customer/cart/schedule-slots?branch_uuid=&order_type=: the times the branch takes a scheduled order, on its\nown clock and grouped by its local date (404 unknown branch, 403 feature_disabled, 422 service_unavailable).\n\n- `branch_uuid` **required** · uuid\n- `order_type` **required** · in:\"delivery\",\"pickup\",\"dine_in\""
                             }
+                        },
+                        {
+                            "name": "customer.cart.move",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/cart/move",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "cart",
+                                        "move"
+                                    ]
+                                },
+                                "description": "POST /customer/cart/move (features.smart_routing): moves the cart at `from_branch` to its sister branch\n`to_branch`, dishes matched by name; 404 without a cart there, 422 cart_items_unavailable listing the lines that\ncan't move.\n\n- `from_branch` **required** · uuid\n- `to_branch` **required** · uuid, different:from_branch",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"from_branch\": \"00000000-0000-0000-0000-000000000000\",\n    \"to_branch\": \"00000000-0000-0000-0000-000000000000\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            }
                         }
                     ]
                 },
@@ -4511,6 +4845,627 @@
                                     ]
                                 },
                                 "description": "POST /customer/checkout-groups/{uuid}/checkout: the payment page of the shared payment."
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "Group carts",
+                    "item": [
+                        {
+                            "name": "customer.group-carts.store",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts"
+                                    ]
+                                },
+                                "description": "POST /customer/group-carts {branch_uuid, name?}: starts a group cart with the caller as host (409 group_cart_exists while one is going).\n\n- `branch_uuid` **required** · uuid\n- `name` · string, max:40",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"branch_uuid\": \"00000000-0000-0000-0000-000000000000\",\n    \"name\": \"\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.invitation",
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/invite/:token",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        "invite",
+                                        ":token"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "token",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "GET /customer/group-carts/invite/{token}: who invites and from which restaurant, before joining (404 unknown, 410 group_cart_closed, 409 group_cart_full)."
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.join",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/join/:token",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        "join",
+                                        ":token"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "token",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "POST /customer/group-carts/join/{token} {name?}: joins by the invite link (200 when already in; 410 group_cart_closed, 409 group_cart_full).\n\n- `name` · string, custom",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"name\": \"\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.current",
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/current",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        "current"
+                                    ]
+                                },
+                                "description": "GET /customer/group-carts/current: the caller's open or locked group cart, the one they host first, else the\nlatest they are still a member of, as show() returns it; data is null when there is none."
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.show",
+                            "request": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/:uuid",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        ":uuid"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "GET /customer/group-carts/{uuid}: the group cart with every member's dishes and, once locked, the shares."
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.destroy",
+                            "request": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/:uuid",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        ":uuid"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "DELETE /customer/group-carts/{uuid} (host): cancels it; shares already paid go back to the members' cards."
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.items.store",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/:uuid/items",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        ":uuid",
+                                        "items"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "POST /customer/group-carts/{uuid}/items: adds one of the caller's dishes while the group cart is open.\n\n- `menu_item_uuid` **required** · uuid\n- `variant_id` · integer\n- `quantity` **required** · integer, between:1,99\n- `modifiers` · array, max:50\n- `modifiers.*.modifier_id` **required** · integer\n- `modifiers.*.half` · in:\"left\",\"right\"\n- `notes` · string, max:255",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"menu_item_uuid\": \"00000000-0000-0000-0000-000000000000\",\n    \"variant_id\": 1,\n    \"quantity\": 1,\n    \"modifiers\": [\n        {\n            \"modifier_id\": 1,\n            \"half\": \"left\"\n        }\n    ],\n    \"notes\": \"\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.items.update",
+                            "request": {
+                                "method": "PATCH",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/:uuid/items/:id",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        ":uuid",
+                                        "items",
+                                        ":id"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        },
+                                        {
+                                            "key": "id",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "PATCH /customer/group-carts/{uuid}/items/{id} {quantity}: changes one of the caller's own dishes (0 removes it).\n\n- `quantity` **required** · integer, custom",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"quantity\": 1\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.items.destroy",
+                            "request": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/:uuid/items/:id",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        ":uuid",
+                                        "items",
+                                        ":id"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        },
+                                        {
+                                            "key": "id",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "DELETE /customer/group-carts/{uuid}/items/{id}: removes one of the caller's own dishes."
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.ready",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/:uuid/ready",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        ":uuid",
+                                        "ready"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "POST /customer/group-carts/{uuid}/ready: the caller is done adding dishes."
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.not-ready",
+                            "request": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/:uuid/ready",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        ":uuid",
+                                        "ready"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "DELETE /customer/group-carts/{uuid}/ready: the caller wants to add more."
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.lock",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/:uuid/lock",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        ":uuid",
+                                        "lock"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "POST /customer/group-carts/{uuid}/lock {pay_mode, order_type, address_uuid?, delivery_level?, tip?, scheduled_for?, promo_code?} (host): prices it and sets each share.\n\n- `pay_mode` **required** · in:\"host\",\"split\"\n- `order_type` **required** · in:\"delivery\",\"pickup\",\"dine_in\"\n- `address_uuid` · required_if:order_type,delivery, uuid\n- `delivery_level` · in:\"standard\",\"saver\",\"express\"\n- `tip` · integer, min:0, max:100000000\n- `scheduled_for` · date, after:now\n- `promo_code` · string, max:30",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"pay_mode\": \"host\",\n    \"order_type\": \"delivery\",\n    \"address_uuid\": \"00000000-0000-0000-0000-000000000000\",\n    \"delivery_level\": \"standard\",\n    \"tip\": 1,\n    \"scheduled_for\": \"2030-01-01\",\n    \"promo_code\": \"\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.unlock",
+                            "request": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/:uuid/lock",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        ":uuid",
+                                        "lock"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "DELETE /customer/group-carts/{uuid}/lock (host): opens it again for changes, refused once anyone paid (409 group_cart_paid)."
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.pay",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/:uuid/pay",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        ":uuid",
+                                        "pay"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "POST /customer/group-carts/{uuid}/pay {payment_method} (member, split mode): the payment page for the caller's share.\n\n- `payment_method` **required** · string, max:30",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"payment_method\": \"\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.place",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/:uuid/place",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        ":uuid",
+                                        "place"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "POST /customer/group-carts/{uuid}/place {payment_method, cover_unpaid?, notes?, cutlery?} (host): places one order\nfor everyone; checkout_url is the payment page for what the host pays online (null when nothing is due online).\nA repeat returns the same order with 200.\n\n- `payment_method` **required** · string, max:30\n- `cover_unpaid` · boolean\n- `notes` · string, max:500\n- `cutlery` · boolean",
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n    \"payment_method\": \"\",\n    \"cover_unpaid\": true,\n    \"notes\": \"\",\n    \"cutlery\": true\n}",
+                                    "options": {
+                                        "raw": {
+                                            "language": "json"
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        {
+                            "name": "customer.group-carts.leave",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/group-carts/:uuid/leave",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "group-carts",
+                                        ":uuid",
+                                        "leave"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "POST /customer/group-carts/{uuid}/leave (member, not the host, while open): leaves and takes their dishes out."
                             }
                         }
                     ]
@@ -4953,7 +5908,7 @@
                                         "orders"
                                     ]
                                 },
-                                "description": "Places a quote; a repeated Idempotency-Key returns the same order with 200 instead of 201.\n\n- `quote_uuid` **required** · uuid\n- `payment_method` **required** · string, max:30\n- `notes` · string, max:500\n- `cutlery` · boolean\n- `use_wallet` · boolean\n- `gift` · array\n- `gift.recipient_name` · required_with:gift, string, max:100\n- `gift.recipient_country_code` · required_with:gift, string, regex:/^\\+\\d{1,4}$/\n- `gift.recipient_phone` · required_with:gift, string, regex:/^\\d{5,14}$/\n- `gift.message` · string, max:200\n- `gift.hide_prices` · boolean",
+                                "description": "Places a quote; a repeated Idempotency-Key returns the same order with 200 instead of 201.\n\n- `quote_uuid` **required** · uuid\n- `payment_method` **required** · string, max:30\n- `notes` · string, max:500\n- `cutlery` · boolean\n- `use_wallet` · boolean\n- `gift` · array\n- `gift.recipient_name` · required_with:gift, string, max:100\n- `gift.recipient_country_code` · required_with:gift, string, regex:/^\\+\\d{1,4}$/\n- `gift.recipient_phone` · required_with:gift, string, regex:/^\\d{5,14}$/, full number for gift.recipient_country_code (+1: 10 digits)\n- `gift.message` · string, max:200\n- `gift.hide_prices` · boolean",
                                 "body": {
                                     "mode": "raw",
                                     "raw": "{\n    \"quote_uuid\": \"00000000-0000-0000-0000-000000000000\",\n    \"payment_method\": \"\",\n    \"notes\": \"\",\n    \"cutlery\": true,\n    \"use_wallet\": true,\n    \"gift\": {\n        \"recipient_name\": \"\",\n        \"recipient_country_code\": \"\",\n        \"recipient_phone\": \"\",\n        \"message\": \"\",\n        \"hide_prices\": true\n    }\n}",
@@ -5040,6 +5995,71 @@
                                             "language": "json"
                                         }
                                     }
+                                }
+                            }
+                        },
+                        {
+                            "name": "customer.orders.problem",
+                            "request": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "X-Locale",
+                                        "value": "{{locale}}"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/customer/orders/:uuid/problem",
+                                    "host": [
+                                        "{{baseUrl}}"
+                                    ],
+                                    "path": [
+                                        "customer",
+                                        "orders",
+                                        ":uuid",
+                                        "problem"
+                                    ],
+                                    "variable": [
+                                        {
+                                            "key": "uuid",
+                                            "value": ""
+                                        }
+                                    ]
+                                },
+                                "description": "Reports a problem with a delivered order (inside the window): a reason, the dishes affected, a note and up to three photos.\n\n- `reason` **required** · in\n- `lines` · array\n- `lines.*` · integer, min:0, max:999\n- `note` **required** · string, max:2000\n- `photos` · array, custom\n- `photos.*` · image, mimes:jpeg,png,webp, max:8192",
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        {
+                                            "key": "reason",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "lines",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "lines.*",
+                                            "type": "text",
+                                            "value": "1"
+                                        },
+                                        {
+                                            "key": "note",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "photos",
+                                            "type": "text"
+                                        },
+                                        {
+                                            "key": "photos.*",
+                                            "type": "file"
+                                        }
+                                    ]
                                 }
                             }
                         },
@@ -7271,7 +8291,7 @@
                                         "profile"
                                     ]
                                 },
-                                "description": "PUT /rider/profile: while a draft or rejected (409 profile_locked).\n\n- `city_id` **required** · integer, exists:cities,id,is_active,\"1\"\n- `vehicle_type` **required** · in:\"bicycle\",\"ebike\",\"scooter\",\"motorbike\",\"car\"\n- `vehicle_model` · string, max:100\n- `vehicle_plate` · string, max:30, \n- `emergency_name` **required** · string, max:100\n- `emergency_phone` **required** · string, regex:/^\\+?[0-9 ()-]{5,25}$/",
+                                "description": "PUT /rider/profile: while a draft or rejected (409 profile_locked).\n\n- `city_id` **required** · integer, exists:cities,id,is_active,\"1\"\n- `vehicle_type` **required** · in:\"bicycle\",\"ebike\",\"scooter\",\"motorbike\",\"car\"\n- `vehicle_model` · string, max:100\n- `vehicle_plate` · string, max:30, \n- `emergency_name` **required** · string, max:100\n- `emergency_phone` **required** · string, regex:/^\\+?[0-9 ()-]{5,25}$/, full number for its calling code (+1: 10 digits)",
                                 "body": {
                                     "mode": "raw",
                                     "raw": "{\n    \"city_id\": 1,\n    \"vehicle_type\": \"bicycle\",\n    \"vehicle_model\": \"\",\n    \"vehicle_plate\": \"\",\n    \"emergency_name\": \"\",\n    \"emergency_phone\": \"\"\n}",
@@ -7957,7 +8977,7 @@
                                 "connection"
                             ]
                         },
-                        "description": "Firebase details (database URL and a custom token) or the polling interval."
+                        "description": "Firebase details (database URL and a custom token), the Pusher socket details, or the polling interval."
                     }
                 },
                 {
@@ -7997,6 +9017,42 @@
                             ]
                         },
                         "description": "A channel's state if it changed since `since`; 404 for channels the account does not take part in.\n\n- `channel` **required** · string, custom\n- `since` · integer, min:0"
+                    }
+                },
+                {
+                    "name": "realtime.auth",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/realtime/auth",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "realtime",
+                                "auth"
+                            ]
+                        },
+                        "description": "Signs the socket's request to join a private channel (Pusher's channel authorization; data.auth is the\n\"key:signature\" the socket sends) for the channel's participants only; 404 for anyone else.\n\n- `socket_id` **required** · string, max:64, custom\n- `channel_name` **required** · string, max:100, custom",
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"socket_id\": \"\",\n    \"channel_name\": \"\"\n}",
+                            "options": {
+                                "raw": {
+                                    "language": "json"
+                                }
+                            }
+                        }
                     }
                 }
             ]
@@ -8372,6 +9428,107 @@
                             ]
                         },
                         "description": "GET /search?q=: matching active restaurants and orderable dishes, best match first.\n\n- `zone` · uuid\n- `lat` · required_with:lng, numeric, between:-90,90\n- `lng` · required_with:lat, numeric, between:-180,180\n- `open_now` · boolean\n- `cuisine` · string, max:50\n- `category` · string, max:120\n- `dietary` · in:\"vegetarian\",\"vegan\",\"halal\",\"kosher\",\"gluten_free\",\"dairy_free\",\"nut_free\",\"organic\"\n- `service` · in:\"delivery\",\"pickup\",\"dine_in\"\n- `q` **required** · string, min:2, max:100",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Cravings",
+            "item": [
+                {
+                    "name": "cravings",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "X-Locale",
+                                "value": "{{locale}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/cravings",
+                            "host": [
+                                "{{baseUrl}}"
+                            ],
+                            "path": [
+                                "cravings"
+                            ],
+                            "query": [
+                                {
+                                    "key": "zone",
+                                    "value": "00000000-0000-0000-0000-000000000000",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "lat",
+                                    "value": "30.2672",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "lng",
+                                    "value": "-97.7431",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "open_now",
+                                    "value": "true",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "cuisine",
+                                    "value": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "category",
+                                    "value": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "dietary",
+                                    "value": "vegetarian",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "service",
+                                    "value": "delivery",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "mood",
+                                    "value": "comfort",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "budget_max",
+                                    "value": "1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "spice_max",
+                                    "value": "1",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "diet",
+                                    "value": "",
+                                    "disabled": true
+                                },
+                                {
+                                    "key": "diet.*",
+                                    "value": "vegetarian",
+                                    "disabled": true
+                                }
+                            ]
+                        },
+                        "description": "GET /cravings?mood=&budget_max=&spice_max=&diet[]=&lat=&lng=: dishes open now that fit, grouped by restaurant with\na reason line each, plus the part of the day, the moods, spice levels and budget choices to offer.\n\n- `zone` · uuid\n- `lat` · required_with:lng, numeric, between:-90,90\n- `lng` · required_with:lat, numeric, between:-180,180\n- `open_now` · boolean\n- `cuisine` · string, max:50\n- `category` · string, max:120\n- `dietary` · in:\"vegetarian\",\"vegan\",\"halal\",\"kosher\",\"gluten_free\",\"dairy_free\",\"nut_free\",\"organic\"\n- `service` · in:\"delivery\",\"pickup\",\"dine_in\"\n- `mood` · in:\"comfort\",\"light\",\"sweet\",\"spicy\",\"healthy\",\"share\"\n- `budget_max` · integer, min:1, max:100000000\n- `spice_max` · integer, between:0,3\n- `diet` · array, max:8\n- `diet.*` · distinct, in:\"vegetarian\",\"vegan\",\"halal\",\"kosher\",\"gluten_free\",\"dairy_free\",\"nut_free\",\"organic\"",
                         "auth": {
                             "type": "noauth"
                         }

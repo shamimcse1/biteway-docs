@@ -253,7 +253,7 @@
                     </button>
                 </div>
                 <ul id="nav-changelog">
-                    <li><a href="#changelog-100-16-november-2026">1.0.0 (16 November 2026)</a></li>
+                    <li><a href="#changelog-100-first-release-17-november-2026">1.0.0: first release (17 November 2026)</a></li>
                 </ul>
             </li>
         </ul>
@@ -439,6 +439,26 @@
 <td><strong>Super Admin → Payments</strong></td>
 <td>Online payment methods</td>
 <td>Needed for &quot;Pay online when ordering&quot; on table QR codes under <strong>Tables</strong>.</td>
+</tr>
+<tr>
+<td><strong>Settings → Extras</strong></td>
+<td>Show each order's tamper-evident safety timeline</td>
+<td>Adds <strong>Open the full timeline</strong> to an order's page.</td>
+</tr>
+<tr>
+<td></td>
+<td>Let customers add toppings to one half of a split pizza</td>
+<td><strong>Left</strong>, <strong>Right</strong> and <strong>Whole</strong> blocks for split pizzas on the kitchen display and the order page.</td>
+</tr>
+<tr>
+<td></td>
+<td>Let customers order together from one shared cart</td>
+<td>Group orders with a <strong>Group order</strong> badge and the dishes under each person's name.</td>
+</tr>
+<tr>
+<td></td>
+<td>Help customers find food by mood, time, budget and spice</td>
+<td>Adds <strong>Craving moods</strong> to the dish form.</td>
 </tr>
 <tr>
 <td><strong>Languages</strong></td>
@@ -641,11 +661,15 @@
 </ul>
 <figure><img src="assets/pages/kitchen.jpg" alt="The kitchen display" loading="lazy" /><figcaption>Figure 7: The kitchen display</figcaption></figure>
 <p><strong>Kitchen display</strong> (Orders: view). Large tickets of new, cooking and ready orders, with how long each has left or how late it is, refreshed every 10 seconds. Click anywhere on the page once so the browser allows the chime.</p>
+<p><strong>Split pizzas and group orders.</strong> With Split-Pizza Studio on in the main item, a half-and-half pizza shows <strong>Left</strong>, <strong>Right</strong> and <strong>Whole</strong> blocks with each half's flavor and toppings on the kitchen display and the order page. With the studio off (or on orders from before it), the pizza's choices read as lines in the same order: <strong>Left</strong>, then <strong>Right</strong>, then <strong>Whole</strong> for the toppings on the whole pizza. With Group Meal Cart on, a group order shows a badge such as <strong>Group order · 3 people</strong> and its dishes under each person's name.</p>
+<figure><img src="assets/pages/kitchen-group-split.jpg" alt="The kitchen display with a split pizza in Left, Right and Whole blocks, and a group order with each person's dishes under their name" loading="lazy" /><figcaption>Figure 8: The kitchen display with a split pizza in Left, Right and Whole blocks, and a group order with each person's dishes under their name</figcaption></figure>
+<p><strong>Timeline</strong> of an order (with <strong>Safety timeline</strong> on in the main item, <strong>Settings → Extras</strong>). Open it from <strong>Open the full timeline</strong> on the order's page to read everything that happened to one of your orders, in order, with who did it and when. It is read-only and leaves out the customer's name, photo fingerprints, rider locations and the platform's notes.</p>
+<figure><img src="assets/pages/order-timeline.jpg" alt="An order's timeline: each status change with who made it and when" loading="lazy" /><figcaption>Figure 9: An order's timeline: each status change with who made it and when</figcaption></figure>
 <p><strong>POS</strong> (POS: sell; shown when the platform offers dine-in). The branch's floor plan: open a check at a table or at the counter, add dishes with their sizes and options as a round, and send it to the kitchen. On a check: mark rounds served, ask for the bill, take payment in cash or by card machine (all at once or in shares, with a tip), discount, make an item free, merge, split, move to another table, void, and print the bill or receipt. The branch must have <strong>Dine-in</strong> on in <strong>Branch settings</strong>. Cash goes into the till this browser uses: under <strong>Tills</strong>, choose it, open it with a starting float, put cash in or take it out, see the X report, and close it with the cash counted to get the Z report. The POS needs an internet connection.</p>
 <p><strong>Reservations</strong> (Reservations: view; shown when the platform offers table bookings). The bookings for a day, with <strong>Confirm</strong>, <strong>Decline</strong>, <strong>Seat</strong>, <strong>No-show</strong> and <strong>Cancel</strong>, and <strong>New booking</strong> for a guest who calls. <strong>Booking settings</strong> switch bookings on for the branch and set the times, party size, notice, deposit and whether bookings are confirmed at once or by staff.</p>
 <h3 id="using-manage">Manage</h3>
-<figure><img src="assets/pages/menu.jpg" alt="A branch's menu, with the CSV import and the on-sale switches" loading="lazy" /><figcaption>Figure 8: A branch's menu, with the CSV import and the on-sale switches</figcaption></figure>
-<p><strong>Menu</strong> (Menu: edit). The branch's categories and dishes; each branch has its own menu. Add and edit categories and items (photo, price or sizes, options, dietary and allergen tags, spice level, stock count, translations), and <strong>Option groups</strong> such as toppings or the halves of a half-and-half pizza. The on-sale switch on each dish takes it off sale and puts it back.</p>
+<figure><img src="assets/pages/menu.jpg" alt="A branch's menu, with the CSV import and the on-sale switches" loading="lazy" /><figcaption>Figure 10: A branch's menu, with the CSV import and the on-sale switches</figcaption></figure>
+<p><strong>Menu</strong> (Menu: edit). The branch's categories and dishes; each branch has its own menu. Add and edit categories and items (photo, price or sizes, options, dietary and allergen tags, spice level, stock count, translations), and <strong>Option groups</strong> such as toppings or the halves of a half-and-half pizza. The on-sale switch on each dish takes it off sale and puts it back. On a dish, tick its <strong>Craving moods</strong> (Comfort food, Something light, Something sweet, Spicy kick, Healthy, To share): customers who ask &quot;What are you craving?&quot; with Cravings on in the main item are shown the dish for those moods.</p>
 <p><strong>Import CSV</strong> adds or updates many dishes at once:</p>
 <ol>
 <li>Click <strong>Import CSV</strong>, then <strong>Download template</strong>.</li>
@@ -656,16 +680,17 @@
 <p><strong>Offers</strong> (Menu: edit; shown when the platform offers them). Buy one get one free and happy hour discounts on the days and times you choose. They apply by themselves at checkout, and the restaurant pays for them.</p>
 <p><strong>Tables</strong> (Tables: manage; shown when the platform offers dine-in). Areas such as Hall or Terrace, tables with their seats, a QR code for each table (<strong>Print QR codes</strong>, or <strong>New QR code</strong> to replace a lost one), whether guests ordering from the QR code pay online or at the restaurant, and the branch's tills.</p>
 <p><strong>Inventory</strong> (Inventory: view; shown when the platform offers it). Tabs for <strong>Ingredients</strong> (with wastage), <strong>Recipes</strong> (what one portion of each dish uses), <strong>Stock count</strong>, <strong>Movements</strong>, <strong>Suppliers</strong>, <strong>Purchase orders</strong> (sent to the supplier by email when it has an address, received into stock, and downloadable as PDF), <strong>Transfers</strong> between branches, and <strong>Food cost</strong>. Managing needs Inventory: manage; counting and receiving need Inventory: count.</p>
-<figure><img src="assets/pages/branch-settings.jpg" alt="Branch settings: services, preparation time, opening hours and closures" loading="lazy" /><figcaption>Figure 9: Branch settings: services, preparation time, opening hours and closures</figcaption></figure>
+<figure><img src="assets/pages/branch-settings.jpg" alt="Branch settings: services, preparation time, opening hours and closures" loading="lazy" /><figcaption>Figure 11: Branch settings: services, preparation time, opening hours and closures</figcaption></figure>
 <p><strong>Branch settings</strong> (Settings: edit). The branch phone; which services it offers (<strong>Delivery</strong>, <strong>Pickup</strong>, <strong>Dine-in</strong>); the usual preparation time; kitchen capacity in orders an hour; the weekly <strong>Opening hours</strong>; and <strong>Planned closures</strong> such as public holidays. Once the restaurant is approved, people with Branch: status also see <strong>Pause all orders</strong> (and <strong>Take orders again</strong>) and busy mode for 15 to 90 minutes.</p>
-<figure><img src="assets/pages/team.jpg" alt="Team: people, their branches and roles, and the built-in roles" loading="lazy" /><figcaption>Figure 10: Team: people, their branches and roles, and the built-in roles</figcaption></figure>
+<figure><img src="assets/pages/team.jpg" alt="Team: people, their branches and roles, and the built-in roles" loading="lazy" /><figcaption>Figure 12: Team: people, their branches and roles, and the built-in roles</figcaption></figure>
 <p><strong>Team</strong> (Staff: manage). Everyone in the restaurant, with their branches, roles and last sign-in. <strong>Add a person</strong> creates an account with a role at each branch; people sign in to the portal and the restaurant app with its email and password. Edit a person to change their details or roles, set a new password, switch them off (they can no longer sign in) or remove them. <strong>Add a role</strong> creates a role of your own from the permissions.</p>
 <p><strong>Reviews</strong> (Orders: view). What customers said about the branch's orders. With Reviews: reply, write a public reply; the customer is told the first time.</p>
+<p><strong>Problem reports.</strong> Problems customers reported with a delivered order, with the dishes, note and photos. Staff who reply to reviews can add the restaurant's side once before the admin decides.</p>
 <h3 id="using-money">Money</h3>
-<figure><img src="assets/pages/reports.jpg" alt="Reports: orders, food sales and best sellers by day" loading="lazy" /><figcaption>Figure 11: Reports: orders, food sales and best sellers by day</figcaption></figure>
+<figure><img src="assets/pages/reports.jpg" alt="Reports: orders, food sales and best sellers by day" loading="lazy" /><figcaption>Figure 13: Reports: orders, food sales and best sellers by day</figcaption></figure>
 <p><strong>Reports</strong> (Reports: view). Orders, food sales and cook time by day for up to 92 days, for one branch or all of them, with the best sellers and the prices charged offline that differ from the menu. <strong>Download</strong> saves it as CSV, Excel (XLSX) or PDF (needs Reports: export).</p>
 <p><strong>Dine-in reports</strong> (Reports: view; shown when the platform offers dine-in). Tabs for <strong>Sales</strong> (by day and hour, cash, card, tips and discounts), <strong>Checks</strong>, <strong>Tills and Z reports</strong> and <strong>Staff activity</strong>.</p>
-<figure><img src="assets/pages/payouts.jpg" alt="Payouts: the balance, what is on its way and where the money goes" loading="lazy" /><figcaption>Figure 12: Payouts: the balance, what is on its way and where the money goes</figcaption></figure>
+<figure><img src="assets/pages/payouts.jpg" alt="Payouts: the balance, what is on its way and where the money goes" loading="lazy" /><figcaption>Figure 14: Payouts: the balance, what is on its way and where the money goes</figcaption></figure>
 <p><strong>Payouts</strong> (Finance: view). The restaurant's balance with the platform, what is on its way and what is withdrawable, its plan and commission, and the history of payouts with the reason when one was not paid. <strong>Statement</strong> downloads every movement for the days chosen. With Payouts: request:</p>
 <ul>
 <li><strong>Where the money goes:</strong> bank, mobile wallet or PayPal details, saved encrypted and shown masked, or Stripe's own setup page when the platform offers it.</li>
@@ -903,10 +928,10 @@ The add-on adds <code>Disallow: /portal</code> to your site's <code>robots.txt</
         </section>
         <section id="changelog">
             <h2><span aria-hidden="true">📝</span> Changelog</h2>
-            <h3 id="changelog-100-16-november-2026">1.0.0 (16 November 2026)</h3>
+            <h3 id="changelog-100-first-release-17-november-2026">1.0.0: first release (17 November 2026)</h3>
 <p>First release. Requires Biteway 1.0.0 or newer.</p>
 <ul>
-<li>Installs from <strong>Super Admin → Add-ons</strong> with no build step; the styles and scripts are included.</li>
+<li>Installs from <strong>Super Admin → Add-ons</strong>; <code>npm run build</code> in the Biteway folder builds its styles and scripts.</li>
 <li>Staff sign in at <code>/portal</code> with the same email and password as the restaurant app, and reset a forgotten password by email.</li>
 <li>Portal layout with a side menu that follows each person's role, a branch picker, an account menu, dark mode, and English, Bangla and Arabic (right to left).</li>
 <li>Setup for a new restaurant: a checklist (profile, branch hours, documents, menu, team), the restaurant profile with logo and cover, documents for review, and sending the setup for review.</li>
@@ -916,10 +941,13 @@ The add-on adds <code>Disallow: /portal</code> to your site's <code>robots.txt</
 <li>Menus with categories, dishes, sizes, option groups and translations, the on-sale switch, and CSV import with a preview.</li>
 <li>Team: people with a role at each branch, the built-in roles and your own roles.</li>
 <li>Reviews with public replies, and reports by day with CSV, Excel and PDF downloads.</li>
-<li>Payouts: the restaurant's balance, what is on its way and what is withdrawable; asking for a payout (one at a time, from the platform's smallest payout up to what is withdrawable) and canceling it before approval; where the money goes (bank, mobile wallet or PayPal, saved encrypted and shown masked, or Stripe's own setup page); and the history, with the reason when a payout was not paid.</li>
+<li>Payouts: the restaurant's balance, what is on its way and what is withdrawable; asking for a payout (one at a time, from the platform's smallest payout up to what is withdrawable) and cancelling it before approval; where the money goes (bank, mobile wallet or PayPal, saved encrypted and shown masked, or Stripe's own setup page); and the history, with the reason when a payout was not paid.</li>
 <li>Dine-in: a browser POS with tills and X and Z reports, tables with QR codes, and dine-in reports.</li>
 <li>Table reservations, buy-one-get-one and happy hour offers, and ingredient inventory with recipes, stock counts, suppliers, purchase orders, transfers and food cost, each when the platform switches it on.</li>
 <li>Own web address for a restaurant, with the Customer Website add-on.</li>
+<li>An order's safety timeline, read-only, from <strong>Open the full timeline</strong> on the order page, when the main item's Safety timeline is on.</li>
+<li>Split-pizza <strong>Left</strong>, <strong>Right</strong> and <strong>Whole</strong> blocks and group orders (a <strong>Group order</strong> badge and the dishes under each person's name) on the kitchen display and the order page, when switched on in the main item.</li>
+<li><strong>Craving moods</strong> on the dish form (Comfort food, Something light, Something sweet, Spicy kick, Healthy, To share), used by the main item's Cravings discovery.</li>
 </ul>
         </section>
     </main>
