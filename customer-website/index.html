@@ -317,19 +317,19 @@
 <p>Nothing else is needed: no Composer install, no new database and no new PHP extension. Its styles and scripts are built by the same <code>npm run build</code> you use for Biteway (see <a href="#installation-build-its-styles-and-scripts">Build its styles and scripts</a>).</p>
 <h3 id="installation-way-1-upload-the-add-on-in-the-admin-panel">Way 1: upload the add-on in the admin panel</h3>
 <ol>
-<li>Sign in to the admin panel as Super Admin and open <strong>Add-ons</strong>.</li>
+<li>Sign in to the admin panel as Super Admin and open <strong>Super Admin → Add-ons</strong>.</li>
 <li>Under <strong>Upload an add-on</strong>, choose the zip you downloaded from CodeCanyon in <strong>Add-on zip</strong> and press <strong>Upload</strong>. Upload it as it is: the admin panel finds the add-on inside it. The zip can be up to 50 MB (your server's PHP upload limit must allow it too).</li>
 <li>The page says &quot;Biteway Customer Website 1.0.0 uploaded. Install it to switch it on.&quot; and the add-on's card shows <strong>Not installed</strong>.</li>
 <li>Press <strong>Install and switch on</strong>. The card now shows <strong>On</strong>.</li>
 </ol>
-<figure><img src="assets/install/addons-empty.jpg" alt="Admin → Add-ons before any add-on is uploaded: choose the zip under Upload an add-on" loading="lazy" /><figcaption>Figure 1: Admin → Add-ons before any add-on is uploaded: choose the zip under Upload an add-on</figcaption></figure>
+<figure><img src="assets/install/addons-empty.jpg" alt="Super Admin → Add-ons before any add-on is uploaded: choose the zip under Upload an add-on" loading="lazy" /><figcaption>Figure 1: Super Admin → Add-ons before any add-on is uploaded: choose the zip under Upload an add-on</figcaption></figure>
 <figure><img src="assets/install/addons-uploaded.jpg" alt="After uploading: the card shows Not installed and the Install and switch on button" loading="lazy" /><figcaption>Figure 2: After uploading: the card shows Not installed and the Install and switch on button</figcaption></figure>
 <figure><img src="assets/install/addons-installed.jpg" alt="After installing: the card shows On, with the purchase code field" loading="lazy" /><figcaption>Figure 3: After installing: the card shows On, with the purchase code field</figcaption></figure>
 <h3 id="installation-way-2-copy-the-folder-to-the-server">Way 2: copy the folder to the server</h3>
 <ol>
 <li>Copy the <code>main/biteway-customer-web/</code> folder into the <code>addons/</code> folder of <code>biteway-backend</code>.</li>
 <li>Rename it to <strong><code>customer-web</code></strong>, so the path is <code>biteway-backend/addons/customer-web/addon.json</code>. The folder must be named after the add-on; any other name shows &quot;The folder must be named after the add-on slug (customer-web).&quot;</li>
-<li>Open <strong>Add-ons</strong> in the admin panel. The add-on appears as <strong>Not installed</strong>.</li>
+<li>Open <strong>Super Admin → Add-ons</strong> in the admin panel. The add-on appears as <strong>Not installed</strong>.</li>
 <li>Press <strong>Install and switch on</strong>.</li>
 </ol>
 <p>The add-ons folder is <code>biteway-backend/addons/</code> unless your <code>.env</code> sets <code>BITEWAY_ADDONS_PATH</code> to another folder.</p>
@@ -337,7 +337,7 @@
 <p>The add-on ships its sources only. After installing it, and after each update, build its styles and scripts once. In the <code>biteway-backend</code> folder on your server, run:</p>
 <pre><code class="language-bash">npm run build
 </code></pre>
-<p>It is the same command you ran when you installed Biteway (it needs Node.js 20.19+ or 22.12+). It builds the admin panel and every installed add-on, and the new files are published on the next page load. Until you run it, the add-on's card in <strong>Add-ons</strong> says &quot;Its styles and scripts are not built yet&quot;, and the website's pages load without their styles.</p>
+<p>It is the same command you ran when you installed Biteway (it needs Node.js 20.19+ or 22.12+). It builds the admin panel and every installed add-on, and the new files are published on the next page load. Until you run it, the add-on's card in <strong>Super Admin → Add-ons</strong> says &quot;Its styles and scripts are not built yet&quot;, and the website's pages load without their styles.</p>
 <p><strong>No terminal on your host?</strong> Build on your own computer: copy the add-on folder into the <code>addons/</code> folder of a local copy of <code>biteway-backend</code>, named <code>customer-web</code>, run <code>npm ci &amp;&amp; npm run build</code> there, then upload the add-on folder, including its new <code>public/build/</code> folder, to <code>biteway-backend/addons/</code> on the server.</p>
 <h3 id="installation-what-install-and-switch-on-does">What &quot;Install and switch on&quot; does</h3>
 <ul>
@@ -347,12 +347,12 @@
 <li>Clears the route and view caches, and switches the add-on on.</li>
 </ul>
 <h3 id="installation-enter-your-purchase-code">Enter your purchase code</h3>
-<p>Once the add-on is installed, its card in <strong>Add-ons</strong> has a <strong>Purchase code</strong> field. Enter the purchase code from your Envato downloads page and press <strong>Save code</strong>. It is saved encrypted, and the field then shows only its last four characters. The website works while the code is empty.</p>
+<p>Once the add-on is installed, its card in <strong>Super Admin → Add-ons</strong> has a <strong>Purchase code</strong> field. Enter the purchase code from your Envato downloads page and press <strong>Save code</strong>. It is saved encrypted, and the field then shows only its last four characters. The website works while the code is empty.</p>
 <h3 id="installation-where-the-website-is">Where the website is</h3>
 <p>The website answers at your site's root: <code>https://your-domain/</code>. The admin panel stays at <code>https://your-domain/admin</code>, and the apps keep using <code>https://your-domain/api/...</code> as before.</p>
 <p>Before you go live, open <strong>Dashboard</strong> in the admin panel: the <strong>Go-live checklist</strong> gains the item &quot;The website links to your terms and privacy policy&quot; until you fill in both links (<a href="#settings-name-logo-contact-and-legal-links">Settings</a>).</p>
 <h3 id="installation-switching-it-off">Switching it off</h3>
-<p>In <strong>Add-ons</strong>, press <strong>Switch off</strong> on the add-on's card.</p>
+<p>In <strong>Super Admin → Add-ons</strong>, press <strong>Switch off</strong> on the add-on's card.</p>
 <ul>
 <li>The website's pages are gone at once, and <code>https://your-domain/</code> goes back to the admin panel.</li>
 <li>Nothing is deleted. Customers, orders, wallets and everything else belong to the main item and keep working in the apps.</li>
@@ -363,7 +363,7 @@
 <li>Switch the add-on off first. <strong>Remove</strong> is not offered while it is on.</li>
 <li>Press <strong>Remove</strong> and confirm.</li>
 </ol>
-<p>This deletes the add-on's files (<code>addons/customer-web</code> and <code>public/addons/customer-web</code>) and its entry in Add-ons, including the saved purchase code. Data in the database is kept, so installing the add-on again later resumes where you left off; enter the purchase code again then.</p>
+<p>This deletes the add-on's files (<code>addons/customer-web</code> and <code>public/addons/customer-web</code>) and its entry in <strong>Super Admin → Add-ons</strong>, including the saved purchase code. Data in the database is kept, so installing the add-on again later resumes where you left off; enter the purchase code again then.</p>
         </section>
         <section id="settings">
             <h2><span aria-hidden="true">⚙️</span> Settings</h2>
@@ -770,7 +770,7 @@
         </section>
         <section id="updating">
             <h2><span aria-hidden="true">🔄</span> Updating</h2>
-            <p>A new version of the add-on is installed the same way as the first one: you upload it in <strong>Add-ons</strong>, then install it, which runs its database updates. Your settings, customers and orders are not touched.</p>
+            <p>A new version of the add-on is installed the same way as the first one: you upload it in <strong>Super Admin → Add-ons</strong>, then install it, which runs its database updates. Your settings, customers and orders are not touched.</p>
 <h3 id="updating-before-you-update">Before you update</h3>
 <ol>
 <li>Read the <a href="#changelog">Changelog</a> of the new version, and check which Biteway version it needs (see below).</li>
@@ -780,7 +780,7 @@
 <h3 id="updating-update-in-the-admin-panel">Update in the admin panel</h3>
 <ol>
 <li>Download the new version from CodeCanyon.</li>
-<li>Open <strong>Add-ons</strong> as Super Admin, choose the downloaded zip under <strong>Upload an add-on</strong>, and press <strong>Upload</strong>. The new files replace the old ones.</li>
+<li>Open <strong>Super Admin → Add-ons</strong>, choose the downloaded zip under <strong>Upload an add-on</strong>, and press <strong>Upload</strong>. The new files replace the old ones.</li>
 <li>The add-on's card shows <strong>Update ready</strong>. Press <strong>Install update</strong> straight away: until you do, the website is not served.</li>
 <li>The card shows <strong>On</strong> with the new <strong>Installed version</strong>.</li>
 <li>In the <code>biteway-backend</code> folder, run <code>npm run build</code> to build the new version's styles and scripts (<a href="#installation-build-its-styles-and-scripts">Installation</a>).</li>
@@ -788,7 +788,7 @@
 <h3 id="updating-update-by-copying-the-folder">Update by copying the folder</h3>
 <ol>
 <li>Replace the contents of <code>biteway-backend/addons/customer-web/</code> with the new <code>main/biteway-customer-web/</code> folder. Keep the folder name <code>customer-web</code>.</li>
-<li>Open <strong>Add-ons</strong> and press <strong>Install update</strong>.</li>
+<li>Open <strong>Super Admin → Add-ons</strong> and press <strong>Install update</strong>.</li>
 <li>Run <code>npm run build</code> in the <code>biteway-backend</code> folder.</li>
 </ol>
 <h3 id="updating-version-rules">Version rules</h3>
@@ -796,7 +796,7 @@
 <li>An add-on can only be updated to a newer version. Uploading an older one is refused with &quot;Version … is older than the installed …&quot;.</li>
 <li>Each version names the oldest Biteway it works with. Version 1.0.0 needs <strong>Biteway 1.0.0 or newer</strong>; the card shows it as <strong>Needs Biteway</strong>.</li>
 <li>If your Biteway is too old, the card shows <strong>Needs a newer Biteway</strong> and the add-on stays off. Update Biteway first under <strong>Updates</strong> in the admin panel, then install the add-on update.</li>
-<li>Updating Biteway itself never changes installed add-ons. After a Biteway update, open <strong>Add-ons</strong> to check that the website still shows <strong>On</strong>.</li>
+<li>Updating Biteway itself never changes installed add-ons. After a Biteway update, open <strong>Super Admin → Add-ons</strong> to check that the website still shows <strong>On</strong>.</li>
 </ul>
 <h3 id="updating-if-something-goes-wrong">If something goes wrong</h3>
 <ul>
@@ -926,7 +926,7 @@
         </section>
         <section id="troubleshooting">
             <h2><span aria-hidden="true">🧰</span> Troubleshooting and FAQ</h2>
-            <p>Look first at the add-on's card under <strong>Add-ons</strong> in the admin panel: its status, and any error shown on it. For server errors, the newest file in <code>storage/logs/</code> of <code>biteway-backend</code> names the real cause.</p>
+            <p>Look first at the add-on's card in <strong>Super Admin → Add-ons</strong>: its status, and any error shown on it. For server errors, the newest file in <code>storage/logs/</code> of <code>biteway-backend</code> names the real cause.</p>
 <h3 id="troubleshooting-installing">Installing</h3>
 <p><strong>&quot;The zip has no addon.json at its top level.&quot;</strong>
 The zip is not the add-on: upload the zip you downloaded from CodeCanyon as it is, or a zip of the <code>main/biteway-customer-web/</code> folder.</p>
@@ -943,11 +943,11 @@ The web server can't write to <code>biteway-backend/addons/</code> or <code>bite
 <h3 id="troubleshooting-the-website">The website</h3>
 <p><strong><code>https://your-domain/</code> still opens the admin panel, or the website's pages show &quot;Not Found&quot;.</strong></p>
 <ul>
-<li>In <strong>Add-ons</strong>, the card must show <strong>On</strong>. If it shows <strong>Not installed</strong>, <strong>Update ready</strong> or <strong>Off</strong>, press <strong>Install and switch on</strong>, <strong>Install update</strong> or <strong>Switch on</strong>.</li>
+<li>In <strong>Super Admin → Add-ons</strong>, the card must show <strong>On</strong>. If it shows <strong>Not installed</strong>, <strong>Update ready</strong> or <strong>Off</strong>, press <strong>Install and switch on</strong>, <strong>Install update</strong> or <strong>Switch on</strong>.</li>
 <li>If you cache routes on the server, run <code>php artisan optimize</code> again after switching the add-on on or off.</li>
 </ul>
 <p><strong>The pages have no styles, or the buttons and menus don't respond.</strong>
-The styles and scripts are not built yet: run <code>npm run build</code> in the <code>biteway-backend</code> folder (<a href="#installation-build-its-styles-and-scripts">Installation</a>); the add-on's card in <strong>Add-ons</strong> says so until you do. If they are built, make <code>public/addons/</code> writable, then press <strong>Switch off</strong> and <strong>Switch on</strong> in <strong>Add-ons</strong> to copy them again. Also check that <code>APP_URL</code> in <code>.env</code> is the address you open the site with.</p>
+The styles and scripts are not built yet: run <code>npm run build</code> in the <code>biteway-backend</code> folder (<a href="#installation-build-its-styles-and-scripts">Installation</a>); the add-on's card in <strong>Super Admin → Add-ons</strong> says so until you do. If they are built, make <code>public/addons/</code> writable, then press <strong>Switch off</strong> and <strong>Switch on</strong> in <strong>Super Admin → Add-ons</strong> to copy them again. Also check that <code>APP_URL</code> in <code>.env</code> is the address you open the site with.</p>
 <p><strong>Customers don't get their sign-in code.</strong>
 The website sends codes through the main item. Check <strong>Settings → Sign-in → Phone codes → Text message provider</strong> and its keys under <strong>Integrations</strong>; the provider's own dashboard shows whether the message was sent and why it failed. With <strong>Firebase Phone Authentication</strong>, the <strong>Firebase project ID</strong> and <strong>Firebase Web API key</strong> under <strong>Integrations → Live updates</strong> must be filled in, and your website's domain must be in Firebase Authentication's authorized domains.</p>
 <p><strong>&quot;Too many attempts. Please wait … seconds and try again.&quot;</strong>
@@ -982,7 +982,7 @@ Browsers only share the location on HTTPS addresses, and only when the visitor a
 <p><strong>Do I need the Customer Website for Biteway to work?</strong>
 No. Without it, customers order in the customer app, and <code>https://your-domain/</code> opens the admin panel.</p>
 <p><strong>Does switching the add-on off or removing it delete anything?</strong>
-No. Customers, orders and wallets belong to the main item and stay. Removing deletes only the add-on's files and its entry in <strong>Add-ons</strong>.</p>
+No. Customers, orders and wallets belong to the main item and stay. Removing deletes only the add-on's files and its entry in <strong>Super Admin → Add-ons</strong>.</p>
 <p><strong>Where is the website served?</strong>
 At the root of your Biteway address (<code>APP_URL</code>), next to the admin panel at <code>/admin</code>. Restaurants can also each have their own address for their storefront (<a href="#settings-restaurants-own-web-addresses">Settings</a>).</p>
 <p><strong>Can I change the website's texts?</strong>
@@ -997,8 +997,8 @@ The add-on has no setting for it. Optional scripts must only run after a visitor
 <h3 id="support-what-to-send">What to send</h3>
 <p>So we can help quickly, include:</p>
 <ul>
-<li>The add-on's version and the Biteway version: <strong>Add-ons</strong> in the admin panel shows the add-on's <strong>Installed version</strong>, and the admin panel shows the Biteway version at the bottom of the menu and on the <strong>Health</strong> page.</li>
-<li>The add-on's status on its card in <strong>Add-ons</strong>, and any error shown there.</li>
+<li>The add-on's version and the Biteway version: <strong>Super Admin → Add-ons</strong> shows the add-on's <strong>Installed version</strong>, and the admin panel shows the Biteway version at the bottom of the menu and on the <strong>Health</strong> page.</li>
+<li>The add-on's status on its card in <strong>Super Admin → Add-ons</strong>, and any error shown there.</li>
 <li>What you did, what you expected, and what happened instead, with screenshots and the address of the page.</li>
 <li>For a server problem: the error from the newest file in <code>storage/logs/</code> of <code>biteway-backend</code>.</li>
 <li>For a problem in the browser: the browser and its version, and any error in the browser's console.</li>

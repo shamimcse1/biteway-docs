@@ -322,16 +322,16 @@
 <p>The add-on ships its sources only. After installing it, and after each update, build its styles and scripts once. In the <code>biteway-backend</code> folder on your server, run:</p>
 <pre><code class="language-bash">npm run build
 </code></pre>
-<p>It is the same command you ran when you installed Biteway (it needs Node.js 20.19+ or 22.12+). It builds the admin panel and every installed add-on, and the new files are published on the next page load. Until you run it, the add-on's card in <strong>Add-ons</strong> says &quot;Its styles and scripts are not built yet&quot;, and the portal's pages load without their styles.</p>
+<p>It is the same command you ran when you installed Biteway (it needs Node.js 20.19+ or 22.12+). It builds the admin panel and every installed add-on, and the new files are published on the next page load. Until you run it, the add-on's card in <strong>Super Admin → Add-ons</strong> says &quot;Its styles and scripts are not built yet&quot;, and the portal's pages load without their styles.</p>
 <p><strong>No terminal on your host?</strong> Build on your own computer: copy the add-on folder into the <code>addons/</code> folder of a local copy of <code>biteway-backend</code>, named <code>restaurant-portal</code>, run <code>npm ci &amp;&amp; npm run build</code> there, then upload the add-on folder, including its new <code>public/build/</code> folder, to <code>biteway-backend/addons/</code> on the server.</p>
 <h3 id="installation-copying-the-folder-instead">Copying the folder instead</h3>
 <ol>
 <li>Copy <code>main/biteway-restaurant-portal/</code> into the <code>addons/</code> folder of your Biteway backend, so that it is <code>biteway-backend/addons/biteway-restaurant-portal/</code>.</li>
-<li><strong>Rename</strong> it to <code>restaurant-portal</code>. The folder must be named after the add-on (<code>biteway-backend/addons/restaurant-portal/addon.json</code>), or Add-ons shows it as <strong>Can't be used</strong>.</li>
+<li><strong>Rename</strong> it to <code>restaurant-portal</code>. The folder must be named after the add-on (<code>biteway-backend/addons/restaurant-portal/addon.json</code>), or <strong>Super Admin → Add-ons</strong> shows it as <strong>Can't be used</strong>.</li>
 <li>Open <strong>Super Admin → Add-ons</strong> and click <strong>Install and switch on</strong>.</li>
 </ol>
 <h3 id="installation-purchase-code">Purchase code</h3>
-<p>Once the add-on is installed, its card in <strong>Add-ons</strong> has a <strong>Purchase code</strong> field. Enter the code from your Envato downloads page and click <strong>Save code</strong>. It is saved encrypted. The add-on works without it, and nothing is checked yet: the field is ready for license checks.</p>
+<p>Once the add-on is installed, its card in <strong>Super Admin → Add-ons</strong> has a <strong>Purchase code</strong> field. Enter the code from your Envato downloads page and click <strong>Save code</strong>. It is saved encrypted. The add-on works without it, and nothing is checked yet: the field is ready for license checks.</p>
 <h3 id="installation-open-the-portal">Open the portal</h3>
 <p>The portal is at:</p>
 <pre><code>https://your-domain/portal
@@ -823,9 +823,9 @@ The folder is not named <code>restaurant-portal</code>, or <code>addon.json</cod
 <p><strong>The card says &quot;Needs a newer Biteway&quot;.</strong>
 Your Biteway is older than the add-on needs. Update Biteway, then click <strong>Install and switch on</strong> (or <strong>Install update</strong>).</p>
 <p><strong><code>/portal</code> does not open (&quot;Not Found&quot;).</strong>
-The add-on is not running. In <strong>Add-ons</strong> its status must be <strong>On</strong>. <strong>Not installed</strong>, <strong>Off</strong> or <strong>Update ready</strong> each have a button to fix it.</p>
+The add-on is not running. In <strong>Super Admin → Add-ons</strong> its status must be <strong>On</strong>. <strong>Not installed</strong>, <strong>Off</strong> or <strong>Update ready</strong> each have a button to fix it.</p>
 <p><strong>The portal opens without styles.</strong>
-Its styles and scripts are not built yet: run <code>npm run build</code> in the <code>biteway-backend</code> folder (<a href="#installation-build-its-styles-and-scripts">Installation</a>); the add-on's card in <strong>Add-ons</strong> says so until you do. If they are built and the pages still have no styles, make sure the web server can write to <code>public/addons/</code>, then click <strong>Switch off</strong> and <strong>Switch on</strong> to copy them again.</p>
+Its styles and scripts are not built yet: run <code>npm run build</code> in the <code>biteway-backend</code> folder (<a href="#installation-build-its-styles-and-scripts">Installation</a>); the add-on's card in <strong>Super Admin → Add-ons</strong> says so until you do. If they are built and the pages still have no styles, make sure the web server can write to <code>public/addons/</code>, then click <strong>Switch off</strong> and <strong>Switch on</strong> to copy them again.</p>
 <h3 id="troubleshooting-signing-in">Signing in</h3>
 <p><strong>&quot;These details don't match our records.&quot;</strong>
 The email or password is wrong. Staff use the same email and password as in the restaurant app. <strong>Forgot password?</strong> emails a reset link.</p>

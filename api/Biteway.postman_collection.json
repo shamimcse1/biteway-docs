@@ -4148,7 +4148,7 @@
                     ]
                 },
                 {
-                    "name": "Favourites",
+                    "name": "Favorites",
                     "item": [
                         {
                             "name": "customer.favourites.index",

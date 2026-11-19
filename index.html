@@ -304,7 +304,7 @@
                     <li><a href="#api-profile">Profile</a></li>
                     <li><a href="#api-customer-reservations">Customer › Reservations</a></li>
                     <li><a href="#api-customer-addresses">Customer › Addresses</a></li>
-                    <li><a href="#api-customer-favourites">Customer › Favourites</a></li>
+                    <li><a href="#api-customer-favorites">Customer › Favorites</a></li>
                     <li><a href="#api-customer-recently-viewed">Customer › Recently viewed</a></li>
                     <li><a href="#api-customer-preferences">Customer › Preferences</a></li>
                     <li><a href="#api-customer-carts">Customer › Carts</a></li>
@@ -471,11 +471,15 @@
 </tr>
 <tr>
 <td>Apps</td>
-<td>Flutter 3.44 or newer, Android Studio, and Xcode on a Mac for iOS</td>
+<td>Flutter 3.44.4 or newer (Dart 3.12.2), Android Studio, and Xcode on a Mac for iOS</td>
 </tr>
 <tr>
 <td>Phones</td>
 <td>Android 7.0 (API 24) or newer, iOS 15.0 or newer</td>
+</tr>
+<tr>
+<td>Sign-in codes</td>
+<td>Twilio, BulkSMSBD or Firebase Phone Authentication. A live site (<code>APP_ENV=production</code>, which the installer sets) needs one: customers and riders sign in with a code sent to their phone, and the test provider that only writes codes to the server log is refused there</td>
 </tr>
 </tbody>
 </table>
@@ -486,7 +490,7 @@
 <ol>
 <li><strong>Install the backend</strong> on your server with the browser installer (<a href="#installation">Installation</a>).</li>
 <li><strong>Start the background tasks</strong>: the cron job and the queue worker (<a href="#deployment-cron-job-and-queue-worker">Deployment</a>).</li>
-<li><strong>Set up the platform</strong> in the admin panel: your brand, areas and delivery zones, fees and commission, and the services you use (text messages, payments, maps, Firebase).</li>
+<li><strong>Set up the platform</strong> in the admin panel: your brand, areas and delivery zones, fees and commission, and the services you use (payments, maps, Firebase, and the text message provider for sign-in codes, which a live site needs before anyone can sign in to the apps).</li>
 <li><strong>Build the apps</strong> with your name, logo and backend address, and publish them on Google Play and the App Store.</li>
 <li><strong>Go live</strong> after the checklist in <a href="#deployment-going-live">Deployment</a>.</li>
 </ol>
@@ -501,6 +505,7 @@
 <li>An <strong>empty</strong> MySQL or MariaDB database with the <code>utf8mb4</code> character set, and a database user that can use it.</li>
 <li>A domain or subdomain for the backend, for example <code>api.your-domain.com</code>, with <strong>HTTPS</strong>. The apps' release builds only connect to an <code>https://</code> address, and the admin panel's sign-in cookie is only sent over HTTPS.</li>
 <li>Composer 2 and Node.js 20.19+ or 22.12+ with npm, either on the server or on your own computer.</li>
+<li>An account with a sign-in code provider: <a href="https://www.twilio.com">Twilio</a>, BulkSMSBD or <a href="https://firebase.google.com/docs/auth">Firebase Phone Authentication</a>. Customers and riders sign in with a code sent to their phone, and on a live site (<code>APP_ENV=production</code>, which the installer sets) the test provider that only writes codes to the server log is refused.</li>
 </ul>
 <blockquote>
 <p><strong>Testing without HTTPS?</strong> On your own computer (<code>localhost</code> or <code>127.0.0.1</code>) everything works over <code>http://</code>. On any other <code>http://</code> address, set <code>SESSION_SECURE_COOKIE=false</code> in <code>.env</code> after installing, or you will not be able to sign in to the admin panel. Set it back to <code>true</code> once the site has HTTPS.</p>
@@ -541,7 +546,7 @@ chmod -R 775 storage bootstrap/cache
 <li>Add the <strong>cron job</strong> and start the <strong>queue worker</strong> shown on the last page. Without them, orders are not dispatched to riders and notifications are not sent. <a href="#deployment-cron-job-and-queue-worker">Deployment</a> explains both.</li>
 <li>Sign in at <code>https://your-domain/admin</code> with the Super Admin email and password you chose.</li>
 <li>Open <strong>Health</strong> in the admin panel. It shows whether the scheduler and the queue worker are running.</li>
-<li>Open <strong>Setup assistant</strong> (under <strong>Super Admin</strong>, or from the dashboard's go-live checklist). It takes you through branding, currency, maps, sign-in codes, push notifications, payments and email one step at a time, and tests each service live (<a href="#admin-panel-setup-assistant">Admin panel</a>).</li>
+<li>Open <strong>Setup assistant</strong> (under <strong>Super Admin</strong>, or from the dashboard's go-live checklist). It takes you through branding, currency, maps, sign-in codes, push notifications, payments and email one step at a time, and tests each service live (<a href="#admin-panel-setup-assistant">Admin panel</a>). Set up the sign-in codes step first: until a provider is chosen, nobody can sign in to the customer and rider apps on a live site.</li>
 </ol>
 <figure><img src="assets/admin/setup-assistant.jpg" alt="The setup assistant: each step shows Done, Needs attention or Optional, with a link to the page that fixes it" loading="lazy" /><figcaption>Figure 3: The setup assistant: each step shows Done, Needs attention or Optional, with a link to the page that fixes it</figcaption></figure>
 <h3 id="installation-terminal-install">Terminal install</h3>
@@ -936,7 +941,7 @@ MAIL_FROM_NAME=&quot;Your platform name&quot;
 <tbody>
 <tr>
 <td>Text messages: <a href="https://www.twilio.com">Twilio</a>, BulkSMSBD or <a href="https://firebase.google.com/docs/auth">Firebase Phone Authentication</a></td>
-<td>Phone sign-in codes</td>
+<td>Phone sign-in codes. Required on a live site: the test provider that only writes codes to the log is refused when <code>APP_ENV=production</code></td>
 <td>Choose the provider under <strong>Settings</strong>, then <strong>Sign-in</strong>. Enter its keys under <strong>Integrations</strong>; for Firebase Phone Authentication, enter the <strong>Firebase project ID</strong> (and, for the Customer Website, the <strong>Firebase Web API key</strong>) under <strong>Integrations</strong>, then <strong>Live updates</strong>.</td>
 </tr>
 <tr>
@@ -1344,7 +1349,7 @@ php artisan optimize
 <li><strong>Integrations:</strong> text messages (Twilio, BulkSMSBD), calls between customer and rider, live updates (polling, Firebase or a Pusher-compatible server, with a <strong>Test connection</strong> button once its keys are in <code>.env</code>), search (MySQL full-text, simple matching, or Meilisearch on a VPS, with a status line and a <strong>Reindex now</strong> button once Meilisearch is chosen and its host is set), maps, app links (so links to your site open in the apps), CAPTCHA, and Google and Apple sign-in.</li>
 <li><strong>Firebase:</strong> push notifications and live updates.</li>
 </ul>
-<p><a href="#deployment-third-party-services">Deployment</a> lists what each service is for. Then choose how sign-in codes are sent under <strong>Settings → Sign-in</strong>, where you also switch on Google, Apple and customer email sign-in, carts before signing in (<strong>Guests</strong>), and a CAPTCHA on browser sign-in (<strong>Security check</strong>).</p>
+<p><a href="#deployment-third-party-services">Deployment</a> lists what each service is for. Then choose how sign-in codes are sent under <strong>Settings → Sign-in</strong>. A live site needs Twilio, BulkSMSBD or Firebase Phone Authentication here: <strong>Server log only</strong> is for test copies and is not offered in production. There you also switch on Google, Apple and customer email sign-in, carts before signing in (<strong>Guests</strong>), and a CAPTCHA on browser sign-in (<strong>Security check</strong>).</p>
 <h4 id="admin-panel-6-restaurants-and-menus">6. Restaurants and menus</h4>
 <p>Add restaurants under <strong>Restaurants → Add restaurant</strong>: the profile, an owner account (the owner signs in to the restaurant app with its email and password) and the first branch. A new restaurant is <strong>pending</strong> until you approve it on its page; only then do customers see it.</p>
 <p>With the Customer Website add-on, restaurants can also apply through its &quot;Become a partner&quot; form. Their requests appear under <strong>Applications</strong>; approving one does not create the restaurant, so add it as above. <strong>Settings → Partner sign-up</strong> switches the restaurant and rider forms on or off. With the Restaurant Portal add-on, the owner of a pending restaurant can complete its setup in the portal before you approve it.</p>
@@ -1863,7 +1868,7 @@ php artisan optimize
 </table>
 <h3 id="mobile-apps-what-you-need">What you need</h3>
 <ul>
-<li><a href="https://docs.flutter.dev/get-started/install">Flutter</a> 3.44 or newer (it includes Dart 3.12).</li>
+<li><a href="https://docs.flutter.dev/get-started/install">Flutter</a> 3.44.4 or newer (Dart 3.12.2).</li>
 <li><strong>Android:</strong> <a href="https://developer.android.com/studio">Android Studio</a> with the Android SDK platform 36 and JDK 17. In Android Studio, open <strong>Settings → Plugins</strong> and install the <strong>Flutter</strong> plugin (it adds the <strong>Dart</strong> plugin too).</li>
 <li><strong>iOS:</strong> a Mac with <a href="https://developer.apple.com/xcode/">Xcode</a> and <a href="https://cocoapods.org">CocoaPods</a>.</li>
 <li>Your backend running with HTTPS (<a href="#installation">Installation</a>).</li>
@@ -1925,7 +1930,7 @@ flutter build ios --config-only --dart-define=API_BASE_URL=https://api.your-doma
 </tr>
 </tbody>
 </table>
-<p>On a test copy without an SMS provider, the code is written to <code>storage/logs/laravel.log</code> on the server instead of being sent. Restaurant staff sign in to the restaurant app with the email and password their restaurant gave them.</p>
+<p>On a test copy (<code>APP_ENV=local</code>) without an SMS provider, the code is written to <code>storage/logs/laravel.log</code> on the server instead of being sent. A live site (<code>APP_ENV=production</code>) refuses this, so choose Twilio, BulkSMSBD or Firebase Phone Authentication under <strong>Settings → Sign-in</strong> before going live (<a href="#deployment-third-party-services">Deployment</a>). Restaurant staff sign in to the restaurant app with the email and password their restaurant gave them.</p>
 <figure><img src="assets/apps/ios-customer-home.jpg" alt="The customer app after signing in with the demo customer" loading="lazy" /><figcaption>Figure 17: The customer app after signing in with the demo customer</figcaption></figure>
 <p><strong>Testing against a backend on your computer:</strong> without <code>API_BASE_URL</code>, debug builds connect to <code>http://127.0.0.1:8000</code> on the iOS simulator and <code>http://10.0.2.2:8000</code> on the Android emulator (both mean &quot;this computer&quot;). On a real Android phone connected by USB, run <code>adb reverse tcp:8000 tcp:8000</code> and pass <code>--dart-define=API_BASE_URL=http://127.0.0.1:8000</code>. Release builds only accept an <code>https://</code> address and refuse to start without one.</p>
 <h3 id="mobile-apps-make-the-apps-yours">Make the apps yours</h3>
@@ -3314,7 +3319,7 @@ the branch asks a deposit; then <code>checkout_url</code> is the gateway's page 
     </div>
     <p>Deletes an address (orders keep their copy).</p>
 </div>
-<h3 id="api-customer-favourites">Customer › Favourites</h3>
+<h3 id="api-customer-favorites">Customer › Favorites</h3>
 <div class="endpoint">
     <div class="endpoint-head">
         <span class="method method-get">GET</span>
