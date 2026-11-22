@@ -602,6 +602,8 @@ php artisan storage:link
 <li>Set the domain's document root to <code>biteway-backend/public</code> (in cPanel: <strong>Domains</strong>, then <strong>Manage</strong>).</li>
 <li>Choose PHP 8.4 or newer under <strong>Select PHP Version</strong> or <strong>MultiPHP Manager</strong>, and turn on the extensions the installer lists.</li>
 <li>Add the cron jobs below under <strong>Cron Jobs</strong>. Use the full path to PHP that your host shows (often <code>/usr/local/bin/php</code>).</li>
+<li>Make sure <code>public/storage</code> exists, so uploaded photos show. Many shared hosts block PHP's <code>symlink()</code>, so <code>php artisan storage:link</code> can fail there. In that case run <code>ln -s ../storage/app/public public/storage</code> from the <code>biteway-backend</code> folder in cPanel <strong>Terminal</strong>.</li>
+<li>Enter the site URL in the installer in full, with <code>https://</code> (for example <code>https://api.your-domain.com</code>).</li>
 </ol>
 <h3 id="deployment-cron-job-and-queue-worker">Cron job and queue worker</h3>
 <p>Biteway needs <strong>both</strong>. You can check them at any time under <strong>Health</strong> in the admin panel.</p>
@@ -5232,7 +5234,7 @@ The configuration is cached. Run <code>php artisan optimize</code> after every c
 <p><strong><code>/install</code> shows &quot;Not Found&quot;.</strong>
 Biteway is already installed: the installer switches itself off. To install again from scratch, use an empty database and remove <code>APP_KEY</code> from <code>.env</code>.</p>
 <p><strong>Uploaded photos don't show.</strong>
-Run <code>php artisan storage:link</code>, and check that <code>APP_URL</code> in <code>.env</code> is the address you open the site with.</p>
+Run <code>php artisan storage:link</code>, and check that <code>APP_URL</code> in <code>.env</code> is the address you open the site with. If it stops with &quot;Call to undefined function … exec()&quot;, your host blocks PHP's <code>symlink()</code>: in the <code>biteway-backend</code> folder, run <code>ln -s ../storage/app/public public/storage</code> in the host's terminal (SSH or cPanel <strong>Terminal</strong>), or ask your host to create <code>public/storage</code>.</p>
 <p><strong>Orders are not offered to riders, and notifications are not sent.</strong>
 The cron job or the queue worker is not running. <strong>Health</strong> shows which; <a href="#deployment-cron-job-and-queue-worker">Deployment</a> shows how to start them.</p>
 <p><strong>Health says the queue worker is late (&quot;Last job run 12 minutes ago&quot; or &quot;No job run yet&quot;).</strong>
