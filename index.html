@@ -135,6 +135,9 @@
                     </button>
                 </div>
                 <ul id="nav-introduction">
+                    <li><a href="#introduction-quick-start-5-steps">Quick start (5 steps)</a></li>
+                    <li><a href="#introduction-what-one-installation-covers">What one installation covers</a></li>
+                    <li><a href="#introduction-how-it-fits-together">How it fits together</a></li>
                     <li><a href="#introduction-live-demo">Live demo</a></li>
                     <li><a href="#introduction-whats-in-the-package">What&#039;s in the package</a></li>
                     <li><a href="#introduction-requirements">Requirements</a></li>
@@ -277,6 +280,21 @@
             </li>
             <li class="nav-group">
                 <div class="nav-row">
+                    <a href="#api-examples" class="nav-section"><span class="nav-icon" aria-hidden="true">🧪</span>API examples</a>
+                    <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-api-examples" aria-label="API examples topics">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
+                    </button>
+                </div>
+                <ul id="nav-api-examples">
+                    <li><a href="#api-examples-basics">Basics</a></li>
+                    <li><a href="#api-examples-app-config">App config</a></li>
+                    <li><a href="#api-examples-restaurant-list">Restaurant list</a></li>
+                    <li><a href="#api-examples-placing-an-order">Placing an order</a></li>
+                    <li><a href="#api-examples-cancelling-an-order">Cancelling an order</a></li>
+                </ul>
+            </li>
+            <li class="nav-group">
+                <div class="nav-row">
                     <a href="#api" class="nav-section"><span class="nav-icon" aria-hidden="true">🔌</span>API reference</a>
                     <button type="button" class="nav-expand" aria-expanded="true" aria-controls="nav-api" aria-label="API reference topics">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 6 6 6-6 6"/></svg>
@@ -397,7 +415,7 @@
                     </button>
                 </div>
                 <ul id="nav-changelog">
-                    <li><a href="#changelog-100-first-release-17-november-2026">1.0.0: first release (17 November 2026)</a></li>
+                    <li><a href="#changelog-100-first-release-26-november-2026">1.0.0: first release (26 November 2026)</a></li>
                 </ul>
             </li>
         </ul>
@@ -422,6 +440,25 @@
 <li><strong>Restaurant app</strong> (Flutter, Android and iOS): restaurants take orders, run a kitchen display, manage tables and bookings, and use a quick POS.</li>
 </ul>
 <p>The <strong>Customer Website</strong> and the <strong>Restaurant Portal</strong> are add-ons, sold as separate items with their own documentation.</p>
+<h3 id="introduction-quick-start-5-steps">Quick start (5 steps)</h3>
+<p>The short path from the download to a working site. Each step links to its detailed section.</p>
+<ol>
+<li><strong>Extract the download.</strong> Unzip the file from CodeCanyon on your computer. The backend is in <code>main/biteway-backend</code> (<a href="#introduction-whats-in-the-package">What's in the package</a>).</li>
+<li><strong>Install the packages.</strong> In <code>main/biteway-backend</code>, run <code>composer install --no-dev --optimize-autoloader</code>, then <code>npm ci &amp;&amp; npm run build</code>. If your host has no terminal, run them on your own computer (<a href="#installation-1-install-the-packages">Installation, step 1</a>).</li>
+<li><strong>Upload and open your site.</strong> Upload the <code>biteway-backend</code> folder, point the domain's web root at <code>biteway-backend/public</code>, and open <code>https://YOUR-DOMAIN</code>. The installer starts on its own (<a href="#installation-2-upload-and-point-the-domain-at-public">Installation, step 2</a>).</li>
+<li><strong>Fill in the installer.</strong> It checks the server requirements, then asks for the database, your admin account and the currency (<a href="#installation-3-run-the-browser-installer">Installation, step 3</a>).</li>
+<li><strong>Finish the setup.</strong> Add the two cron jobs, one for the scheduler and one for the queue worker (<a href="#deployment-cron-job-and-queue-worker">Cron job and queue worker</a>), sign in at <code>https://YOUR-DOMAIN/admin</code>, and follow the setup assistant. Choose the sign-in code provider first: on a live site nobody can sign in to the apps until it is set up (<a href="#admin-panel-setup-assistant">Setup assistant</a>).</li>
+</ol>
+<p>To see Biteway working first, try the <a href="#introduction-live-demo">live demo</a>.</p>
+<h3 id="introduction-what-one-installation-covers">What one installation covers</h3>
+<p>One installation runs <strong>one brand</strong>: your name, logo, colors and apps, with any number of restaurants and branches. Biteway is a multi-restaurant marketplace under a single brand, not a multi-tenant SaaS for several independent brands. Each separate brand needs its own installation, its own database and its own app builds.</p>
+<h3 id="introduction-how-it-fits-together">How it fits together</h3>
+<figure><img src="assets/architecture/architecture.jpg" alt="How Biteway fits together: the Laravel backend in the middle, the three apps connected to its REST API, and the optional outside services connected to the backend" loading="lazy" /><figcaption>Figure 1: How Biteway fits together: the Laravel backend in the middle, the three apps connected to its REST API, and the optional outside services connected to the backend</figcaption></figure>
+<ul>
+<li><strong>The Laravel backend</strong> is in the middle. It holds the admin panel, the REST API, the installer and the database, and runs the cron jobs and the queue worker that do the background work.</li>
+<li><strong>The three apps</strong> (customer, rider and restaurant) get all their data through the backend's REST API. They never connect to the database, and the services' secret keys stay on the backend.</li>
+<li><strong>The optional outside services</strong> connect to the backend: payments, payouts, text messages (SMS), email, maps, Firebase, live updates and file storage. Each one needs its own account and keys (<a href="#deployment-third-party-services-accounts-keys-and-costs">Third-party services: accounts, keys and costs</a>).</li>
+</ul>
 <h3 id="introduction-live-demo">Live demo</h3>
 <p>Try Biteway before you set it up. The demo data resets every hour, and deleting, settings, keys, admins and payouts are switched off there.</p>
 <table>
@@ -520,7 +557,7 @@
 </tbody>
 </table>
 <blockquote>
-<p><strong>Costs of third-party services:</strong> these services run on your own accounts, and you are responsible for any costs they charge. This includes payment gateway and payout provider fees (Stripe, PayPal, SSLCOMMERZ, bKash, Stripe Connect, PayPal Payouts, RazorpayX, Flutterwave), text message and call charges (Twilio, BulkSMSBD), your Firebase project (Cloud Messaging and Phone Authentication beyond Google's free tier), Google Maps Platform usage if you choose Google Maps, your SMTP or email provider, your server hosting and domain, and the Google Play and Apple Developer accounts you need to publish the apps. The Biteway price covers the source code only.</p>
+<p><strong>Costs of third-party services:</strong> every outside service Biteway connects to (payments, payouts, text messages, Firebase, maps, email, storage, hosting and the app stores) needs its own account and keys, and you pay any fees it charges. The Biteway price covers the source code only. <a href="#deployment-third-party-services-accounts-keys-and-costs">Third-party services: accounts, keys and costs</a> lists each service, whether you need it, the keys it asks for and how it charges.</p>
 </blockquote>
 <h3 id="introduction-setup-order">Setup order</h3>
 <ol>
@@ -559,14 +596,18 @@ npm ci &amp;&amp; npm run build
 <li>Point your domain's <strong>web root</strong> (document root) at <code>biteway-backend/public</code>, never at <code>biteway-backend</code> itself. Everything outside <code>public/</code> must stay out of reach of the web.</li>
 <li>Make <code>storage/</code> and <code>bootstrap/cache/</code> writable by the web server. On most Linux servers:</li>
 </ol>
-<pre><code class="language-bash">cd /var/www/biteway-backend
-chown -R www-data:www-data storage bootstrap/cache
+<pre><code class="language-bash">cd /PATH/TO/biteway-backend
+chown -R WEB_SERVER_USER:WEB_SERVER_USER storage bootstrap/cache
 chmod -R 775 storage bootstrap/cache
 </code></pre>
-<p>Use your web server's user instead of <code>www-data</code> if it differs (for example <code>nginx</code> or your cPanel account).</p>
+<p><strong>Replace before you copy:</strong></p>
+<ul>
+<li><code>/PATH/TO/biteway-backend</code>: the real folder. Run <code>pwd -P</code> inside <code>biteway-backend</code> and use the path it prints.</li>
+<li><code>WEB_SERVER_USER</code>: the user your web server and PHP run as, usually <code>www-data</code> on Ubuntu and Debian, <code>nginx</code> or <code>apache</code> on other systems, and your cPanel account name on shared hosting. To see it, run <code>ps aux | grep -E 'php-fpm|nginx|apache'</code> and read the first column of the lines that are not <code>root</code>.</li>
+</ul>
 <h3 id="installation-3-run-the-browser-installer">3. Run the browser installer</h3>
 <p>Open <code>https://your-domain/install</code>. Every other page leads there until Biteway is installed.</p>
-<figure><img src="assets/installation/installer-form.png" alt="The browser installer: server checks, then the platform, database, Super Admin and currency" loading="lazy" /><figcaption>Figure 1: The browser installer: server checks, then the platform, database, Super Admin and currency</figcaption></figure>
+<figure><img src="assets/installation/installer-form.png" alt="The browser installer: server checks, then the platform, database, Super Admin and currency" loading="lazy" /><figcaption>Figure 2: The browser installer: server checks, then the platform, database, Super Admin and currency</figcaption></figure>
 <ol>
 <li><strong>Server requirements:</strong> every line must show a green check. If one fails, fix it (or ask your host), then reload the page.</li>
 <li><strong>Platform:</strong> your platform's name, and the URL the backend is reached at, for example <code>https://api.your-domain.com</code>.</li>
@@ -576,7 +617,7 @@ chmod -R 775 storage bootstrap/cache
 <li>Press <strong>Install</strong>. It creates the database tables, the Super Admin and the starting settings, and writes your <code>.env</code> file. This takes up to a minute.</li>
 </ol>
 <p>When it finishes, the installer switches itself off: <code>/install</code> no longer opens.</p>
-<figure><img src="assets/installation/installer-done.png" alt="After installing: the admin panel link, the cron job and the queue worker command" loading="lazy" /><figcaption>Figure 2: After installing: the admin panel link, the cron job and the queue worker command</figcaption></figure>
+<figure><img src="assets/installation/installer-done.png" alt="After installing: the admin panel link, the cron job and the queue worker command" loading="lazy" /><figcaption>Figure 3: After installing: the admin panel link, the cron job and the queue worker command</figcaption></figure>
 <h3 id="installation-4-after-installing">4. After installing</h3>
 <ol>
 <li>Add the <strong>cron job</strong> and start the <strong>queue worker</strong> shown on the last page. Without them, orders are not dispatched to riders and notifications are not sent. <a href="#deployment-cron-job-and-queue-worker">Deployment</a> explains both.</li>
@@ -584,14 +625,15 @@ chmod -R 775 storage bootstrap/cache
 <li>Open <strong>Health</strong> in the admin panel. It shows whether the scheduler and the queue worker are running.</li>
 <li>Open <strong>Setup assistant</strong> (under <strong>Super Admin</strong>, or from the dashboard's go-live checklist). It takes you through branding, currency, maps, sign-in codes, push notifications, payments and email one step at a time, and tests each service live (<a href="#admin-panel-setup-assistant">Admin panel</a>). Set up the sign-in codes step first: until a provider is chosen, nobody can sign in to the customer and rider apps on a live site.</li>
 </ol>
-<figure><img src="assets/admin/setup-assistant.jpg" alt="The setup assistant: each step shows Done, Needs attention or Optional, with a link to the page that fixes it" loading="lazy" /><figcaption>Figure 3: The setup assistant: each step shows Done, Needs attention or Optional, with a link to the page that fixes it</figcaption></figure>
+<figure><img src="assets/admin/setup-assistant.jpg" alt="The setup assistant: each step shows Done, Needs attention or Optional, with a link to the page that fixes it" loading="lazy" /><figcaption>Figure 4: The setup assistant: each step shows Done, Needs attention or Optional, with a link to the page that fixes it</figcaption></figure>
 <h3 id="installation-terminal-install">Terminal install</h3>
 <p>On a server with SSH, you can install without the browser:</p>
-<pre><code class="language-bash">cd /var/www/biteway-backend
+<pre><code class="language-bash">cd /PATH/TO/biteway-backend
 composer install --no-dev --optimize-autoloader
 npm ci &amp;&amp; npm run build
 cp .env.example .env
 </code></pre>
+<p>Replace <code>/PATH/TO/biteway-backend</code> with the folder you uploaded (run <code>pwd -P</code> inside it). If <code>php -v</code> shows a version older than 8.4, use the full path to PHP 8.4 instead of <code>php</code> in the commands below (<a href="#deployment-cron-job-and-queue-worker">Cron job and queue worker</a>).</p>
 <p>Edit <code>.env</code>: set <code>APP_URL</code>, the <code>DB_</code> lines, <code>ADMIN_NAME</code>, <code>ADMIN_EMAIL</code> and <code>BITEWAY_CURRENCY</code>. Then run:</p>
 <pre><code class="language-bash">php artisan key:generate
 php artisan migrate --seed --force
@@ -607,11 +649,11 @@ php artisan storage:link
 <h3 id="deployment-web-server">Web server</h3>
 <p>The domain's web root must be <code>biteway-backend/public</code>. A <strong>VPS</strong> (for example Ubuntu with Nginx or Apache) is recommended: Biteway runs a background worker all the time, which shared hosting often does not allow.</p>
 <h4 id="deployment-nginx">Nginx</h4>
-<p>A typical site file (<code>/etc/nginx/sites-available/biteway</code>). Change the domain, the folder and the PHP-FPM socket to match your server:</p>
+<p>A typical site file (<code>/etc/nginx/sites-available/biteway</code>):</p>
 <pre><code class="language-nginx">server {
     listen 80;
     server_name api.your-domain.com;
-    root /var/www/biteway-backend/public;
+    root /PATH/TO/biteway-backend/public;
     index index.php;
     client_max_body_size 20M;
 
@@ -630,36 +672,52 @@ php artisan storage:link
     }
 }
 </code></pre>
+<p><strong>Replace before you copy:</strong></p>
+<ul>
+<li><code>api.your-domain.com</code>: your backend's domain.</li>
+<li><code>/PATH/TO/biteway-backend</code>: the real folder. Run <code>pwd -P</code> inside <code>biteway-backend</code> and use the path it prints.</li>
+<li><code>php8.4-fpm.sock</code>: your PHP 8.4 FPM socket. List them with <code>ls /run/php/</code>.</li>
+</ul>
 <p>Then add HTTPS, for example with Let's Encrypt: <code>sudo certbot --nginx -d api.your-domain.com</code>.</p>
 <h4 id="deployment-apache">Apache</h4>
-<p><code>public/.htaccess</code> is included. Enable <code>mod_rewrite</code> and allow the file to work (<code>AllowOverride All</code> for the <code>public</code> folder), then point the virtual host's <code>DocumentRoot</code> at <code>/var/www/biteway-backend/public</code>.</p>
+<p><code>public/.htaccess</code> is included. Enable <code>mod_rewrite</code> and allow the file to work (<code>AllowOverride All</code> for the <code>public</code> folder), then point the virtual host's <code>DocumentRoot</code> at <code>/PATH/TO/biteway-backend/public</code>. Replace <code>/PATH/TO/biteway-backend</code> with the real folder: run <code>pwd -P</code> inside <code>biteway-backend</code> and use the path it prints.</p>
 <h4 id="deployment-shared-hosting-cpanel">Shared hosting (cPanel)</h4>
 <ol>
 <li>Set the domain's document root to <code>biteway-backend/public</code> (in cPanel: <strong>Domains</strong>, then <strong>Manage</strong>).</li>
 <li>Choose PHP 8.4 or newer under <strong>Select PHP Version</strong> or <strong>MultiPHP Manager</strong>, and turn on the extensions the installer lists.</li>
-<li>Add the cron jobs below under <strong>Cron Jobs</strong>. Use the full path to PHP that your host shows (often <code>/usr/local/bin/php</code>).</li>
+<li>Add the two cron jobs under <strong>Cron Jobs</strong> (<a href="#deployment-on-shared-hosting-cpanel">On shared hosting</a>). Use the full path to PHP 8.4: the plain <code>php</code> command in a cron job is often an older version.</li>
 <li>Make sure <code>public/storage</code> exists, so uploaded photos show. Many shared hosts block PHP's <code>symlink()</code>, so <code>php artisan storage:link</code> can fail there. In that case run <code>ln -s ../storage/app/public public/storage</code> from the <code>biteway-backend</code> folder in cPanel <strong>Terminal</strong>.</li>
 <li>Enter the site URL in the installer in full, with <code>https://</code> (for example <code>https://api.your-domain.com</code>).</li>
 </ol>
 <h3 id="deployment-cron-job-and-queue-worker">Cron job and queue worker</h3>
 <p>Biteway needs <strong>both</strong>. You can check them at any time under <strong>Health</strong> in the admin panel.</p>
 <p><strong>The cron job</strong> runs the scheduler every minute. The scheduler dispatches orders to riders, expires unpaid orders, closes group carts nobody placed in time, checks ready food waiting for pickup, sends booking reminders, starts scheduled broadcasts and runs nightly checks. Add this line to the crontab of the user that owns the files (<code>crontab -e</code>):</p>
-<pre><code class="language-bash">* * * * * cd /var/www/biteway-backend &amp;&amp; php artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1
+<pre><code class="language-bash">* * * * * cd /PATH/TO/biteway-backend &amp;&amp; /PATH/TO/PHP-8.4 artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1
 </code></pre>
+<p><strong>Replace before you copy:</strong></p>
+<ul>
+<li><code>/PATH/TO/biteway-backend</code>: the real folder. Run <code>pwd -P</code> inside <code>biteway-backend</code> and use the path it prints, for example <code>/var/www/biteway-backend</code>.</li>
+<li><code>/PATH/TO/PHP-8.4</code>: the full path to PHP 8.4. Run <code>command -v php8.4</code> (or <code>command -v php</code>) to find it, for example <code>/usr/bin/php8.4</code>. Check it with <code>/PATH/TO/PHP-8.4 -v</code>: the first line must say PHP 8.4 or newer.</li>
+</ul>
 <p><strong>The queue worker</strong> sends notifications and push messages and handles payments and other background work. It also sends broadcasts, in batches of 500 people. It must run all the time:</p>
 <pre><code class="language-bash">php artisan queue:work --queue=dispatch,notifications,payments,default
 </code></pre>
 <p>On a VPS, keep it running with <strong>Supervisor</strong>, with one program for each long-running process. Create <code>/etc/supervisor/conf.d/biteway-worker.conf</code>:</p>
 <pre><code class="language-ini">[program:biteway-worker]
-command=php /var/www/biteway-backend/artisan queue:work --queue=dispatch,notifications,payments,default --sleep=3 --max-time=3600
-user=www-data
+command=/PATH/TO/PHP-8.4 /PATH/TO/biteway-backend/artisan queue:work --queue=dispatch,notifications,payments,default --sleep=3 --max-time=3600
+user=WEB_SERVER_USER
 numprocs=1
 autostart=true
 autorestart=true
 stopwaitsecs=3600
 redirect_stderr=true
-stdout_logfile=/var/www/biteway-backend/storage/logs/worker.log
+stdout_logfile=/PATH/TO/biteway-backend/storage/logs/worker.log
 </code></pre>
+<p><strong>Replace before you copy:</strong></p>
+<ul>
+<li><code>/PATH/TO/PHP-8.4</code> and <code>/PATH/TO/biteway-backend</code>: the same values as in the cron job above.</li>
+<li><code>WEB_SERVER_USER</code>: the user your web server and PHP run as, usually <code>www-data</code> on Ubuntu and Debian, or <code>nginx</code> or <code>apache</code> on other systems. To see it, run <code>ps aux | grep -E 'php-fpm|nginx|apache'</code> and read the first column of the lines that are not <code>root</code>.</li>
+</ul>
 <p>Then run <code>sudo supervisorctl reread &amp;&amp; sudo supervisorctl update</code>.</p>
 <ul>
 <li><strong>More orders, more workers:</strong> raise <code>numprocs</code> (for example to 3) and add <code>process_name=%(program_name)s_%(process_num)02d</code>. Each worker takes the queues in the same order, so dispatch and notifications go first.</li>
@@ -667,9 +725,25 @@ stdout_logfile=/var/www/biteway-backend/storage/logs/worker.log
 <li><strong>After every update or <code>.env</code> change,</strong> run <code>php artisan queue:restart</code>. The workers finish the job in hand and Supervisor starts them again with the new code.</li>
 </ul>
 <p>The scheduler puts a small heartbeat job on the queue every minute. <strong>Health</strong> shows the queue worker as failing when no worker has run that job for 5 minutes. This works with every queue driver (database, Redis and others), so a stopped worker is noticed even when no orders are waiting.</p>
-<p><strong>On shared hosting</strong> without long-running processes, add a second cron job that starts the worker every minute and stops it before the next one:</p>
-<pre><code class="language-bash">* * * * * cd /home/USER/biteway-backend &amp;&amp; php artisan queue:work --queue=dispatch,notifications,payments,default --stop-when-empty --max-time=55 &gt;&gt; /dev/null 2&gt;&amp;1
+<h4 id="deployment-on-shared-hosting-cpanel">On shared hosting (cPanel)</h4>
+<p>Shared hosting usually doesn't allow long-running processes, so the queue worker runs from a second cron job that starts it every minute and stops it before the next one. Add <strong>two</strong> cron jobs:</p>
+<pre><code class="language-bash">* * * * * cd /home/YOUR_CPANEL_USER/PATH/TO/biteway-backend &amp;&amp; /PATH/TO/PHP-8.4 artisan schedule:run &gt;&gt; /dev/null 2&gt;&amp;1
+* * * * * cd /home/YOUR_CPANEL_USER/PATH/TO/biteway-backend &amp;&amp; /PATH/TO/PHP-8.4 artisan queue:work --queue=dispatch,notifications,payments,default --stop-when-empty --max-time=55 &gt;&gt; /dev/null 2&gt;&amp;1
 </code></pre>
+<p>In cPanel's <strong>Cron Jobs</strong> page, choose <strong>Once Per Minute</strong> and paste only the part after <code>* * * * *</code> into <strong>Command</strong>.</p>
+<p><strong>Replace before you copy:</strong></p>
+<ul>
+<li><code>/home/YOUR_CPANEL_USER/PATH/TO/biteway-backend</code>: the real folder. Open cPanel <strong>Terminal</strong>, go into <code>biteway-backend</code> and run <code>pwd -P</code>; use the path it prints, for example <code>/home/YOUR_CPANEL_USER/biteway-backend</code>.</li>
+<li><code>/PATH/TO/PHP-8.4</code>: the full path to PHP 8.4. A cron job's plain <code>php</code> may be an older version, so use the full path. On cPanel it is usually <code>/opt/cpanel/ea-php84/root/usr/bin/php</code>. Check it in <strong>Terminal</strong> with <code>/PATH/TO/PHP-8.4 -v</code>: the first line must say PHP 8.4 or newer.</li>
+</ul>
+<blockquote>
+<p><strong>Lessons from a real cPanel setup:</strong></p>
+<ul>
+<li>Add each cron job as <strong>its own entry</strong>, with one command per line.</li>
+<li>If a job never runs, run <code>crontab -l</code> in <strong>Terminal</strong> and look for two commands joined on one line. Split them into two entries.</li>
+<li>After a few minutes, open <strong>Health</strong> in the admin panel. It must show <strong>Scheduler (cron): Last ran … ago</strong> (for example &quot;Last ran 1 minute ago&quot;), and the queue worker as running.</li>
+</ul>
+</blockquote>
 <h3 id="deployment-redis-for-cache-queue-and-sessions">Redis for cache, queue and sessions</h3>
 <p>Optional, for a VPS. Biteway keeps its cache, queue and sessions in the database, which works on any hosting. On a VPS with many orders, Redis makes them faster. Biteway uses Laravel's built-in Redis support, so you don't need to install another package.</p>
 <ol>
@@ -707,7 +781,7 @@ php artisan queue:restart
 <pre><code class="language-bash">composer require laravel/horizon
 php artisan horizon:install
 </code></pre>
-<p>Then replace the <code>queue:work</code> command in the Supervisor program with <code>command=php /var/www/biteway-backend/artisan horizon</code>, and set Horizon's queues to <code>dispatch,notifications,payments,default</code> (in this order) in <code>config/horizon.php</code>. Protect <code>/horizon</code> as the Horizon documentation describes. After every Biteway update, run <code>composer require laravel/horizon</code> again: the update installs the PHP packages of the new version, which do not include Horizon. Horizon is yours to maintain: Biteway support covers the queue worker described above.</p>
+<p>Then replace the <code>queue:work</code> command in the Supervisor program with <code>command=/PATH/TO/PHP-8.4 /PATH/TO/biteway-backend/artisan horizon</code> (the same placeholders as in <a href="#deployment-cron-job-and-queue-worker">Cron job and queue worker</a>), and set Horizon's queues to <code>dispatch,notifications,payments,default</code> (in this order) in <code>config/horizon.php</code>. Protect <code>/horizon</code> as the Horizon documentation describes. After every Biteway update, run <code>composer require laravel/horizon</code> again: the update installs the PHP packages of the new version, which do not include Horizon. Horizon is yours to maintain: Biteway support covers the queue worker described above.</p>
 <h3 id="deployment-live-updates-on-a-vps">Live updates on a VPS</h3>
 <p>Out of the box the apps and the website ask the server for changes every few seconds (polling). That works on any hosting. For instant updates, choose one of:</p>
 <ul>
@@ -756,16 +830,17 @@ PUSHER_CLIENT_SCHEME=https
 </code></pre>
 <p>Keep Reverb running with its own Supervisor program (see <a href="#deployment-cron-job-and-queue-worker">Cron job and queue worker</a>). Create <code>/etc/supervisor/conf.d/biteway-reverb.conf</code>:</p>
 <pre><code class="language-ini">[program:biteway-reverb]
-command=php /var/www/biteway-backend/artisan reverb:start --host=127.0.0.1 --port=8080
-user=www-data
+command=/PATH/TO/PHP-8.4 /PATH/TO/biteway-backend/artisan reverb:start --host=127.0.0.1 --port=8080
+user=WEB_SERVER_USER
 numprocs=1
 autostart=true
 autorestart=true
 stopwaitsecs=10
 redirect_stderr=true
-stdout_logfile=/var/www/biteway-backend/storage/logs/reverb.log
+stdout_logfile=/PATH/TO/biteway-backend/storage/logs/reverb.log
 minfds=10000
 </code></pre>
+<p><strong>Replace before you copy:</strong> <code>/PATH/TO/PHP-8.4</code>, <code>/PATH/TO/biteway-backend</code> and <code>WEB_SERVER_USER</code>, the same values as in the queue worker's program (<a href="#deployment-cron-job-and-queue-worker">Cron job and queue worker</a>).</p>
 <p>Then run <code>sudo supervisorctl reread &amp;&amp; sudo supervisorctl update</code>. After changing <code>.env</code>, run <code>sudo supervisorctl restart biteway-reverb</code>.</p>
 <p><strong>After every Biteway update,</strong> run <code>composer require laravel/reverb</code> again and restart Reverb: the update installs the PHP packages of the new version, which do not include Reverb.</p>
 <h4 id="deployment-soketi-your-own-server">Soketi (your own server)</h4>
@@ -776,12 +851,13 @@ minfds=10000
 <pre><code class="language-ini">[program:biteway-soketi]
 command=soketi start
 environment=SOKETI_DEFAULT_APP_ID=&quot;biteway&quot;,SOKETI_DEFAULT_APP_KEY=&quot;your-random-key&quot;,SOKETI_DEFAULT_APP_SECRET=&quot;your-random-secret&quot;,SOKETI_HOST=&quot;127.0.0.1&quot;,SOKETI_PORT=&quot;6001&quot;
-user=www-data
+user=WEB_SERVER_USER
 autostart=true
 autorestart=true
 redirect_stderr=true
-stdout_logfile=/var/www/biteway-backend/storage/logs/soketi.log
+stdout_logfile=/PATH/TO/biteway-backend/storage/logs/soketi.log
 </code></pre>
+<p><strong>Replace before you copy:</strong> <code>your-random-key</code> and <code>your-random-secret</code> with your own long random strings, and <code>/PATH/TO/biteway-backend</code> and <code>WEB_SERVER_USER</code> with the same values as in the queue worker's program (<a href="#deployment-cron-job-and-queue-worker">Cron job and queue worker</a>).</p>
 <p>Then run <code>sudo supervisorctl reread &amp;&amp; sudo supervisorctl update</code>. In <code>.env</code>, use the same id, key and secret, with <code>PUSHER_HOST=127.0.0.1</code>, <code>PUSHER_PORT=6001</code>, <code>PUSHER_SCHEME=http</code> and the <code>PUSHER_CLIENT_</code> lines as for Reverb.</p>
 <h4 id="deployment-nginx-in-front-of-reverb-or-soketi">Nginx in front of Reverb or Soketi</h4>
 <p>Give the socket server its own address (for example <code>ws.your-domain.com</code>) with an HTTPS certificate, and pass WebSocket connections on to it:</p>
@@ -967,61 +1043,182 @@ MAIL_FROM_ADDRESS=&quot;no-reply@your-domain.com&quot;
 MAIL_FROM_NAME=&quot;Your platform name&quot;
 </code></pre>
 <h3 id="deployment-third-party-services">Third-party services</h3>
-<p>Most services are set up in the admin panel, where the keys are stored encrypted. A Pusher-compatible server, Meilisearch and cloud storage keep their keys in <code>.env</code>. The pages under <strong>Super Admin</strong> (Payments, Payout providers, Firebase, Integrations) are visible to the Super Admin only.</p>
+<p>Biteway connects to outside services for payments, payouts, text messages, push notifications, maps, email and more. <strong>Each service runs on your own account with that provider: you create the account, copy its keys into Biteway, and pay any fees it charges.</strong> These costs are not covered by the Biteway purchase price, which covers the source code only.</p>
+<p>Most keys are entered in the admin panel, where they are stored encrypted. A Pusher-compatible server, Redis, Meilisearch, cloud storage and SMTP email keep their keys in <code>.env</code>. The pages under <strong>Super Admin</strong> (Payments, Payout providers, Firebase, Integrations) are visible to the Super Admin only.</p>
+<h4 id="deployment-third-party-services-accounts-keys-and-costs">Third-party services: accounts, keys and costs</h4>
 <table>
 <thead>
 <tr>
 <th>Service</th>
-<th>Needed for</th>
-<th>Where</th>
+<th>Used for</th>
+<th>Required?</th>
+<th>What you need</th>
+<th>Costs</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Text messages: <a href="https://www.twilio.com">Twilio</a>, BulkSMSBD or <a href="https://firebase.google.com/docs/auth">Firebase Phone Authentication</a></td>
-<td>Phone sign-in codes. Required on a live site: the test provider that only writes codes to the log is refused when <code>APP_ENV=production</code></td>
-<td>Choose the provider under <strong>Settings</strong>, then <strong>Sign-in</strong>. Enter its keys under <strong>Integrations</strong>; for Firebase Phone Authentication, enter the <strong>Firebase project ID</strong> (and, for the Customer Website, the <strong>Firebase Web API key</strong>) under <strong>Integrations</strong>, then <strong>Live updates</strong>.</td>
+<td><a href="https://stripe.com">Stripe</a></td>
+<td>Card payments</td>
+<td>Optional</td>
+<td>A Stripe account. <strong>Secret key</strong> and <strong>Webhook signing secret</strong> under <strong>Payments</strong></td>
+<td>Per-transaction fees set by the provider</td>
 </tr>
 <tr>
-<td>Payment gateways: <a href="https://stripe.com">Stripe</a>, <a href="https://developer.paypal.com">PayPal</a>, <a href="https://sslcommerz.com">SSLCOMMERZ</a> or <a href="https://www.bkash.com">bKash</a></td>
-<td>Card and online payments</td>
-<td><strong>Payments</strong>. Each gateway shows the webhook URL to enter at the provider. Cash on delivery and the wallet need no gateway.</td>
+<td><a href="https://developer.paypal.com">PayPal</a></td>
+<td>PayPal payments</td>
+<td>Optional</td>
+<td>A PayPal business account and a REST app. <strong>Client ID</strong>, <strong>Secret</strong>, <strong>Webhook ID</strong> and <strong>Mode</strong> (<code>sandbox</code> or <code>live</code>) under <strong>Payments</strong>; <strong>Partner merchant ID</strong> only to pay restaurants directly</td>
+<td>Per-transaction fees set by the provider</td>
 </tr>
 <tr>
-<td>Payout providers</td>
-<td>Paying restaurants and riders automatically</td>
-<td><strong>Payout providers</strong>. Payouts can also be marked as paid by hand.</td>
+<td><a href="https://sslcommerz.com">SSLCOMMERZ</a></td>
+<td>Online payments</td>
+<td>Optional</td>
+<td>An SSLCOMMERZ merchant account. <strong>Store ID</strong>, <strong>Store password</strong> and <strong>Mode</strong> under <strong>Payments</strong></td>
+<td>Per-transaction fees set by the provider</td>
 </tr>
 <tr>
-<td>Maps</td>
-<td>The maps in the apps</td>
-<td><strong>Integrations</strong>, then <strong>Maps</strong>. Map tiles work without a key; <a href="https://developers.google.com/maps">Google Maps</a> is optional. <strong>Tile attribution</strong> takes plain text and https links; other markup is removed.</td>
+<td><a href="https://www.bkash.com">bKash</a> (payments)</td>
+<td>Mobile wallet payments</td>
+<td>Optional</td>
+<td>A bKash merchant account with API access. <strong>App key</strong>, <strong>App secret</strong>, <strong>Username</strong>, <strong>Password</strong> and <strong>Mode</strong> under <strong>Payments</strong></td>
+<td>Per-transaction fees set by the provider</td>
+</tr>
+<tr>
+<td><a href="https://stripe.com/connect">Stripe Connect</a></td>
+<td>Automatic payouts to restaurants and riders</td>
+<td>Optional</td>
+<td>A Stripe account with Connect. <strong>Secret key</strong> under <strong>Payout providers</strong></td>
+<td>Per-payout and connected-account fees set by the provider</td>
+</tr>
+<tr>
+<td><a href="https://developer.paypal.com">PayPal Payouts</a></td>
+<td>Automatic payouts to restaurants and riders</td>
+<td>Optional</td>
+<td>A PayPal business account approved for Payouts. <strong>Client ID</strong>, <strong>Secret</strong> and <strong>Webhook ID</strong> under <strong>Payout providers</strong></td>
+<td>Per-payout fees set by the provider</td>
+</tr>
+<tr>
+<td><a href="https://razorpay.com/x/">RazorpayX</a></td>
+<td>Automatic payouts to restaurants and riders</td>
+<td>Optional</td>
+<td>A RazorpayX account. <strong>Key ID</strong>, <strong>Key secret</strong>, <strong>RazorpayX account number</strong> and <strong>Webhook secret</strong> under <strong>Payout providers</strong></td>
+<td>Per-payout fees set by the provider</td>
+</tr>
+<tr>
+<td><a href="https://flutterwave.com">Flutterwave</a></td>
+<td>Automatic payouts to restaurants and riders</td>
+<td>Optional</td>
+<td>A Flutterwave account. <strong>Secret key</strong> and <strong>Webhook secret hash</strong> under <strong>Payout providers</strong></td>
+<td>Per-payout fees set by the provider</td>
+</tr>
+<tr>
+<td><a href="https://www.bkash.com">bKash</a> (payouts)</td>
+<td>Automatic payouts to restaurants and riders</td>
+<td>Optional</td>
+<td>A bKash merchant account with API access. <strong>App key</strong>, <strong>App secret</strong>, <strong>Username</strong> and <strong>Password</strong> under <strong>Payout providers</strong></td>
+<td>Per-payout fees set by the provider</td>
+</tr>
+<tr>
+<td><a href="https://www.twilio.com">Twilio</a></td>
+<td>Sign-in codes by text message, and optional masked phone calls</td>
+<td>Required in production (one of Twilio, BulkSMSBD or Firebase phone sign-in)</td>
+<td>A Twilio account and phone number. <strong>Account SID</strong>, <strong>Auth token</strong> and <strong>Sender number</strong> under <strong>Integrations</strong>; a <strong>Twilio voice number</strong> for masked calls. Choose the provider under <strong>Settings → Sign-in</strong></td>
+<td>Pay per message and per call minute, plus a monthly fee for each phone number</td>
+</tr>
+<tr>
+<td>BulkSMSBD</td>
+<td>Sign-in codes by text message</td>
+<td>Required in production (one of Twilio, BulkSMSBD or Firebase phone sign-in)</td>
+<td>A BulkSMSBD account. <strong>API key</strong> and <strong>Sender ID</strong> under <strong>Integrations</strong>. Choose the provider under <strong>Settings → Sign-in</strong></td>
+<td>Pay per message (prepaid credit)</td>
 </tr>
 <tr>
 <td><a href="https://firebase.google.com">Firebase</a></td>
-<td>Push notifications, and instant live updates without a server of your own</td>
-<td><strong>Firebase</strong>, and <strong>Integrations</strong>, then <strong>Live updates</strong>.</td>
+<td>Push notifications, phone sign-in (Firebase Phone Authentication) and instant live updates (Realtime Database)</td>
+<td>Optional (counts as the sign-in code provider when you use Firebase phone sign-in)</td>
+<td>A Firebase project. The <strong>Service account key</strong> (JSON) under <strong>Firebase</strong>; the <strong>Firebase project ID</strong>, <strong>Realtime Database URL</strong>, <strong>Firebase Web API key</strong> and <strong>Firebase Auth domain</strong> under <strong>Integrations → Live updates</strong>; <code>google-services.json</code> and <code>GoogleService-Info.plist</code> in each app (<a href="#mobile-apps-firebase-optional">Mobile apps</a>)</td>
+<td>Free tier, then usage-based billing; phone sign-in texts are billed per verification beyond the free allowance</td>
 </tr>
 <tr>
-<td>A Pusher-compatible server: <a href="https://pusher.com/channels">Pusher</a>, <a href="https://reverb.laravel.com">Laravel Reverb</a> or <a href="https://soketi.app">Soketi</a> (optional)</td>
-<td>Instant live updates on a VPS</td>
-<td>Keys in <code>.env</code>, then <strong>Integrations</strong>, then <strong>Live updates</strong>. See <a href="#deployment-live-updates-on-a-vps">Live updates on a VPS</a>. Without Firebase or a Pusher-compatible server, the apps and the website ask the server for updates at a short interval instead (polling).</td>
+<td><a href="https://developers.google.com/maps">Google Maps Platform</a></td>
+<td>Google Maps in the apps and the website, instead of map tiles</td>
+<td>Optional</td>
+<td>A Google Cloud project with billing turned on. <strong>Google Maps browser key</strong> under <strong>Integrations → Maps</strong>; an Android and an iOS key in the customer and rider app builds (<a href="#mobile-apps">Mobile apps</a>)</td>
+<td>Free monthly allowance, then usage-based billing</td>
 </tr>
 <tr>
-<td><a href="https://www.meilisearch.com">Meilisearch</a> (optional)</td>
-<td>Typo-tolerant search in every language on a VPS</td>
-<td><code>.env</code> (<code>MEILISEARCH_HOST</code>, <code>MEILISEARCH_KEY</code>), then <strong>Integrations</strong>, then <strong>Search</strong>. See <a href="#deployment-search-with-meilisearch">Search with Meilisearch</a>.</td>
+<td><a href="https://www.openstreetmap.org">OpenStreetMap</a> tiles</td>
+<td>The maps in the apps and the website (the default)</td>
+<td>Optional</td>
+<td>Nothing for light use: the <strong>Map tile address</strong> and <strong>Tile attribution</strong> under <strong>Integrations → Maps</strong>. A busy platform needs a tile provider's account and key in the tile address</td>
+<td>OpenStreetMap's own server is free for light use only; tile providers charge by usage</td>
 </tr>
 <tr>
-<td>CAPTCHA, Google and Apple sign-in</td>
-<td>Optional sign-in protection and social sign-in</td>
-<td>Choose the CAPTCHA under <strong>Settings</strong>, then <strong>Sign-in</strong> (<strong>Security check</strong>), and enter its keys and the Google and Apple client IDs under <strong>Integrations</strong>.</td>
+<td>Sign in with Google and Sign in with Apple</td>
+<td>Social sign-in in the apps and the website</td>
+<td>Optional</td>
+<td>A Google Cloud project and an Apple Developer account. <strong>Google client IDs</strong>, <strong>Google web client ID</strong> and <strong>Apple client IDs</strong> under <strong>Integrations</strong>; switch each on under <strong>Settings → Sign-in</strong></td>
+<td>Free; Apple sign-in needs the paid Apple Developer membership</td>
+</tr>
+<tr>
+<td><a href="https://www.google.com/recaptcha">Google reCAPTCHA</a> (or Cloudflare Turnstile or hCaptcha)</td>
+<td>A security check on browser sign-in</td>
+<td>Optional</td>
+<td>An account with the provider. <strong>Site key</strong> and <strong>Secret key</strong> under <strong>Integrations</strong>; choose the provider under <strong>Settings → Sign-in</strong> (<strong>Security check</strong>)</td>
+<td>Free tier, then paid plans for high volume</td>
+</tr>
+<tr>
+<td><a href="https://pusher.com/channels">Pusher Channels</a> (or free self-hosted <a href="https://reverb.laravel.com">Laravel Reverb</a> or <a href="https://soketi.app">Soketi</a>)</td>
+<td>Instant live updates on a VPS (<a href="#deployment-live-updates-on-a-vps">Live updates on a VPS</a>)</td>
+<td>Optional</td>
+<td>A Pusher account for Pusher Channels. <code>PUSHER_APP_ID</code>, <code>PUSHER_APP_KEY</code>, <code>PUSHER_APP_SECRET</code> and <code>PUSHER_APP_CLUSTER</code> in <code>.env</code>, then <strong>Integrations → Live updates</strong></td>
+<td>Pusher: free tier, then monthly plans by connections and messages. Reverb and Soketi: free software on your own server</td>
+</tr>
+<tr>
+<td><a href="https://redis.io">Redis</a> and <a href="https://www.meilisearch.com">Meilisearch</a></td>
+<td>A faster cache, queue and sessions; typo-tolerant search (<a href="#deployment-redis-for-cache-queue-and-sessions">Redis</a>, <a href="#deployment-search-with-meilisearch">Meilisearch</a>)</td>
+<td>Optional</td>
+<td>Redis: <code>REDIS_HOST</code>, <code>REDIS_PORT</code> and <code>REDIS_PASSWORD</code> in <code>.env</code>. Meilisearch: <code>MEILISEARCH_HOST</code> and <code>MEILISEARCH_KEY</code> in <code>.env</code>, then <strong>Integrations → Search</strong></td>
+<td>Free software on your own VPS; hosted plans charge a monthly or usage-based fee</td>
+</tr>
+<tr>
+<td>S3-compatible storage (AWS S3, Cloudflare R2, Wasabi, MinIO)</td>
+<td>Uploads in a cloud bucket, with an optional CDN (<a href="#deployment-files-on-s3-or-a-cdn">Files on S3 or a CDN</a>)</td>
+<td>Optional</td>
+<td>A storage account and two buckets. <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code>, <code>AWS_DEFAULT_REGION</code>, <code>AWS_BUCKET</code> and <code>AWS_PRIVATE_BUCKET</code> in <code>.env</code> (plus <code>AWS_ENDPOINT</code> and <code>AWS_URL</code> outside AWS); <code>BITEWAY_CDN_URL</code> for a CDN</td>
+<td>Usage-based: storage, requests and data transfer</td>
+</tr>
+<tr>
+<td>SMTP email</td>
+<td>Sign-in and password-reset codes, admin alerts and partner applications (<a href="#deployment-email">Email</a>)</td>
+<td>Required in production</td>
+<td>An email provider or mailbox with SMTP. <code>MAIL_HOST</code>, <code>MAIL_PORT</code>, <code>MAIL_USERNAME</code>, <code>MAIL_PASSWORD</code>, <code>MAIL_FROM_ADDRESS</code> and <code>MAIL_FROM_NAME</code> in <code>.env</code></td>
+<td>Free tier at many providers, then pay per email or a monthly plan</td>
+</tr>
+<tr>
+<td>Hosting, domain and SSL</td>
+<td>Running the backend and admin panel</td>
+<td>Required (Biteway can't run without it)</td>
+<td>A server that meets the <a href="#introduction-requirements">requirements</a>, a domain or subdomain, and an SSL certificate (Let's Encrypt is free)</td>
+<td>Monthly or yearly hosting fees and a yearly domain fee</td>
+</tr>
+<tr>
+<td>Google Play and Apple Developer accounts</td>
+<td>Publishing the apps in the stores</td>
+<td>Required to publish the apps</td>
+<td>A <a href="https://play.google.com/console">Google Play Console</a> developer account and an <a href="https://developer.apple.com/programs/">Apple Developer Program</a> membership</td>
+<td>Google Play: a one-time registration fee. Apple: a yearly membership fee</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p><strong>Costs of third-party services:</strong> these services run on your own accounts, and you are responsible for any costs they charge. This includes payment gateway and payout provider fees (Stripe, PayPal, SSLCOMMERZ, bKash, Stripe Connect, PayPal Payouts, RazorpayX, Flutterwave), text message and call charges (Twilio, BulkSMSBD), your Firebase project (Cloud Messaging and Phone Authentication beyond Google's free tier), Google Maps Platform usage if you choose Google Maps, your SMTP or email provider, your server hosting and domain, and the Google Play and Apple Developer accounts you need to publish the apps. The Biteway price covers the source code only.</p>
-</blockquote>
+<ul>
+<li><strong>Webhooks:</strong> each payment gateway and payout provider that sends updates shows its webhook URL on its card in the admin panel. Enter that URL at the provider.</li>
+<li><strong>Cash on delivery and the wallet</strong> need no gateway, and payouts can also be marked as paid by hand, so you can start without any payment account.</li>
+<li><strong>On a live site</strong> (<code>APP_ENV=production</code>), the test sign-in code provider that only writes codes to the log is refused, so set up Twilio, BulkSMSBD or Firebase phone sign-in before you open the apps to the public.</li>
+<li><strong>Without Firebase or a Pusher-compatible server,</strong> the apps and the website ask the server for updates at a short interval instead (polling). Polling needs no account.</li>
+</ul>
 <h3 id="deployment-speed-for-production">Speed for production</h3>
 <p>After installing, and <strong>every time you change <code>.env</code></strong>, run:</p>
 <pre><code class="language-bash">php artisan optimize
@@ -1045,13 +1242,14 @@ MAIL_FROM_NAME=&quot;Your platform name&quot;
 <li>Upload the new Biteway zip from CodeCanyon to the server, for example next to the <code>biteway-backend</code> folder.</li>
 <li>See what it will change. Nothing is changed yet:</li>
 </ol>
-<pre><code class="language-bash">cd /var/www/biteway-backend
-php artisan biteway:update /path/to/biteway.zip --check
+<pre><code class="language-bash">cd /PATH/TO/biteway-backend
+php artisan biteway:update /PATH/TO/biteway.zip --check
 </code></pre>
+<p><strong>Replace before you copy:</strong> <code>/PATH/TO/biteway-backend</code> with the real folder (run <code>pwd -P</code> inside it), and <code>/PATH/TO/biteway.zip</code> with the full path of the zip you uploaded. If <code>php -v</code> shows an older version than 8.4, use the full path to PHP 8.4 instead of <code>php</code> (<a href="#deployment-cron-job-and-queue-worker">Cron job and queue worker</a>).</p>
 <ol start="3">
 <li>Apply it. The site shows a maintenance page for about a minute:</li>
 </ol>
-<pre><code class="language-bash">php artisan biteway:update /path/to/biteway.zip
+<pre><code class="language-bash">php artisan biteway:update /PATH/TO/biteway.zip
 </code></pre>
 <p>The update backs up the database and the files it replaces first (in <code>storage/app/updates/backups</code>, readable only by the site's own user; the newest three are kept), then copies the new files, runs the database migrations and clears the caches. Your <code>.env</code>, uploads, storage, installed add-ons and built assets are never changed. If a step fails, everything is put back. The update's backup only undoes that update; keep your own backups as well (<a href="#backups">Backups and restore</a>).</p>
 <ul>
@@ -1131,9 +1329,10 @@ php artisan biteway:update /path/to/biteway.zip --check
 <p>Most hosts (cPanel, Plesk and VPS providers) offer daily backups or server snapshots. Turn them on, and check that they include <strong>both</strong> the database and the files of <code>biteway-backend</code>. A snapshot of the whole server is the simplest way back, but it is often kept by the same provider as the server itself, so keep your own copy too.</p>
 <h4 id="backups-2-the-backup-command">2. The backup command</h4>
 <p>Biteway backs itself up into one zip file:</p>
-<pre><code class="language-bash">cd /var/www/biteway-backend
-php artisan biteway:backup
+<pre><code class="language-bash">cd /PATH/TO/biteway-backend
+/PATH/TO/PHP-8.4 artisan biteway:backup
 </code></pre>
+<p><strong>Replace before you copy:</strong> <code>/PATH/TO/biteway-backend</code> is your Biteway folder (run <code>pwd -P</code> inside it to see the full path), and <code>/PATH/TO/PHP-8.4</code> is the PHP 8.4 program (<code>command -v php8.4</code>, or <code>/opt/cpanel/ea-php84/root/usr/bin/php</code> on cPanel). <a href="#deployment-cron-job-and-queue-worker">Deployment</a> explains how to find both.</p>
 <p>The zip holds:</p>
 <ul>
 <li>the database (MySQL, MariaDB or SQLite; no <code>mysqldump</code> needed, so it also works on shared hosting),</li>
@@ -1171,18 +1370,19 @@ php artisan biteway:backup
 </tbody>
 </table>
 <p><strong>To keep the backups in another folder every time</strong>, set <code>BITEWAY_BACKUP_PATH</code> in <code>.env</code>, for example <code>BITEWAY_BACKUP_PATH=/var/backups/biteway</code>, then run <code>php artisan optimize</code>. The daily backup and <strong>Health</strong> use this folder. A folder inside <code>public/</code> is refused, because anyone could download the backups from it, and so is a folder inside one that is backed up (such as <code>storage/app/public</code> or <code>addons/</code>), because a restore replaces it.</p>
-<p>Run the command as the web server user (for example <code>sudo -u www-data php artisan biteway:backup</code>), so the backup folder stays writable for the daily backup. Only one backup or restore runs at a time; another one is refused with &quot;Another backup or restore is running&quot;. Files changed while a backup runs may be caught half way, so back up at a quiet hour and not while you upload files or install an add-on.</p>
+<p>Run the command as the web server user (for example <code>sudo -u WEB_SERVER_USER /PATH/TO/PHP-8.4 artisan biteway:backup</code>, where <code>WEB_SERVER_USER</code> is usually <code>www-data</code>, <code>nginx</code> or your cPanel account), so the backup folder stays writable for the daily backup. Only one backup or restore runs at a time; another one is refused with &quot;Another backup or restore is running&quot;. Files changed while a backup runs may be caught half way, so back up at a quiet hour and not while you upload files or install an add-on.</p>
 <p><strong><code>.env</code> is left out unless you add <code>--with-env</code>, because it holds the <code>APP_KEY</code>.</strong> Keep <code>.env</code> (or at least the <code>APP_KEY</code>) in a password manager or another safe place. If you use <code>--with-env</code>, anyone with the zip can read your saved secrets, so store it as carefully as the key itself.</p>
 <p><strong>Daily backup.</strong> To back up automatically, open <strong>Settings → General</strong> in the admin panel and, under <strong>Backups</strong>, turn on <strong>Back up every day</strong>. It is off by default. <strong>Backup time</strong> (2:00 AM unless you change it) is read in the platform time zone under <strong>Settings → Localization &amp; currency</strong>; <strong>Backups to keep</strong> sets how many backups stay in the folder. The daily backup holds the same as the command without options, so not <code>.env</code>. It runs from the cron job, so the cron job must be running (<a href="#deployment-cron-job-and-queue-worker">Deployment</a>).</p>
 <p><strong>Health</strong> in the admin panel warns when the newest backup is older than 48 hours, or when there is none yet, and shows an error when the backup folder can't be written. It only looks at the default folder (<code>storage/app/backups</code>, or <code>BITEWAY_BACKUP_PATH</code>): backups saved elsewhere with <code>--to</code> don't count.</p>
 <p>On shared hosting, run the command from the host's terminal, or add it under <strong>Cron Jobs</strong> with the full path to PHP, for example once a night at 2:30 AM:</p>
-<pre><code class="language-bash">30 2 * * * cd /home/USER/biteway-backend &amp;&amp; /usr/local/bin/php artisan biteway:backup &gt;&gt; /dev/null 2&gt;&amp;1
+<pre><code class="language-bash">30 2 * * * cd /home/YOUR_CPANEL_USER/PATH/TO/biteway-backend &amp;&amp; /PATH/TO/PHP-8.4 artisan biteway:backup &gt;&gt; /dev/null 2&gt;&amp;1
 </code></pre>
+<p><strong>Replace before you copy:</strong> <code>YOUR_CPANEL_USER/PATH/TO/biteway-backend</code> with the folder <code>pwd -P</code> shows inside your Biteway folder, and <code>/PATH/TO/PHP-8.4</code> with the PHP 8.4 path (on cPanel usually <code>/opt/cpanel/ea-php84/root/usr/bin/php</code>). Add it as its own cron job, with one command per line.</p>
 <h4 id="backups-3-your-own-cron-job-vps">3. Your own cron job (VPS)</h4>
 <p>If you prefer the standard tools, a nightly script with <code>mysqldump</code> and <code>tar</code> works as well. Save it as <code>/usr/local/bin/biteway-backup.sh</code>:</p>
 <pre><code class="language-bash">#!/bin/sh
 set -e
-APP=/var/www/biteway-backend
+APP=/PATH/TO/biteway-backend   # replace with your Biteway folder
 DEST=/var/backups/biteway
 DAY=$(date +%Y-%m-%d)
 
@@ -1220,10 +1420,10 @@ password=your-database-password
 <h3 id="backups-copy-backups-off-the-server">Copy backups off the server</h3>
 <p>A backup on the same server is lost with the server. Copy every backup to another place: another server, cloud storage or your computer.</p>
 <p><strong>With rsync</strong>, to another server over SSH (add it to the cron job after the backup):</p>
-<pre><code class="language-bash">rsync -a /var/www/biteway-backend/storage/app/backups/ backup@backup.example.com:/backups/biteway/
+<pre><code class="language-bash">rsync -a /PATH/TO/biteway-backend/storage/app/backups/ backup@backup.example.com:/backups/biteway/
 </code></pre>
 <p><strong>With rclone</strong>, to cloud storage such as Amazon S3, Backblaze B2 or Google Drive (set up the remote once with <code>rclone config</code>):</p>
-<pre><code class="language-bash">rclone copy /var/www/biteway-backend/storage/app/backups remote:biteway-backups
+<pre><code class="language-bash">rclone copy /PATH/TO/biteway-backend/storage/app/backups remote:biteway-backups
 </code></pre>
 <p><strong>By hand</strong>, download the newest zip from <code>storage/app/backups</code> with your hosting panel's file manager or an SFTP app.</p>
 <p>If you set <code>BITEWAY_BACKUP_PATH</code>, copy that folder instead. With the cron-job way, copy <code>/var/backups/biteway</code>.</p>
@@ -1231,11 +1431,11 @@ password=your-database-password
 <p>Restore onto the same Biteway version, or a newer one, with the same type of database. Restoring replaces the current database and files, so first make a fresh backup of the current state if it still works.</p>
 <h4 id="backups-with-the-backup-command">With the backup command</h4>
 <ol>
-<li>Upload the backup zip to the server, for example to <code>/var/www/backups/</code>. Keep it out of the folders the restore replaces (<code>storage/app/public</code>, <code>storage/app/private</code>, <code>addons/</code> and <code>public/addons/</code>): a zip inside one of them is refused.</li>
+<li>Upload the backup zip to the server, for example to <code>/PATH/TO/backups/</code> (a folder of your choice). Keep it out of the folders the restore replaces (<code>storage/app/public</code>, <code>storage/app/private</code>, <code>addons/</code> and <code>public/addons/</code>): a zip inside one of them is refused.</li>
 <li>Restore it, as the web server user, so the restored files belong to it:</li>
 </ol>
-<pre><code class="language-bash">cd /var/www/biteway-backend
-sudo -u www-data php artisan biteway:backup:restore /var/www/backups/biteway-backup-20261116-023000-k3x9.zip
+<pre><code class="language-bash">cd /PATH/TO/biteway-backend
+sudo -u WEB_SERVER_USER /PATH/TO/PHP-8.4 artisan biteway:backup:restore /PATH/TO/backups/biteway-backup-20261116-023000-k3x9.zip
 </code></pre>
 <p>First, the command checks the zip without changing anything. It stops if:</p>
 <ul>
@@ -1267,7 +1467,7 @@ sudo -u www-data php artisan biteway:backup:restore /var/www/backups/biteway-bac
 <li>Set up the cron job and the queue worker again (<a href="#deployment-cron-job-and-queue-worker">Deployment</a>).</li>
 </ol>
 <h4 id="backups-from-your-own-cron-job-backup">From your own cron-job backup</h4>
-<p>Run these in order, in <code>/var/www/biteway-backend</code>:</p>
+<p>Run these in order, in your Biteway folder (<code>/PATH/TO/biteway-backend</code>):</p>
 <ol>
 <li>Show the maintenance page:</li>
 </ol>
@@ -1281,8 +1481,8 @@ sudo -u www-data php artisan biteway:backup:restore /var/www/backups/biteway-bac
 <ol start="3">
 <li>Put back <code>.env</code>, <code>storage/app</code> and the add-ons:</li>
 </ol>
-<pre><code class="language-bash">tar -xzf /var/backups/biteway/files-2026-11-16.tar.gz -C /var/www/biteway-backend
-sudo chown -R www-data:www-data storage bootstrap/cache
+<pre><code class="language-bash">tar -xzf /var/backups/biteway/files-2026-11-16.tar.gz -C /PATH/TO/biteway-backend
+sudo chown -R WEB_SERVER_USER:WEB_SERVER_USER storage bootstrap/cache
 </code></pre>
 <ol start="4">
 <li>Rebuild what is not in the backup, and bring the database up to the installed version:</li>
@@ -1304,7 +1504,7 @@ php artisan optimize
 <pre><code class="language-bash">php artisan up
 </code></pre>
 <h3 id="backups-test-a-restore">Test a restore</h3>
-<p>A backup you have never restored may not work. Every three months, and after a big change to your server, restore the newest backup into a <strong>staging copy</strong>: a separate folder (for example <code>/var/www/biteway-staging</code>), its own database and its own address (for example <code>staging.example.com</code>). Never test on the live database.</p>
+<p>A backup you have never restored may not work. Every three months, and after a big change to your server, restore the newest backup into a <strong>staging copy</strong>: a separate folder (for example <code>/PATH/TO/biteway-staging</code>), its own database and its own address (for example <code>staging.example.com</code>). Never test on the live database.</p>
 <ol>
 <li>Set up the staging folder as in <a href="#backups-with-the-backup-command">On a new server</a>, with a copy of your <code>.env</code> that keeps the same <code>APP_KEY</code> but uses the staging database, <code>APP_URL=https://staging.example.com</code> and <code>MAIL_MAILER=log</code>, so no email reaches your customers.</li>
 <li>Restore the newest backup into it, as described above. Then switch its payment gateways to test mode under <strong>Payments</strong>.</li>
@@ -1326,7 +1526,7 @@ php artisan optimize
 <h3 id="admin-panel-finding-your-way">Finding your way</h3>
 <p>The menu on the left groups the pages: the daily work at the top, then <strong>Users</strong>, <strong>Partners</strong>, <strong>Areas</strong>, <strong>Pricing</strong>, <strong>Content</strong>, <strong>System</strong> and, for the Super Admin only, <strong>Super Admin</strong>. Under your name at the top right you change your own name, email and password. The moon icon switches the panel to dark mode.</p>
 <p>Each page is shown only to admins whose role allows it (see <a href="#admin-panel-9-admins-and-roles">Admins and roles</a>).</p>
-<figure><img src="assets/admin/dashboard.jpg" alt="The dashboard: today's orders and order value, riders online, approvals waiting, and the go-live checklist" loading="lazy" /><figcaption>Figure 4: The dashboard: today's orders and order value, riders online, approvals waiting, and the go-live checklist</figcaption></figure>
+<figure><img src="assets/admin/dashboard.jpg" alt="The dashboard: today's orders and order value, riders online, approvals waiting, and the go-live checklist" loading="lazy" /><figcaption>Figure 5: The dashboard: today's orders and order value, riders online, approvals waiting, and the go-live checklist</figcaption></figure>
 <p>The <strong>Dashboard</strong> shows today's orders and their value with your commission, deliveries waiting for a rider, riders online, sign-ups waiting for approval, and a <strong>Go-live checklist</strong> that marks what is still missing (HTTPS, your own support email, the currency and more).</p>
 <h3 id="admin-panel-setup-assistant">Setup assistant</h3>
 <p><strong>Super Admin → Setup assistant</strong> (also linked from the dashboard's go-live checklist) walks you through the setup in nine steps. Each step shows whether it is <strong>Done</strong>, <strong>Needs attention</strong> or <strong>Optional</strong>, what is missing, a link to the page where you fix it and, where the service can be checked live, a <strong>Test</strong> button that shows exactly what the provider answered. The statuses come from the same checks as the go-live checklist and <strong>Health</strong>, so the three always agree.</p>
@@ -1341,7 +1541,7 @@ php artisan optimize
 <li><strong>Live updates (optional):</strong> polling needs nothing; with a Pusher-compatible server <strong>Test</strong> checks its keys.</li>
 <li><strong>Go live checklist:</strong> debug mode off, HTTPS, uploaded pictures showing, and anything an add-on asks for; then open <strong>Health</strong> to see the queue worker and the cron job running.</li>
 </ol>
-<figure><img src="assets/admin/setup-assistant.jpg" alt="Setup assistant: each step with its status, what is missing and a link to the page that fixes it. The count at the top leaves out the optional steps" loading="lazy" /><figcaption>Figure 5: Setup assistant: each step with its status, what is missing and a link to the page that fixes it. The count at the top leaves out the optional steps</figcaption></figure>
+<figure><img src="assets/admin/setup-assistant.jpg" alt="Setup assistant: each step with its status, what is missing and a link to the page that fixes it. The count at the top leaves out the optional steps" loading="lazy" /><figcaption>Figure 6: Setup assistant: each step with its status, what is missing and a link to the page that fixes it. The count at the top leaves out the optional steps</figcaption></figure>
 <p>Each test is written to the <strong>Activity Log</strong>, and at most five tests run per minute. The setup assistant has no on/off switch: it is a helper page for the Super Admin, not something customers see. On the live demo the steps are shown but the tests are switched off.</p>
 <h3 id="admin-panel-first-time-setup">First-time setup</h3>
 <p>Work through these steps once, in this order. Every setting has a short explanation under it in the panel.</p>
@@ -1357,7 +1557,7 @@ php artisan optimize
 <li><strong>Backups:</strong> <strong>Back up every day</strong> (off by default), the <strong>Backup time</strong> in the platform time zone, and how many <strong>Backups to keep</strong>. It needs the cron job (<a href="#backups">Backups and restore</a>).</li>
 </ul>
 <p>The apps fetch these settings each time they start and each time they come back to the screen after 5 minutes or more, and apply new colors and texts without restarting; new pictures and the logo show at the latest when the app next starts. A change reaches an open app the next time it is reopened or brought back after 5 minutes or more, and a closed app when it next starts.</p>
-<figure><img src="assets/admin/settings.jpg" alt="Settings: General, with app names, logo and colors" loading="lazy" /><figcaption>Figure 6: Settings: General, with app names, logo and colors</figcaption></figure>
+<figure><img src="assets/admin/settings.jpg" alt="Settings: General, with app names, logo and colors" loading="lazy" /><figcaption>Figure 7: Settings: General, with app names, logo and colors</figcaption></figure>
 <h4 id="admin-panel-2-currency-phone-country-and-time">2. Currency, phone country and time</h4>
 <p><strong>Settings → Localization &amp; currency</strong>: the currency symbol and its position, decimal places, the default phone country for sign-in, the <strong>Distance unit</strong> (kilometers or miles), and the platform time zone. The apps, the website and the admin panel show distances in that unit. The currency itself was chosen in the installer.</p>
 <h4 id="admin-panel-3-where-you-deliver">3. Where you deliver</h4>
@@ -1367,7 +1567,7 @@ php artisan optimize
 <li><strong>Cities:</strong> each in a country, with its time zone and the point where its maps open. Opening hours of restaurants follow their city's time zone.</li>
 <li><strong>Zones:</strong> delivery areas drawn on a map. Click <strong>Add zone</strong>, click the map to add points, and drag a point to move it. Customers outside every active zone are told that delivery is not available.</li>
 </ol>
-<figure><img src="assets/admin/zones.jpg" alt="Zones: delivery areas drawn on the map of a city" loading="lazy" /><figcaption>Figure 7: Zones: delivery areas drawn on the map of a city</figcaption></figure>
+<figure><img src="assets/admin/zones.jpg" alt="Zones: delivery areas drawn on the map of a city" loading="lazy" /><figcaption>Figure 8: Zones: delivery areas drawn on the map of a city</figcaption></figure>
 <h4 id="admin-panel-4-prices-and-your-income">4. Prices and your income</h4>
 <p>Under <strong>Pricing</strong>:</p>
 <ul>
@@ -1409,7 +1609,7 @@ php artisan optimize
 <p><strong>Admins &amp; Roles</strong> adds more admins, each with a role. A role is a set of permissions, so a support agent can see orders and tickets but not finance or settings. The Super Admin role has every permission and cannot be changed.</p>
 <h3 id="admin-panel-running-the-platform">Running the platform</h3>
 <p>The <strong>Dashboard</strong>'s numbers for today and its <strong>Live now</strong> row (new, in the kitchen, ready, on the way, running late, escalated) refresh every 15 seconds.</p>
-<figure><img src="assets/admin/orders.jpg" alt="Orders: every order with its status, filters and search" loading="lazy" /><figcaption>Figure 8: Orders: every order with its status, filters and search</figcaption></figure>
+<figure><img src="assets/admin/orders.jpg" alt="Orders: every order with its status, filters and search" loading="lazy" /><figcaption>Figure 9: Orders: every order with its status, filters and search</figcaption></figure>
 <table>
 <thead>
 <tr>
@@ -1496,8 +1696,8 @@ php artisan optimize
 </tr>
 </tbody>
 </table>
-<figure><img src="assets/admin/flight-deck.jpg" alt="Flight deck: late orders counted by the stage where they are stuck, with how many minutes over and the Escalate button" loading="lazy" /><figcaption>Figure 9: Flight deck: late orders counted by the stage where they are stuck, with how many minutes over and the Escalate button</figcaption></figure>
-<figure><img src="assets/admin/dispatch.jpg" alt="Dispatch: deliveries and riders on a live map" loading="lazy" /><figcaption>Figure 10: Dispatch: deliveries and riders on a live map</figcaption></figure>
+<figure><img src="assets/admin/flight-deck.jpg" alt="Flight deck: late orders counted by the stage where they are stuck, with how many minutes over and the Escalate button" loading="lazy" /><figcaption>Figure 10: Flight deck: late orders counted by the stage where they are stuck, with how many minutes over and the Escalate button</figcaption></figure>
+<figure><img src="assets/admin/dispatch.jpg" alt="Dispatch: deliveries and riders on a live map" loading="lazy" /><figcaption>Figure 11: Dispatch: deliveries and riders on a live map</figcaption></figure>
 <h3 id="admin-panel-content">Content</h3>
 <table>
 <thead>
@@ -1552,7 +1752,7 @@ php artisan optimize
 <p>On the live demo (<code>BITEWAY_DEMO_MODE</code>), notifications and broadcasts can't be changed, tested or sent, so no demo visitor gets a message.</p>
 <h3 id="admin-panel-extras">Extras</h3>
 <p><strong>Settings → Extras</strong> (after <strong>Riders</strong> on the Settings page) holds optional features, one group each. All of them are off on a new install, so nothing changes for your customers, riders or restaurants until you switch one on. The sample data for a trial switches them on.</p>
-<figure><img src="assets/admin/settings-extras.jpg" alt="Settings → Extras: each feature has its own switch, with an explanation and its limits under it" loading="lazy" /><figcaption>Figure 11: Settings → Extras: each feature has its own switch, with an explanation and its limits under it</figcaption></figure>
+<figure><img src="assets/admin/settings-extras.jpg" alt="Settings → Extras: each feature has its own switch, with an explanation and its limits under it" loading="lazy" /><figcaption>Figure 12: Settings → Extras: each feature has its own switch, with an explanation and its limits under it</figcaption></figure>
 <h4 id="admin-panel-delivery-time-estimates">Delivery time estimates</h4>
 <p><strong>Show delivery times as a range from the kitchen's load</strong> replaces the single &quot;about 20 min to prepare&quot; with a range such as <strong>25–40 min</strong>. It is worked out for each branch from its kitchen times of the last 30 days (its usual preparation time until it has a few orders), how many orders it is working on, whether a rider is nearby, and the distance to the customer.</p>
 <ul>
@@ -1821,7 +2021,7 @@ php artisan optimize
 <li>escalations from the flight deck</li>
 <li>food-freshness alerts (with <strong>Food freshness</strong> on)</li>
 </ul>
-<figure><img src="assets/admin/order-timeline.jpg" alt="An order's page in the admin panel: the Timeline and, below it, the Safety timeline card with Verify, Export PDF and Export JSON" loading="lazy" /><figcaption>Figure 12: An order's page in the admin panel: the Timeline and, below it, the Safety timeline card with Verify, Export PDF and Export JSON</figcaption></figure>
+<figure><img src="assets/admin/order-timeline.jpg" alt="An order's page in the admin panel: the Timeline and, below it, the Safety timeline card with Verify, Export PDF and Export JSON" loading="lazy" /><figcaption>Figure 13: An order's page in the admin panel: the Timeline and, below it, the Safety timeline card with Verify, Export PDF and Export JSON</figcaption></figure>
 <p>The card has three buttons:</p>
 <table>
 <thead>
@@ -1918,18 +2118,18 @@ php artisan optimize
 <li>Open Android Studio and choose <strong>File → Open</strong>. Select the app's folder, for example <code>main/biteway-customer-app/</code> (the folder that holds <code>pubspec.yaml</code>, not its <code>android/</code> folder).</li>
 <li>When Android Studio offers <strong>Pub get</strong> at the top of <code>pubspec.yaml</code>, click it. You can also run <code>flutter pub get</code> in the app's folder.</li>
 </ol>
-<figure><img src="assets/ide/android-studio-project.jpg" alt="The customer app opened in Android Studio: the project files on the left, and the device list and Run button at the top" loading="lazy" /><figcaption>Figure 13: The customer app opened in Android Studio: the project files on the left, and the device list and Run button at the top</figcaption></figure>
+<figure><img src="assets/ide/android-studio-project.jpg" alt="The customer app opened in Android Studio: the project files on the left, and the device list and Run button at the top" loading="lazy" /><figcaption>Figure 14: The customer app opened in Android Studio: the project files on the left, and the device list and Run button at the top</figcaption></figure>
 <ol start="3">
 <li>Tell the app where your backend is. Open <strong>Run → Edit Configurations</strong>, select <strong>main.dart</strong>, and enter this in <strong>Additional run args</strong>, with your own address:</li>
 </ol>
 <pre><code class="language-text">--dart-define=API_BASE_URL=https://api.your-domain.com
 </code></pre>
-<figure><img src="assets/ide/android-studio-run-config.jpg" alt="Run → Edit Configurations: put the --dart-define line in Additional run args" loading="lazy" /><figcaption>Figure 14: Run → Edit Configurations: put the --dart-define line in Additional run args</figcaption></figure>
+<figure><img src="assets/ide/android-studio-run-config.jpg" alt="Run → Edit Configurations: put the --dart-define line in Additional run args" loading="lazy" /><figcaption>Figure 15: Run → Edit Configurations: put the --dart-define line in Additional run args</figcaption></figure>
 <ol start="4">
 <li>Start an emulator from <strong>Device Manager</strong>, or plug in an Android phone with USB debugging on. Choose it in the device list at the top of the window.</li>
 <li>Click <strong>Run</strong> (the green triangle). The first build takes a few minutes. The app then opens at its sign-in screen.</li>
 </ol>
-<figure><img src="assets/apps/android-customer-first-launch.jpg" alt="The customer app's first screen on the Android emulator" loading="lazy" /><figcaption>Figure 15: The customer app's first screen on the Android emulator</figcaption></figure>
+<figure><img src="assets/apps/android-customer-first-launch.jpg" alt="The customer app's first screen on the Android emulator" loading="lazy" /><figcaption>Figure 16: The customer app's first screen on the Android emulator</figcaption></figure>
 <h3 id="mobile-apps-install-and-run-an-app-in-xcode-ios">Install and run an app in Xcode (iOS)</h3>
 <ol>
 <li>In a terminal, go to the app's folder and prepare the iOS project with your backend's address:</li>
@@ -1944,7 +2144,7 @@ flutter build ios --config-only --dart-define=API_BASE_URL=https://api.your-doma
 <li>Choose a simulator or your iPhone in the device list at the top of the window. For a real iPhone, first choose your <strong>Team</strong> under <strong>Signing &amp; Capabilities</strong> (see <a href="#mobile-apps-package-name-application-id-and-bundle-id">Package name</a> below).</li>
 <li>Press <strong>Run</strong> (⌘R). The app opens at its sign-in screen.</li>
 </ol>
-<figure><img src="assets/apps/ios-customer-first-launch.jpg" alt="The customer app's first screen on the iOS simulator" loading="lazy" /><figcaption>Figure 16: The customer app's first screen on the iOS simulator</figcaption></figure>
+<figure><img src="assets/apps/ios-customer-first-launch.jpg" alt="The customer app's first screen on the iOS simulator" loading="lazy" /><figcaption>Figure 17: The customer app's first screen on the iOS simulator</figcaption></figure>
 <p>You can also run an app from the terminal on any device without opening an IDE:</p>
 <pre><code class="language-bash">flutter run --dart-define=API_BASE_URL=https://api.your-domain.com
 </code></pre>
@@ -1969,30 +2169,30 @@ flutter build ios --config-only --dart-define=API_BASE_URL=https://api.your-doma
 </tbody>
 </table>
 <p>On a test copy (<code>APP_ENV=local</code>) without an SMS provider, the code is written to <code>storage/logs/laravel.log</code> on the server instead of being sent. A live site (<code>APP_ENV=production</code>) refuses this, so choose Twilio, BulkSMSBD or Firebase Phone Authentication under <strong>Settings → Sign-in</strong> before going live (<a href="#deployment-third-party-services">Deployment</a>). Restaurant staff sign in to the restaurant app with the email and password their restaurant gave them.</p>
-<figure><img src="assets/apps/ios-customer-home.jpg" alt="The customer app after signing in with the demo customer" loading="lazy" /><figcaption>Figure 17: The customer app after signing in with the demo customer</figcaption></figure>
+<figure><img src="assets/apps/ios-customer-home.jpg" alt="The customer app after signing in with the demo customer" loading="lazy" /><figcaption>Figure 18: The customer app after signing in with the demo customer</figcaption></figure>
 <p><strong>Testing against a backend on your computer:</strong> without <code>API_BASE_URL</code>, debug builds connect to <code>http://127.0.0.1:8000</code> on the iOS simulator and <code>http://10.0.2.2:8000</code> on the Android emulator (both mean &quot;this computer&quot;). On a real Android phone connected by USB, run <code>adb reverse tcp:8000 tcp:8000</code> and pass <code>--dart-define=API_BASE_URL=http://127.0.0.1:8000</code>. Release builds only accept an <code>https://</code> address and refuse to start without one.</p>
 <h3 id="mobile-apps-make-the-apps-yours">Make the apps yours</h3>
 <p>Most of the apps' look comes from the admin panel, with no new build: the names shown inside the apps, the logo, the colors, the sign-in and home pictures, every text, the content pages, the promotions and the features. <strong>Content → Branding</strong> in the admin panel lists them. The apps fetch them each time they start and each time they come back to the screen after 5 minutes or more, and apply new colors and texts without restarting. A change reaches an open app the next time it is reopened or brought back after 5 minutes or more, and a closed app when it next starts.</p>
 <p>The items below are built into each app, so they need a new build and a store update. Do them for each app before you publish it. Change the app name, package name and icon before your first upload.</p>
 <h4 id="mobile-apps-app-name">App name</h4>
 <p><strong>The names shown inside the apps</strong> (on the opening screen, and in the list of open apps on Android): in the admin panel, open <strong>Settings → General → App names</strong>, change <strong>Customer app name</strong>, <strong>Rider app name</strong> and <strong>Restaurant app name</strong>, and save. The apps use the new names the next time they open. <strong>Platform name</strong> in the same section is the name on the website, in the admin panel, in emails and on receipts.</p>
-<figure><img src="assets/admin/app-names.jpg" alt="Settings → General → App names in the admin panel" loading="lazy" /><figcaption>Figure 18: Settings → General → App names in the admin panel</figcaption></figure>
+<figure><img src="assets/admin/app-names.jpg" alt="Settings → General → App names in the admin panel" loading="lazy" /><figcaption>Figure 19: Settings → General → App names in the admin panel</figcaption></figure>
 <p><strong>The name under the icon on the phone</strong> is built into each app:</p>
 <ul>
 <li><strong>Android Studio:</strong> open <code>android/app/src/main/AndroidManifest.xml</code> and change the text in <code>android:label=&quot;Biteway&quot;</code>.</li>
 </ul>
-<figure><img src="assets/ide/android-studio-manifest.jpg" alt="AndroidManifest.xml in Android Studio: the app name is android:label" loading="lazy" /><figcaption>Figure 19: AndroidManifest.xml in Android Studio: the app name is android:label</figcaption></figure>
+<figure><img src="assets/ide/android-studio-manifest.jpg" alt="AndroidManifest.xml in Android Studio: the app name is android:label" loading="lazy" /><figcaption>Figure 20: AndroidManifest.xml in Android Studio: the app name is android:label</figcaption></figure>
 <ul>
 <li><strong>Xcode:</strong> open <code>ios/Runner.xcworkspace</code>, select <strong>Runner</strong> under <strong>Targets</strong>, open the <strong>Info</strong> tab and change the value of <strong>Bundle display name</strong>.</li>
 </ul>
-<figure><img src="assets/ide/xcode-info.jpg" alt="Xcode, Runner target, Info tab: Bundle display name is the name under the icon" loading="lazy" /><figcaption>Figure 20: Xcode, Runner target, Info tab: Bundle display name is the name under the icon</figcaption></figure>
+<figure><img src="assets/ide/xcode-info.jpg" alt="Xcode, Runner target, Info tab: Bundle display name is the name under the icon" loading="lazy" /><figcaption>Figure 21: Xcode, Runner target, Info tab: Bundle display name is the name under the icon</figcaption></figure>
 <h4 id="mobile-apps-package-name-application-id-and-bundle-id">Package name (application ID and bundle ID)</h4>
 <p>Every app on Google Play and the App Store needs its own ID, for example <code>com.yourbrand.customer</code>. Choose it before your first upload: it cannot be changed afterwards.</p>
 <p><strong>Android Studio:</strong></p>
 <ol>
 <li>Open <code>android/app/build.gradle.kts</code> and change both <code>namespace</code> and <code>applicationId</code> to your ID.</li>
 </ol>
-<figure><img src="assets/ide/android-studio-gradle.jpg" alt="build.gradle.kts in Android Studio: namespace and applicationId" loading="lazy" /><figcaption>Figure 21: build.gradle.kts in Android Studio: namespace and applicationId</figcaption></figure>
+<figure><img src="assets/ide/android-studio-gradle.jpg" alt="build.gradle.kts in Android Studio: namespace and applicationId" loading="lazy" /><figcaption>Figure 22: build.gradle.kts in Android Studio: namespace and applicationId</figcaption></figure>
 <ol start="2">
 <li>Move the Kotlin files in <code>android/app/src/main/kotlin/com/biteway/&lt;app&gt;/</code> to folders matching the new ID (for example <code>com/yourbrand/customer/</code>). Then change the <code>package</code> line at the top of each file to the new ID. The restaurant app has two files there, <code>MainActivity.kt</code> and <code>UsbPrinterChannel.kt</code>; the other apps have only <code>MainActivity.kt</code>.</li>
 <li>Choose <strong>File → Sync Project with Gradle Files</strong>, then run the app once to check it.</li>
@@ -2002,11 +2202,11 @@ flutter build ios --config-only --dart-define=API_BASE_URL=https://api.your-doma
 <li>Open <code>ios/Runner.xcworkspace</code> and select <strong>Runner</strong> under <strong>Targets</strong>.</li>
 <li>On the <strong>General</strong> tab, change <strong>Bundle Identifier</strong> under <strong>Identity</strong>.</li>
 </ol>
-<figure><img src="assets/ide/xcode-general.jpg" alt="Xcode, Runner target, General tab: Bundle Identifier" loading="lazy" /><figcaption>Figure 22: Xcode, Runner target, General tab: Bundle Identifier</figcaption></figure>
+<figure><img src="assets/ide/xcode-general.jpg" alt="Xcode, Runner target, General tab: Bundle Identifier" loading="lazy" /><figcaption>Figure 23: Xcode, Runner target, General tab: Bundle Identifier</figcaption></figure>
 <ol start="3">
 <li>On the <strong>Signing &amp; Capabilities</strong> tab, choose your <strong>Team</strong> (your <a href="https://developer.apple.com/programs/">Apple Developer</a> account). Leave <strong>Automatically manage signing</strong> on, so Xcode creates the certificates and profiles for the new ID.</li>
 </ol>
-<figure><img src="assets/ide/xcode-signing.jpg" alt="Xcode, Runner target, Signing &amp; Capabilities: choose your Team" loading="lazy" /><figcaption>Figure 23: Xcode, Runner target, Signing &amp; Capabilities: choose your Team</figcaption></figure>
+<figure><img src="assets/ide/xcode-signing.jpg" alt="Xcode, Runner target, Signing &amp; Capabilities: choose your Team" loading="lazy" /><figcaption>Figure 24: Xcode, Runner target, Signing &amp; Capabilities: choose your Team</figcaption></figure>
 <p>If you use them, also update these for the new IDs:</p>
 <ul>
 <li>your Firebase apps;</li>
@@ -2038,7 +2238,7 @@ flutter build ios --config-only --dart-define=API_BASE_URL=https://api.your-doma
 </tbody>
 </table>
 <p>The background color of the Android adaptive icon and of the launch screen is set in <code>pubspec.yaml</code>: <code>adaptive_icon_background</code> under <code>flutter_launcher_icons</code>, and <code>color</code> under <code>flutter_native_splash</code> (both <code>#FF6B35</code> by default).</p>
-<figure><img src="assets/ide/android-studio-pubspec.jpg" alt="pubspec.yaml in Android Studio: the icon and launch screen settings" loading="lazy" /><figcaption>Figure 24: pubspec.yaml in Android Studio: the icon and launch screen settings</figcaption></figure>
+<figure><img src="assets/ide/android-studio-pubspec.jpg" alt="pubspec.yaml in Android Studio: the icon and launch screen settings" loading="lazy" /><figcaption>Figure 25: pubspec.yaml in Android Studio: the icon and launch screen settings</figcaption></figure>
 <p>Then generate the icons and the launch screen for Android and iOS. Run this in the app's folder (or in Android Studio's <strong>Terminal</strong> tab):</p>
 <pre><code class="language-bash">dart run flutter_launcher_icons
 dart run flutter_native_splash:create
@@ -2052,10 +2252,10 @@ dart run flutter_native_splash:create
 <li>Save. The apps, the website and the admin panel use the new colors the next time they open. There is no new build to make.</li>
 </ol>
 <p>The customer app's header and main buttons use the <strong>Secondary</strong> color, so to rebrand, change both Primary and Secondary.</p>
-<figure><img src="assets/admin/logo-colors.jpg" alt="Settings → General → Logo &amp; colors" loading="lazy" /><figcaption>Figure 25: Settings → General → Logo &amp; colors</figcaption></figure>
+<figure><img src="assets/admin/logo-colors.jpg" alt="Settings → General → Logo &amp; colors" loading="lazy" /><figcaption>Figure 26: Settings → General → Logo &amp; colors</figcaption></figure>
 <p>The same customer app before and after changing the primary and secondary colors in the admin panel:</p>
-<figure><img src="assets/apps/ios-customer-home.jpg" alt="The customer app with the default orange" loading="lazy" /><figcaption>Figure 26: The customer app with the default orange</figcaption></figure>
-<figure><img src="assets/apps/ios-customer-home-blue.jpg" alt="The same app after setting blue primary and secondary colors in the admin panel, with no new build" loading="lazy" /><figcaption>Figure 27: The same app after setting blue primary and secondary colors in the admin panel, with no new build</figcaption></figure>
+<figure><img src="assets/apps/ios-customer-home.jpg" alt="The customer app with the default orange" loading="lazy" /><figcaption>Figure 27: The customer app with the default orange</figcaption></figure>
+<figure><img src="assets/apps/ios-customer-home-blue.jpg" alt="The same app after setting blue primary and secondary colors in the admin panel, with no new build" loading="lazy" /><figcaption>Figure 28: The same app after setting blue primary and secondary colors in the admin panel, with no new build</figcaption></figure>
 <p>The launch screen and the Android adaptive icon background are drawn before the app can ask the server, so their color is set in <code>pubspec.yaml</code> instead (see <a href="#mobile-apps-app-icon-and-splash-screen">App icon and splash screen</a>).</p>
 <h4 id="mobile-apps-fonts">Fonts</h4>
 <p>The apps use Plus Jakarta Sans for headings and Inter for text, both under the SIL Open Font License. The font files are in <code>packages/biteway_core/assets/fonts/</code>, and the family names in <code>packages/biteway_core/pubspec.yaml</code> and <code>packages/biteway_core/lib/src/theme/biteway_tokens.dart</code> (<code>BitewayFonts</code>). To use other fonts, replace the files and those entries in all three apps' copy of <code>biteway_core</code>, keeping a font that covers the languages you offer (Bangla and Arabic fall back to the phone's own fonts).</p>
@@ -2064,15 +2264,15 @@ dart run flutter_native_splash:create
 <ol>
 <li>In the <a href="https://console.firebase.google.com">Firebase console</a>, choose <strong>Create a project</strong>, enter a name and press <strong>Continue</strong> until the project is ready.</li>
 </ol>
-<figure><img src="assets/firebase/create-project.jpg" alt="Firebase console: name the project" loading="lazy" /><figcaption>Figure 28: Firebase console: name the project</figcaption></figure>
+<figure><img src="assets/firebase/create-project.jpg" alt="Firebase console: name the project" loading="lazy" /><figcaption>Figure 29: Firebase console: name the project</figcaption></figure>
 <ol start="2">
 <li><strong>Add an Android app for each Biteway app.</strong> On the project's overview, choose <strong>Add app → Android</strong>. Enter the app's <strong>Android package name</strong> (the <code>applicationId</code> from <a href="#mobile-apps-package-name-application-id-and-bundle-id">Package name</a>), an optional nickname, and press <strong>Register app</strong>. Download <code>google-services.json</code> and put it in the app's <code>android/app/</code> folder.</li>
 </ol>
-<figure><img src="assets/firebase/add-android-app.jpg" alt="Add Firebase to your Android app: package name, nickname, Register app" loading="lazy" /><figcaption>Figure 29: Add Firebase to your Android app: package name, nickname, Register app</figcaption></figure>
+<figure><img src="assets/firebase/add-android-app.jpg" alt="Add Firebase to your Android app: package name, nickname, Register app" loading="lazy" /><figcaption>Figure 30: Add Firebase to your Android app: package name, nickname, Register app</figcaption></figure>
 <ol start="3">
 <li><strong>Add an Apple app for each Biteway app.</strong> Choose <strong>Add app → Apple</strong>. Enter the app's <strong>Apple bundle ID</strong> (the <strong>Bundle Identifier</strong> from Xcode) and press <strong>Register app</strong>. Download <code>GoogleService-Info.plist</code>, then in Xcode drag it into the <strong>Runner</strong> folder, with <strong>Copy items if needed</strong> and the <strong>Runner</strong> target ticked.</li>
 </ol>
-<figure><img src="assets/firebase/add-apple-app.jpg" alt="Add Firebase to your Apple app: bundle ID, nickname, Register app" loading="lazy" /><figcaption>Figure 30: Add Firebase to your Apple app: bundle ID, nickname, Register app</figcaption></figure>
+<figure><img src="assets/firebase/add-apple-app.jpg" alt="Add Firebase to your Apple app: bundle ID, nickname, Register app" loading="lazy" /><figcaption>Figure 31: Add Firebase to your Apple app: bundle ID, nickname, Register app</figcaption></figure>
 <ol start="4">
 <li><strong>iOS push notifications.</strong>
 <ol>
@@ -2082,11 +2282,11 @@ dart run flutter_native_splash:create
 </ol>
 </li>
 </ol>
-<figure><img src="assets/firebase/cloud-messaging-apple-app.jpg" alt="Project settings → Cloud Messaging → Apple app configuration: select the iOS app" loading="lazy" /><figcaption>Figure 31: Project settings → Cloud Messaging → Apple app configuration: select the iOS app</figcaption></figure>
+<figure><img src="assets/firebase/cloud-messaging-apple-app.jpg" alt="Project settings → Cloud Messaging → Apple app configuration: select the iOS app" loading="lazy" /><figcaption>Figure 32: Project settings → Cloud Messaging → Apple app configuration: select the iOS app</figcaption></figure>
 <ol start="4">
 <li>Under <strong>APNs Authentication Key</strong>, press <strong>Upload</strong> and choose the <code>.p8</code> file, with its Key ID and Team ID. Do this for each iOS app.</li>
 </ol>
-<figure><img src="assets/firebase/apns-key-upload.jpg" alt="Upload the APNs authentication key for the app" loading="lazy" /><figcaption>Figure 32: Upload the APNs authentication key for the app</figcaption></figure>
+<figure><img src="assets/firebase/apns-key-upload.jpg" alt="Upload the APNs authentication key for the app" loading="lazy" /><figcaption>Figure 33: Upload the APNs authentication key for the app</figcaption></figure>
 <p>Push does not work on the iOS simulator; test it on a real iPhone.</p>
 <ol start="5">
 <li><strong>The server.</strong>
@@ -2095,11 +2295,11 @@ dart run flutter_native_splash:create
 </ol>
 </li>
 </ol>
-<figure><img src="assets/firebase/service-account-key.jpg" alt="Project settings → Service accounts → Generate new private key" loading="lazy" /><figcaption>Figure 33: Project settings → Service accounts → Generate new private key</figcaption></figure>
+<figure><img src="assets/firebase/service-account-key.jpg" alt="Project settings → Service accounts → Generate new private key" loading="lazy" /><figcaption>Figure 34: Project settings → Service accounts → Generate new private key</figcaption></figure>
 <ol start="2">
 <li>In the admin panel, open <strong>Firebase</strong>, choose the file under <strong>Service account key (.json)</strong> and press <strong>Upload key</strong>.</li>
 </ol>
-<figure><img src="assets/admin/firebase.jpg" alt="The admin panel's Firebase page: upload the service account key" loading="lazy" /><figcaption>Figure 34: The admin panel's Firebase page: upload the service account key</figcaption></figure>
+<figure><img src="assets/admin/firebase.jpg" alt="The admin panel's Firebase page: upload the service account key" loading="lazy" /><figcaption>Figure 35: The admin panel's Firebase page: upload the service account key</figcaption></figure>
 <ol start="3">
 <li>Under <strong>Integrations → Live updates</strong>, choose <strong>Firebase</strong>. Without the key, the server sends no pushes; the in-app inbox still fills.</li>
 </ol>
@@ -2111,10 +2311,10 @@ dart run flutter_native_splash:create
 <li><strong>iOS:</strong> copy <code>ios/Flutter/Secrets.xcconfig.example</code> to <code>ios/Flutter/Secrets.xcconfig</code> and set <code>GOOGLE_MAPS_API_KEY</code> to a key with the Maps SDK for iOS, restricted to the app's bundle ID.</li>
 </ul>
 <p>Create the keys in the <a href="https://console.cloud.google.com/google/maps-apis">Google Cloud console</a>. An app built without a key keeps using the map tiles.</p>
-<figure><img src="assets/admin/integrations-maps.jpg" alt="Integrations → Maps in the admin panel: map tiles or Google Maps" loading="lazy" /><figcaption>Figure 35: Integrations → Maps in the admin panel: map tiles or Google Maps</figcaption></figure>
+<figure><img src="assets/admin/integrations-maps.jpg" alt="Integrations → Maps in the admin panel: map tiles or Google Maps" loading="lazy" /><figcaption>Figure 36: Integrations → Maps in the admin panel: map tiles or Google Maps</figcaption></figure>
 <h3 id="mobile-apps-google-sign-in-optional">Google sign-in (optional)</h3>
 <p>When <strong>Settings → Sign-in → Sign in with Google</strong> is on, the sign-in screen offers &quot;Continue with Google&quot;. Create OAuth client IDs in the <a href="https://console.cloud.google.com/apis/credentials">Google Cloud console</a>: a <strong>Web</strong> client, plus an <strong>Android</strong> client (with your package name and signing key fingerprint) and an <strong>iOS</strong> client for each app. Enter them under <strong>Integrations → Google and Apple sign-in</strong>.</p>
-<figure><img src="assets/admin/integrations-sign-in.jpg" alt="Integrations → Google and Apple sign-in in the admin panel" loading="lazy" /><figcaption>Figure 36: Integrations → Google and Apple sign-in in the admin panel</figcaption></figure>
+<figure><img src="assets/admin/integrations-sign-in.jpg" alt="Integrations → Google and Apple sign-in in the admin panel" loading="lazy" /><figcaption>Figure 37: Integrations → Google and Apple sign-in in the admin panel</figcaption></figure>
 <p>On iOS, the app also needs your iOS client ID. In the customer and rider apps, copy <code>ios/Flutter/Secrets.xcconfig.example</code> to <code>ios/Flutter/Secrets.xcconfig</code> (if you have not already for Google Maps), remove the <code>//</code> in front of the two Google lines, and fill them in from your iOS client's details:</p>
 <pre><code>GOOGLE_IOS_CLIENT_ID = 1234-abcd.apps.googleusercontent.com
 GOOGLE_REVERSED_CLIENT_ID = com.googleusercontent.apps.1234-abcd
@@ -2188,15 +2388,15 @@ keyPassword=your-key-password
 <li><strong>Branches and Saver:</strong> with <strong>Settings → Extras → Open each restaurant on its best branch for the customer</strong> on, a restaurant opens on its best branch and says why, and a busy branch at checkout offers to move the order to a sister branch (<a href="#admin-panel-branch-routing">Branch routing</a>); with <strong>Give Saver deliveries a later window and batch them</strong> on, Saver delivery shows its window, such as &quot;Between 45 and 65 min, lower fee&quot; (<a href="#admin-panel-smart-saver">Smart Saver</a>).</li>
 <li><strong>Split pizzas and the kitchen journey:</strong> with <strong>Settings → Extras → Let customers add toppings to one half of a split pizza</strong> on, each topping of a half-and-half pizza goes on the left half, the right half or the whole pizza (<a href="#admin-panel-split-pizza-studio">Split-Pizza Studio</a>); with <strong>Show the order's journey from kitchen to door as it happens</strong> on, the order screen follows the order's stages with past and expected times (<a href="#admin-panel-live-kitchen-journey">Live Kitchen Journey</a>).</li>
 </ul>
-<figure><img src="assets/apps/customer-split-pizza.jpg" alt="Split-Pizza Studio: the drawing shows each half's flavor and toppings, and the price follows every choice" loading="lazy" /><figcaption>Figure 37: Split-Pizza Studio: the drawing shows each half's flavor and toppings, and the price follows every choice</figcaption></figure>
+<figure><img src="assets/apps/customer-split-pizza.jpg" alt="Split-Pizza Studio: the drawing shows each half's flavor and toppings, and the price follows every choice" loading="lazy" /><figcaption>Figure 38: Split-Pizza Studio: the drawing shows each half's flavor and toppings, and the price follows every choice</figcaption></figure>
 <ul>
 <li><strong>Group Meal Cart:</strong> with <strong>Settings → Extras → Let customers order together from one shared cart</strong> on, a customer starts a group cart, shares its link, everyone adds their own dishes, and the host pays for all or each member pays their own share (<a href="#admin-panel-group-meal-cart">Group Meal Cart</a>).</li>
 </ul>
-<figure><img src="assets/apps/customer-group-cart.jpg" alt="A group order: each member's dishes and subtotal with their status, and the host's Lock and choose how to pay button" loading="lazy" /><figcaption>Figure 38: A group order: each member's dishes and subtotal with their status, and the host's Lock and choose how to pay button</figcaption></figure>
+<figure><img src="assets/apps/customer-group-cart.jpg" alt="A group order: each member's dishes and subtotal with their status, and the host's Lock and choose how to pay button" loading="lazy" /><figcaption>Figure 39: A group order: each member's dishes and subtotal with their status, and the host's Lock and choose how to pay button</figcaption></figure>
 <ul>
 <li><strong>What are you craving?</strong> with <strong>Settings → Extras → Help customers find food by mood, time, budget and spice</strong> on, the line under the greeting on Explore opens a screen where customers pick a mood, a budget and how spicy at most, and see dishes open now by restaurant, each with why it fits, such as &quot;Something light · Under $15.00 · Mild&quot; (<a href="#admin-panel-cravings">Cravings</a>). Off, the line is text only, as before.</li>
 </ul>
-<figure><img src="assets/apps/customer-cravings.jpg" alt="The &quot;What are you craving?&quot; screen: mood, budget and spice choices, and the dishes open now that fit" loading="lazy" /><figcaption>Figure 39: The &quot;What are you craving?&quot; screen: mood, budget and spice choices, and the dishes open now that fit</figcaption></figure>
+<figure><img src="assets/apps/customer-cravings.jpg" alt="The &quot;What are you craving?&quot; screen: mood, budget and spice choices, and the dishes open now that fit" loading="lazy" /><figcaption>Figure 40: The &quot;What are you craving?&quot; screen: mood, budget and spice choices, and the dishes open now that fit</figcaption></figure>
 <ul>
 <li><strong>Order:</strong> choose dishes with their options, then delivery, pickup or a later time, apply a promo code, and pay by card, online gateway, wallet or cash on delivery.</li>
 <li><strong>Follow the order</strong> live from the kitchen to the door, with the rider on a map, chat with the restaurant or the rider, and get help from support.</li>
@@ -2205,7 +2405,7 @@ keyPassword=your-key-password
 <li><strong>Rewards:</strong> points and tiers, a free-delivery pass, invites for friends and round-up donations, as switched on under <strong>Settings → Rewards</strong>.</li>
 <li><strong>Account:</strong> saved addresses, language (once you offer more than one), notifications, and deleting the account.</li>
 </ul>
-<figure><img src="assets/apps/customer-order-tracking.jpg" alt="The order screen: each step from placed to delivered, contact, address and items" loading="lazy" /><figcaption>Figure 40: The order screen: each step from placed to delivered, contact, address and items</figcaption></figure>
+<figure><img src="assets/apps/customer-order-tracking.jpg" alt="The order screen: each step from placed to delivered, contact, address and items" loading="lazy" /><figcaption>Figure 41: The order screen: each step from placed to delivered, contact, address and items</figcaption></figure>
 <h3 id="customer-app-setup">Setup</h3>
 <p>Follow <a href="#mobile-apps">Mobile apps</a> for the backend address, name, package name, icon, Firebase, Google Maps, and Google and Apple sign-in. The customer app needs nothing else of its own.</p>
         </section>
@@ -2225,8 +2425,8 @@ keyPassword=your-key-password
 <li><strong>Language:</strong> <strong>Profile → Language</strong>, once you offer more than one. Arabic shows the app right to left, and notifications follow the rider's choice.</li>
 <li><strong>Leave:</strong> delete the account from the Profile tab, once deliveries are finished, cash is handed in and earnings are paid out. Earnings too small to pay out (below the payout minimum) can be given up instead, after a warning with the amount. The profile, documents and payout details are then removed.</li>
 </ul>
-<figure><img src="assets/apps/rider-home.jpg" alt="The rider's home screen: today's earnings, going online, and the deliveries in progress" loading="lazy" /><figcaption>Figure 41: The rider's home screen: today's earnings, going online, and the deliveries in progress</figcaption></figure>
-<figure><img src="assets/apps/rider-delivery.jpg" alt="A delivery on its way: the map, the next step, the cash to collect, and directions, call and chat" loading="lazy" /><figcaption>Figure 42: A delivery on its way: the map, the next step, the cash to collect, and directions, call and chat</figcaption></figure>
+<figure><img src="assets/apps/rider-home.jpg" alt="The rider's home screen: today's earnings, going online, and the deliveries in progress" loading="lazy" /><figcaption>Figure 42: The rider's home screen: today's earnings, going online, and the deliveries in progress</figcaption></figure>
+<figure><img src="assets/apps/rider-delivery.jpg" alt="A delivery on its way: the map, the next step, the cash to collect, and directions, call and chat" loading="lazy" /><figcaption>Figure 43: A delivery on its way: the map, the next step, the cash to collect, and directions, call and chat</figcaption></figure>
 <h3 id="rider-app-location-and-the-app-stores">Location and the app stores</h3>
 <p>The rider app uses the phone's location <strong>only while the rider is online</strong>, to offer nearby deliveries and show customers their rider on a map. It asks for &quot;while using the app&quot; access only, never &quot;always&quot;:</p>
 <ul>
@@ -2268,12 +2468,462 @@ keyPassword=your-key-password
 <li><strong>Shift report:</strong> today's numbers for the branch, or an earlier day.</li>
 <li><strong>Branch status:</strong> pause orders, or switch on busy mode for a set number of minutes when the kitchen is full.</li>
 </ul>
-<figure><img src="assets/apps/restaurant-kitchen-board.jpg" alt="The kitchen board on a phone: new, cooking, ready and finished orders in tabs. On a tablet they show side by side as columns" loading="lazy" /><figcaption>Figure 43: The kitchen board on a phone: new, cooking, ready and finished orders in tabs. On a tablet they show side by side as columns</figcaption></figure>
-<figure><img src="assets/apps/restaurant-table-check.jpg" alt="A table's check on a phone: the Menu and Check tabs, the next round to send to the kitchen, the rounds already sent and the total. On a tablet the menu and the check show side by side" loading="lazy" /><figcaption>Figure 44: A table's check on a phone: the Menu and Check tabs, the next round to send to the kitchen, the rounds already sent and the total. On a tablet the menu and the check show side by side</figcaption></figure>
+<figure><img src="assets/apps/restaurant-kitchen-board.jpg" alt="The kitchen board on a phone: new, cooking, ready and finished orders in tabs. On a tablet they show side by side as columns" loading="lazy" /><figcaption>Figure 44: The kitchen board on a phone: new, cooking, ready and finished orders in tabs. On a tablet they show side by side as columns</figcaption></figure>
+<figure><img src="assets/apps/restaurant-table-check.jpg" alt="A table's check on a phone: the Menu and Check tabs, the next round to send to the kitchen, the rounds already sent and the total. On a tablet the menu and the check show side by side" loading="lazy" /><figcaption>Figure 45: A table's check on a phone: the Menu and Check tabs, the next round to send to the kitchen, the rounds already sent and the total. On a tablet the menu and the check show side by side</figcaption></figure>
 <h3 id="restaurant-app-printers">Printers</h3>
 <p>The app prints order tickets and receipts on <strong>thermal receipt printers</strong> (ESC/POS) connected by <strong>Bluetooth</strong>, over the <strong>network</strong> (Wi-Fi or Ethernet), or by <strong>USB</strong> on Android. Add them during device setup or later from the device menu, and choose what each printer prints. Times print on the 12-hour clock with AM/PM in Latin letters and digits, for example 3:05 PM, whatever the app's language.</p>
 <h3 id="restaurant-app-setup">Setup</h3>
 <p>Follow <a href="#mobile-apps">Mobile apps</a> for the backend address, name, package name, icon and Firebase. The restaurant app shows no maps, so it needs no Google Maps key.</p>
+        </section>
+        <section id="api-examples">
+            <h2><span aria-hidden="true">🧪</span> API examples</h2>
+            <p>This section shows real requests and responses from a Biteway backend with the sample data (Austin, USD): the app's starting config, the restaurant list, and a customer placing a cash-on-delivery order. The responses are shortened: <code>…</code> marks fields and list entries left out. For every endpoint, see the <a href="#api">API reference</a>, or import <a href="api/Biteway.postman_collection.json">the Postman collection</a> (also in <code>main/biteway-backend/docs/api/</code> of the download).</p>
+<h3 id="api-examples-basics">Basics</h3>
+<p><strong>Base URL:</strong> every endpoint starts with <code>https://YOUR-DOMAIN/api/v1</code>, where <code>YOUR-DOMAIN</code> is the domain you installed the backend on.</p>
+<p><strong>Headers:</strong> send <code>Accept: application/json</code> with every request, and <code>Content-Type: application/json</code> with every request that has a body.</p>
+<p><strong>Signing in:</strong> the customer and rider apps sign in with a one-time code sent by text message. <code>POST /auth/otp/verify</code> returns a Laravel Sanctum token. Send it with each signed-in request as <code>Authorization: Bearer YOUR_TOKEN</code>. Endpoints marked <strong>public</strong> in the API reference need no token.</p>
+<p><strong>Response envelope:</strong> every response is JSON in the same shape.</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>When</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>success</code></td>
+<td>always</td>
+<td><code>true</code> or <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>message</code></td>
+<td>often</td>
+<td>A message you can show to the user, in the user's language.</td>
+</tr>
+<tr>
+<td><code>data</code></td>
+<td>on success</td>
+<td>The result: an object or a list.</td>
+</tr>
+<tr>
+<td><code>meta</code></td>
+<td>lists</td>
+<td>Paging: <code>next_cursor</code>, <code>prev_cursor</code> and <code>per_page</code> (send <code>cursor=&lt;next_cursor&gt;</code> for the next page; <code>null</code> means there are no more pages).</td>
+</tr>
+<tr>
+<td><code>error_code</code></td>
+<td>on failure</td>
+<td>A fixed code your app can check, for example <code>validation_error</code>, <code>unauthenticated</code>, <code>not_found</code> or <code>zone_unavailable</code>.</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td>validation failures</td>
+<td>The problems for each field, as a list of messages.</td>
+</tr>
+</tbody>
+</table>
+<p>A failed request returns the matching HTTP status. Two examples from the same backend:</p>
+<pre><code class="language-http">HTTP/1.1 401 Unauthorized
+
+{&quot;success&quot;: false, &quot;message&quot;: &quot;Unauthenticated.&quot;, &quot;error_code&quot;: &quot;unauthenticated&quot;}
+</code></pre>
+<pre><code class="language-http">HTTP/1.1 422 Unprocessable Content
+
+{
+  &quot;success&quot;: false,
+  &quot;message&quot;: &quot;The address uuid field is required when order type is delivery.&quot;,
+  &quot;error_code&quot;: &quot;validation_error&quot;,
+  &quot;errors&quot;: {
+    &quot;address_uuid&quot;: [&quot;The address uuid field is required when order type is delivery.&quot;]
+  }
+}
+</code></pre>
+<p><strong>Money:</strong> every amount is an integer in the currency's minor unit (cents for USD), with the currency code and a formatted string for display. <code>1750</code> is $17.50. Send amounts the same way, for example <code>&quot;tip&quot;: 200</code> for a $2.00 tip.</p>
+<pre><code class="language-json">{&quot;amount&quot;: 1750, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$17.50&quot;}
+</code></pre>
+<h3 id="api-examples-app-config">App config</h3>
+<p><code>GET /config</code> (public) is the first call each app makes: branding, currency, languages, payment methods, feature switches and settings.</p>
+<pre><code class="language-http">GET /api/v1/config HTTP/1.1
+Host: YOUR-DOMAIN
+Accept: application/json
+</code></pre>
+<pre><code class="language-http">HTTP/1.1 200 OK
+</code></pre>
+<pre><code class="language-json">{
+  &quot;success&quot;: true,
+  &quot;data&quot;: {
+    &quot;branding&quot;: {
+      &quot;app_name&quot;: &quot;Biteway&quot;,
+      &quot;customer_app_name&quot;: &quot;Biteway&quot;,
+      &quot;primary_color&quot;: &quot;#FF6B35&quot;,
+      &quot;secondary_color&quot;: &quot;#C84B10&quot;,
+      &quot;support_email&quot;: &quot;support@example.com&quot;,
+      &quot;support_phone&quot;: &quot;+1 202 555 0100&quot;,
+      &quot;logo_url&quot;: &quot;https://YOUR-DOMAIN/images/logo.png&quot;,
+      …
+    },
+    &quot;currency&quot;: {
+      &quot;code&quot;: &quot;USD&quot;,
+      &quot;symbol&quot;: &quot;$&quot;,
+      &quot;position&quot;: &quot;left&quot;,
+      &quot;decimals&quot;: 2
+    },
+    &quot;localization&quot;: {
+      &quot;default_language&quot;: &quot;en&quot;,
+      &quot;default_country&quot;: &quot;US&quot;,
+      &quot;default_country_code&quot;: &quot;+1&quot;,
+      &quot;distance_unit&quot;: &quot;mi&quot;,
+      &quot;languages&quot;: [
+        {&quot;code&quot;: &quot;en&quot;, &quot;name&quot;: &quot;English&quot;, &quot;native_name&quot;: &quot;English&quot;, &quot;direction&quot;: &quot;ltr&quot;, &quot;is_default&quot;: true}
+      ]
+    },
+    &quot;payment_methods&quot;: [
+      {&quot;gateway&quot;: &quot;cod&quot;, &quot;label&quot;: &quot;Cash on delivery&quot;, &quot;hosted&quot;: false}
+    ],
+    &quot;settings&quot;: {
+      &quot;features&quot;: {&quot;pickup&quot;: true, &quot;scheduled_orders&quot;: true, &quot;group_cart&quot;: true, …},
+      &quot;auth&quot;: {&quot;otp_provider&quot;: &quot;log&quot;, &quot;otp_length&quot;: 6, …},
+      …
+    },
+    …
+  }
+}
+</code></pre>
+<p>Use a <code>gateway</code> value from <code>payment_methods</code> as the order's <code>payment_method</code>.</p>
+<h3 id="api-examples-restaurant-list">Restaurant list</h3>
+<p><code>GET /restaurants</code> (public) lists the restaurants that deliver to a point. The customer app sends the customer's location as <code>lat</code> and <code>lng</code> (or <code>zone</code> with a zone's <code>uuid</code>), plus <code>per_page</code> and, for the next pages, <code>cursor</code>. Optional filters: <code>open_now=1</code>, <code>cuisine</code>, <code>category</code>, <code>dietary</code> and <code>service</code>. A point no restaurant delivers to returns 404 with <code>error_code</code> <code>zone_unavailable</code>.</p>
+<pre><code class="language-http">GET /api/v1/restaurants?lat=30.2672&amp;lng=-97.7431&amp;per_page=20 HTTP/1.1
+Host: YOUR-DOMAIN
+Accept: application/json
+</code></pre>
+<pre><code class="language-http">HTTP/1.1 200 OK
+</code></pre>
+<pre><code class="language-json">{
+  &quot;success&quot;: true,
+  &quot;data&quot;: [
+    {
+      &quot;uuid&quot;: &quot;0b0ee6b0-329b-49fe-8d83-4b8599671024&quot;,
+      &quot;slug&quot;: &quot;stonebake-pizza-house&quot;,
+      &quot;name&quot;: &quot;Stonebake Pizza House&quot;,
+      &quot;description&quot;: &quot;Neapolitan-style pizzas from a stone oven: …&quot;,
+      &quot;logo&quot;: null,
+      &quot;cover&quot;: {
+        &quot;url&quot;: &quot;https://YOUR-DOMAIN/storage/restaurants/1/OpljKevRGk5QWLaLrCmpwHtVC9ERdRjF0wtg6FTm.webp&quot;,
+        &quot;thumb_url&quot;: &quot;https://YOUR-DOMAIN/storage/restaurants/1/OpljKevRGk5QWLaLrCmpwHtVC9ERdRjF0wtg6FTm_thumb.webp&quot;
+      },
+      &quot;cuisines&quot;: [&quot;pizza&quot;, &quot;italian&quot;],
+      &quot;is_favourite&quot;: null,
+      &quot;rating&quot;: {&quot;average&quot;: null, &quot;count&quot;: 0},
+      &quot;is_open_now&quot;: true,
+      &quot;branches&quot;: [
+        {
+          &quot;uuid&quot;: &quot;2032e972-033a-4318-a661-1bf4644984c9&quot;,
+          &quot;name&quot;: &quot;Stonebake Downtown&quot;,
+          &quot;address&quot;: &quot;410 Congress Ave, Austin&quot;,
+          &quot;location&quot;: {&quot;lat&quot;: 30.2675, &quot;lng&quot;: -97.743},
+          &quot;timezone&quot;: &quot;America/Chicago&quot;,
+          &quot;prep_minutes&quot;: 18,
+          &quot;eta&quot;: {&quot;min&quot;: 35, &quot;max&quot;: 45},
+          &quot;services&quot;: {&quot;delivery&quot;: true, &quot;pickup&quot;: true, &quot;dine_in&quot;: false},
+          &quot;is_open_now&quot;: true,
+          &quot;open_state&quot;: &quot;open&quot;,
+          &quot;hours&quot;: [
+            {&quot;weekday&quot;: 0, &quot;opens_at&quot;: &quot;11:00&quot;, &quot;closes_at&quot;: &quot;23:00&quot;},
+            …
+          ],
+          …
+        },
+        …
+      ],
+      &quot;eta&quot;: {&quot;min&quot;: 35, &quot;max&quot;: 45},
+      &quot;suggested_branch&quot;: {&quot;uuid&quot;: &quot;2032e972-033a-4318-a661-1bf4644984c9&quot;, &quot;reason&quot;: &quot;nearest_open&quot;},
+      &quot;featured_dish&quot;: {
+        &quot;uuid&quot;: &quot;53685620-6e5e-40aa-a25e-19f19aebd1fe&quot;,
+        &quot;name&quot;: &quot;Margherita&quot;,
+        &quot;price&quot;: {&quot;amount&quot;: 1200, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$12.00&quot;},
+        &quot;has_choices&quot;: true,
+        …
+      }
+    },
+    …
+  ],
+  &quot;meta&quot;: {
+    &quot;next_cursor&quot;: null,
+    &quot;prev_cursor&quot;: null,
+    &quot;per_page&quot;: 20
+  }
+}
+</code></pre>
+<p>A branch's menu, with each dish's <code>uuid</code>, size <code>variants</code> and <code>modifier_groups</code>, comes from <code>GET /branches/{branch uuid}/menu</code> (public).</p>
+<h3 id="api-examples-placing-an-order">Placing an order</h3>
+<p>A customer order takes five calls: send a code, verify it, add dishes to the cart, get a quote, then place the order with the quote. The examples use the sample customer <strong>+1 512-555-0100</strong> and the <strong>Large Margherita</strong> from the menu of Stonebake Downtown.</p>
+<h4 id="api-examples-1-send-a-sign-in-code">1. Send a sign-in code</h4>
+<pre><code class="language-http">POST /api/v1/auth/otp/send HTTP/1.1
+Host: YOUR-DOMAIN
+Accept: application/json
+Content-Type: application/json
+
+{
+  &quot;country_code&quot;: &quot;+1&quot;,
+  &quot;phone&quot;: &quot;5125550100&quot;,
+  &quot;user_type&quot;: &quot;customer&quot;
+}
+</code></pre>
+<pre><code class="language-http">HTTP/1.1 200 OK
+
+{&quot;success&quot;: true, &quot;message&quot;: &quot;Verification code sent.&quot;, &quot;data&quot;: {&quot;expires_in&quot;: 300}}
+</code></pre>
+<p><code>user_type</code> is <code>customer</code> or <code>rider</code> (restaurant staff sign in with email and password at <code>POST /restaurant/auth/login</code>). The code is sent the way chosen under <strong>Settings → Sign-in</strong> in the admin panel. With <strong>Server log only</strong> (test copies), the text message is written to <code>storage/logs/laravel.log</code> and nothing is sent.</p>
+<h4 id="api-examples-2-verify-the-code-and-get-a-token">2. Verify the code and get a token</h4>
+<pre><code class="language-http">POST /api/v1/auth/otp/verify HTTP/1.1
+Host: YOUR-DOMAIN
+Accept: application/json
+Content-Type: application/json
+
+{
+  &quot;country_code&quot;: &quot;+1&quot;,
+  &quot;phone&quot;: &quot;5125550100&quot;,
+  &quot;user_type&quot;: &quot;customer&quot;,
+  &quot;code&quot;: &quot;155497&quot;,
+  &quot;device_type&quot;: &quot;android&quot;,
+  &quot;device_name&quot;: &quot;Pixel 8&quot;,
+  &quot;app_version&quot;: &quot;1.0.0&quot;
+}
+</code></pre>
+<pre><code class="language-http">HTTP/1.1 200 OK
+</code></pre>
+<pre><code class="language-json">{
+  &quot;success&quot;: true,
+  &quot;message&quot;: &quot;Signed in.&quot;,
+  &quot;data&quot;: {
+    &quot;token&quot;: &quot;1|AbC…&quot;,
+    &quot;token_type&quot;: &quot;Bearer&quot;,
+    &quot;is_new_user&quot;: false,
+    &quot;user&quot;: {
+      &quot;uuid&quot;: &quot;cb37d3a0-602a-48c2-a58c-dae6070859cb&quot;,
+      &quot;user_type&quot;: &quot;customer&quot;,
+      &quot;name&quot;: &quot;Demo Customer&quot;,
+      &quot;email&quot;: &quot;demo.customer@example.com&quot;,
+      &quot;country_code&quot;: &quot;+1&quot;,
+      &quot;phone&quot;: &quot;5125550100&quot;,
+      &quot;phone_verified&quot;: true,
+      &quot;language&quot;: &quot;en&quot;,
+      &quot;status&quot;: &quot;active&quot;,
+      &quot;is_profile_complete&quot;: true,
+      &quot;created_at&quot;: &quot;2026-11-19T03:26:48+00:00&quot;,
+      …
+    }
+  }
+}
+</code></pre>
+<p>The device fields are optional; the apps also send <code>fcm_token</code> for push notifications. Every request below sends the token as <code>Authorization: Bearer YOUR_TOKEN</code>. <code>POST /auth/logout</code> revokes the token.</p>
+<h4 id="api-examples-3-add-a-dish-to-the-cart">3. Add a dish to the cart</h4>
+<p>Customer endpoints start with <code>/customer</code>. Send the dish's <code>uuid</code> from the menu, a <code>variant_id</code> if the dish has sizes, and the <code>modifier_id</code> of each extra.</p>
+<pre><code class="language-http">POST /api/v1/customer/cart/items HTTP/1.1
+Host: YOUR-DOMAIN
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN
+
+{
+  &quot;menu_item_uuid&quot;: &quot;53685620-6e5e-40aa-a25e-19f19aebd1fe&quot;,
+  &quot;variant_id&quot;: 2,
+  &quot;quantity&quot;: 1,
+  &quot;modifiers&quot;: [{&quot;modifier_id&quot;: 5}],
+  &quot;notes&quot;: &quot;Well done, please&quot;
+}
+</code></pre>
+<pre><code class="language-http">HTTP/1.1 200 OK
+</code></pre>
+<pre><code class="language-json">{
+  &quot;success&quot;: true,
+  &quot;message&quot;: &quot;Added to your cart.&quot;,
+  &quot;data&quot;: {
+    &quot;uuid&quot;: &quot;2505d0ea-8bd5-421b-9c0b-eb428aaee657&quot;,
+    &quot;branch&quot;: {
+      &quot;uuid&quot;: &quot;2032e972-033a-4318-a661-1bf4644984c9&quot;,
+      &quot;name&quot;: &quot;Stonebake Downtown&quot;,
+      &quot;restaurant&quot;: &quot;Stonebake Pizza House&quot;,
+      &quot;restaurant_slug&quot;: &quot;stonebake-pizza-house&quot;,
+      …
+    },
+    &quot;lines&quot;: [
+      {
+        &quot;id&quot;: 29,
+        &quot;menu_item_uuid&quot;: &quot;53685620-6e5e-40aa-a25e-19f19aebd1fe&quot;,
+        &quot;name&quot;: &quot;Margherita&quot;,
+        &quot;variant&quot;: &quot;Large (14\&quot;)&quot;,
+        &quot;modifiers&quot;: [
+          {&quot;id&quot;: 5, &quot;name&quot;: &quot;Extra mozzarella&quot;, &quot;half&quot;: null, &quot;price&quot;: {&quot;amount&quot;: 150, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$1.50&quot;}}
+        ],
+        &quot;notes&quot;: &quot;Well done, please&quot;,
+        &quot;quantity&quot;: 1,
+        &quot;unit_price&quot;: {&quot;amount&quot;: 1750, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$17.50&quot;},
+        &quot;line_total&quot;: {&quot;amount&quot;: 1750, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$17.50&quot;},
+        …
+      }
+    ],
+    &quot;item_count&quot;: 1,
+    &quot;subtotal&quot;: {&quot;amount&quot;: 1750, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$17.50&quot;}
+  }
+}
+</code></pre>
+<p>The cart holds one restaurant's dishes at a time. Adding a dish from another restaurant returns 409 <code>cart_other_branch</code>; send <code>&quot;replace&quot;: true</code> to empty the cart first. <code>GET /customer/cart</code> reads the cart, <code>PATCH /customer/cart/items/{id}</code> changes a line's quantity and <code>DELETE /customer/cart/items/{id}</code> removes it.</p>
+<h4 id="api-examples-4-get-a-quote">4. Get a quote</h4>
+<p>The quote prices the cart for one way of ordering: the delivery fee for the distance, tax, tip and any promo code. <code>order_type</code> is <code>delivery</code> or <code>pickup</code>. A delivery needs the <code>uuid</code> of one of the customer's saved addresses, from <code>GET /customer/addresses</code>.</p>
+<pre><code class="language-http">POST /api/v1/customer/cart/quote HTTP/1.1
+Host: YOUR-DOMAIN
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN
+
+{
+  &quot;order_type&quot;: &quot;delivery&quot;,
+  &quot;address_uuid&quot;: &quot;52062f0b-faee-4838-ad41-736d9fcb346a&quot;,
+  &quot;tip&quot;: 200
+}
+</code></pre>
+<pre><code class="language-http">HTTP/1.1 200 OK
+</code></pre>
+<pre><code class="language-json">{
+  &quot;success&quot;: true,
+  &quot;data&quot;: {
+    &quot;uuid&quot;: &quot;14a57cea-b02a-4c04-8dd1-a96282ab25f0&quot;,
+    &quot;order_type&quot;: &quot;delivery&quot;,
+    &quot;scheduled_for&quot;: null,
+    &quot;lines&quot;: [ … ],
+    &quot;subtotal&quot;: {&quot;amount&quot;: 1750, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$17.50&quot;},
+    &quot;packaging_fee&quot;: {&quot;amount&quot;: 0, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$0.00&quot;},
+    &quot;delivery_fee&quot;: {&quot;amount&quot;: 299, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$2.99&quot;},
+    &quot;delivery&quot;: {&quot;distance_m&quot;: 439, &quot;level&quot;: &quot;standard&quot;, &quot;free&quot;: false, &quot;surge&quot;: false, &quot;pass&quot;: false},
+    &quot;service_fee&quot;: {&quot;amount&quot;: 0, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$0.00&quot;},
+    &quot;tip&quot;: {&quot;amount&quot;: 200, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$2.00&quot;},
+    &quot;discount&quot;: {&quot;amount&quot;: 0, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$0.00&quot;},
+    &quot;promotion&quot;: null,
+    &quot;tax&quot;: {
+      &quot;name&quot;: &quot;Sales tax&quot;,
+      &quot;rate_bps&quot;: 825,
+      &quot;inclusive&quot;: false,
+      &quot;amount&quot;: {&quot;amount&quot;: 144, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$1.44&quot;}
+    },
+    &quot;total&quot;: {&quot;amount&quot;: 2393, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$23.93&quot;},
+    &quot;eta&quot;: {&quot;min&quot;: 35, &quot;max&quot;: 45},
+    &quot;expires_at&quot;: &quot;2026-11-26T03:27:15+00:00&quot;,
+    …
+  }
+}
+</code></pre>
+<p>Show these totals at checkout. The quote expires at <code>expires_at</code> (10 minutes); after that, ask for a new one. <code>rate_bps</code> is the tax rate in basis points (825 = 8.25%).</p>
+<h4 id="api-examples-5-place-the-order">5. Place the order</h4>
+<p>Send the quote's <code>uuid</code> and a payment method. The <code>Idempotency-Key</code> header is required: a value unique to this checkout, for example a UUID, so a retried request never places the same order twice.</p>
+<pre><code class="language-http">POST /api/v1/customer/orders HTTP/1.1
+Host: YOUR-DOMAIN
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN
+Idempotency-Key: 2f6c1a9e-3b7d-4c55-9a1e-6d0b8e4f7a21
+
+{
+  &quot;quote_uuid&quot;: &quot;14a57cea-b02a-4c04-8dd1-a96282ab25f0&quot;,
+  &quot;payment_method&quot;: &quot;cod&quot;,
+  &quot;notes&quot;: &quot;Ring the bell, please&quot;,
+  &quot;cutlery&quot;: false
+}
+</code></pre>
+<pre><code class="language-http">HTTP/1.1 201 Created
+</code></pre>
+<pre><code class="language-json">{
+  &quot;success&quot;: true,
+  &quot;message&quot;: &quot;Your order was sent to the restaurant.&quot;,
+  &quot;data&quot;: {
+    &quot;uuid&quot;: &quot;b499c2b3-49d3-495c-b601-2a8b75710e4c&quot;,
+    &quot;number&quot;: &quot;261126-057548&quot;,
+    &quot;status&quot;: {&quot;value&quot;: &quot;placed&quot;, &quot;label&quot;: &quot;Placed&quot;},
+    &quot;order_type&quot;: &quot;delivery&quot;,
+    &quot;delivery_level&quot;: &quot;standard&quot;,
+    &quot;restaurant&quot;: {
+      &quot;branch_uuid&quot;: &quot;2032e972-033a-4318-a661-1bf4644984c9&quot;,
+      &quot;name&quot;: &quot;Stonebake Pizza House&quot;,
+      &quot;branch&quot;: &quot;Stonebake Downtown&quot;,
+      &quot;branch_address&quot;: &quot;410 Congress Ave, Austin&quot;,
+      …
+    },
+    &quot;rider&quot;: null,
+    &quot;address&quot;: {&quot;label&quot;: &quot;home&quot;, &quot;line1&quot;: &quot;300 W 6th St&quot;, &quot;line2&quot;: &quot;Apt 12&quot;, &quot;lat&quot;: 30.27, &quot;lng&quot;: -97.745, …},
+    &quot;items&quot;: [
+      {
+        &quot;name&quot;: &quot;Margherita&quot;,
+        &quot;variant&quot;: &quot;Large (14\&quot;)&quot;,
+        &quot;modifiers&quot;: [{&quot;name&quot;: &quot;Extra mozzarella&quot;, &quot;half&quot;: null}],
+        &quot;quantity&quot;: 1,
+        &quot;line_total&quot;: {&quot;amount&quot;: 1750, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$17.50&quot;},
+        …
+      }
+    ],
+    &quot;subtotal&quot;: {&quot;amount&quot;: 1750, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$17.50&quot;},
+    &quot;delivery_fee&quot;: {&quot;amount&quot;: 299, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$2.99&quot;},
+    &quot;tip&quot;: {&quot;amount&quot;: 200, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$2.00&quot;},
+    &quot;tax&quot;: {&quot;amount&quot;: {&quot;amount&quot;: 144, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$1.44&quot;}, &quot;inclusive&quot;: false},
+    &quot;total&quot;: {&quot;amount&quot;: 2393, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$23.93&quot;},
+    &quot;payment&quot;: {
+      &quot;method&quot;: &quot;cod&quot;,
+      &quot;status&quot;: &quot;pending&quot;,
+      &quot;wallet_amount&quot;: {&quot;amount&quot;: 0, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$0.00&quot;},
+      &quot;online_amount&quot;: {&quot;amount&quot;: 2393, &quot;currency&quot;: &quot;USD&quot;, &quot;formatted&quot;: &quot;$23.93&quot;}
+    },
+    &quot;notes&quot;: &quot;Ring the bell, please&quot;,
+    &quot;cutlery&quot;: false,
+    &quot;eta&quot;: {&quot;from&quot;: &quot;2026-11-26T03:50:00Z&quot;, &quot;to&quot;: &quot;2026-11-26T04:00:00Z&quot;},
+    &quot;can_cancel&quot;: true,
+    &quot;journey&quot;: {
+      &quot;stages&quot;: [
+        {&quot;key&quot;: &quot;placed&quot;, &quot;at&quot;: &quot;2026-11-26T03:17:27+00:00&quot;, &quot;expected_at&quot;: null},
+        {&quot;key&quot;: &quot;accepted&quot;, &quot;at&quot;: null, &quot;expected_at&quot;: null},
+        …
+        {&quot;key&quot;: &quot;delivered&quot;, &quot;at&quot;: null, &quot;expected_at&quot;: &quot;2026-11-26T04:00:00Z&quot;}
+      ],
+      &quot;current&quot;: &quot;placed&quot;
+    },
+    &quot;timeline&quot;: [{&quot;status&quot;: &quot;placed&quot;, &quot;at&quot;: &quot;2026-11-26T03:17:27+00:00&quot;}],
+    &quot;placed_at&quot;: &quot;2026-11-26T03:17:27+00:00&quot;,
+    &quot;created_at&quot;: &quot;2026-11-26T03:17:27+00:00&quot;,
+    …
+  }
+}
+</code></pre>
+<p>The cart is empty after the order is placed. Timestamps are in UTC (ISO 8601).</p>
+<p>For an online gateway (for example <code>stripe</code>), the order waits for payment: call <code>POST /customer/orders/{uuid}/checkout</code> for the payment page. <code>GET /customer/orders/{uuid}/tracking</code> follows the order and the rider.</p>
+<h3 id="api-examples-cancelling-an-order">Cancelling an order</h3>
+<p>While <code>can_cancel</code> is <code>true</code>, the customer can cancel the order. <code>reason</code> is optional.</p>
+<pre><code class="language-http">POST /api/v1/customer/orders/b499c2b3-49d3-495c-b601-2a8b75710e4c/cancel HTTP/1.1
+Host: YOUR-DOMAIN
+Accept: application/json
+Content-Type: application/json
+Authorization: Bearer YOUR_TOKEN
+
+{&quot;reason&quot;: &quot;Ordered by mistake&quot;}
+</code></pre>
+<pre><code class="language-http">HTTP/1.1 200 OK
+</code></pre>
+<pre><code class="language-json">{
+  &quot;success&quot;: true,
+  &quot;message&quot;: &quot;Your order was cancelled.&quot;,
+  &quot;data&quot;: {
+    &quot;uuid&quot;: &quot;b499c2b3-49d3-495c-b601-2a8b75710e4c&quot;,
+    &quot;status&quot;: {&quot;value&quot;: &quot;cancelled&quot;, &quot;label&quot;: &quot;Cancelled&quot;},
+    &quot;status_reason&quot;: &quot;Ordered by mistake&quot;,
+    &quot;payment&quot;: {&quot;method&quot;: &quot;cod&quot;, &quot;status&quot;: &quot;cancelled&quot;, …},
+    &quot;can_cancel&quot;: false,
+    &quot;timeline&quot;: [
+      {&quot;status&quot;: &quot;placed&quot;, &quot;at&quot;: &quot;2026-11-26T03:17:27+00:00&quot;},
+      {&quot;status&quot;: &quot;cancelled&quot;, &quot;at&quot;: &quot;2026-11-26T03:17:36+00:00&quot;}
+    ],
+    …
+  }
+}
+</code></pre>
         </section>
         <section id="api">
             <h2><span aria-hidden="true">🔌</span> API reference</h2>
@@ -5377,7 +6027,7 @@ No. They are optional add-ons, sold separately. Without them, customers order in
         </section>
         <section id="changelog">
             <h2><span aria-hidden="true">📝</span> Changelog</h2>
-            <h3 id="changelog-100-first-release-17-november-2026">1.0.0: first release (17 November 2026)</h3>
+            <h3 id="changelog-100-first-release-26-november-2026">1.0.0: first release (26 November 2026)</h3>
 <ul>
 <li>Laravel backend with the admin panel, a REST API for the three apps, and a browser installer.</li>
 <li>Customer app: browsing and search, delivery, pickup and scheduled orders, card, online, wallet and cash payments, live order tracking with chat, ratings, table bookings and QR ordering at the table, rewards, a free-delivery pass and invites.</li>
